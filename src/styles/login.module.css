@@ -1,0 +1,151 @@
+
+.container-login{
+    width: 62.5rem;
+    height: 35.625rem;
+    border-radius: 15px;
+    background: var(--colorFondo);
+    display: flex;
+    margin: auto;
+    margin-top: 1rem;
+}
+
+
+@media screen and (max-width:1024px) {
+    .container-login{
+       
+       
+    }
+}
+
+
+/* ---------------------------- seccion izquierda --------------------------- */
+.login-izquierdo{
+display: flex;
+flex-direction: column;
+align-items: center;
+flex-grow:3;
+
+}
+
+.encabezado-izquierdo{
+    display: flex;
+    flex-direction:column;
+    align-items:center;
+   
+}
+
+.encabezado-izquierdo p{
+font-size: 2rem;
+color:var(--colorPrimario);
+font-weight: var(--textoBold);
+text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.encabezado-izquierdo .icono-logo{
+    width: 23rem;
+    height: 5rem;
+    margin-top: -3.7rem;
+    
+}
+
+.contenidoPrincipal{
+    margin-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items:end;
+    margin-left: -2rem;
+    
+}
+
+.contenidoPrincipal .imagen{
+    width: 17.25rem;
+    height: 9.56rem;
+}
+
+.contenidoPrincipal p{
+    font-weight: var(--textoBold);
+    font-size: var(--textoNormal);
+    color: white;
+}
+
+.footerLogin {
+    margin-left: -17rem;
+    margin-top:8rem;
+}
+
+
+.footerLogin p{
+font-size:16px;
+font-weight: var(--textoBold);
+color: white;
+}
+
+/* ---------------------------- seccion derecha --------------------------- */
+
+.login-derecho{
+ width: 32.875rem;
+ background:white;
+ box-shadow: 1px 2px 6px 1px rgba(0, 0, 0, 0.25);
+border-radius: 0px 15px 15px 0px;
+display:flex;
+flex-direction: column;
+    
+}
+
+.encabezado-derecho{
+    margin-top: 2rem;
+   
+}
+
+.encabezado-derecho p{
+    font-size: 2rem;
+    font-weight: var(--textoBold);
+    margin-left: 3rem;
+    }
+  
+.container-form{
+    margin-left: 3rem;
+}
+
+.container-form div[id=spinner]{
+   margin-top: 7rem;
+   margin-left: 10rem;
+}
+
+
+
+.formLoginInicio{
+    display: flex;
+    flex-direction: column;
+    gap:2rem
+}
+
+.flechaIzquierda{
+    cursor: pointer;
+}
+
+.container-buttons{
+    display: flex;
+    gap: 2rem;
+    margin-top: 1rem;
+    
+}
+
+.formLoginRegistro{
+    margin-top: -1rem;
+    display: flex;
+    flex-direction: column;
+    gap:1.5rem
+}
+
+.formLoginRegistro button[type=submit]{
+margin-left: 6rem;
+margin-top: -.2rem;
+}
+
+
+
+
+
+
+

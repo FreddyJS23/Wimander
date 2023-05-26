@@ -1,0 +1,37 @@
+/* ------------------------- estilos prederteminados ------------------------ */
+
+.container-campos{
+    
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.input{
+ width: 21.25rem;
+ padding: .7rem;
+ box-shadow: 0px 0px 3px 2px rgba(0, 231, 255, 0.3);
+border-radius: 8px;
+border: none; 
+outline: none;
+font-size: 18px;
+}
+
+.label{
+ font-size: 18px;
+ position: absolute;
+ transition: 0.3s;
+ bottom: 9px;
+ left: 14px;
+}
+
+
+.input:focus ~ .label,.input:valid ~ .label {
+    transform: translateY(-102%) scale(.9);
+    margin-left: .3rem;
+    padding: 0.1rem;
+   background-color: rgb(255, 255, 255);
+   color: var(--colorSecundario);
+  }
+
+/* ------------------------- estilos personalizados ------------------------- */

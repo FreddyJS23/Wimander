@@ -1,0 +1,25 @@
+
+body{
+    
+    background: var(--colorFondo);
+    background-repeat: no-repeat;
+    overflow-y: hidden;
+}
+
+.contenido{
+
+    margin-left: 15rem;
+    width: 80%;
+    height: 525px;
+    background: white;
+    margin-top: 4.5rem;
+    margin-bottom: 2rem;
+    border-radius: 22px;
+}
+
+.logo-layout{
+    position: absolute;
+    height: 3.5rem;
+    top:1rem;
+    left:17rem;
+}
