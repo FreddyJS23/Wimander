@@ -3,8 +3,8 @@
 
 /* variables */
 :root{
---colorPrimario:rgb(0, 231, 255);
---colorSecundario:rgb(0, 158, 255);
+--colorPrimario:#00e7ff;
+--colorSecundario:#009eff;
 --colorTerciario:rgb(54, 47, 217);
 --colorFondo:linear-gradient(188.53deg, #362FD9 51.96%, #009EFF 96.41%);
 --textoBold:700;
@@ -13,11 +13,21 @@
 --textoSmall:10px
 }
 
+html{
+    height: 100%;
+}
 body{
+    
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     font-family: 'Source Sans Pro', sans-serif;
+    background: white;
+    background: var(--colorFondo);
+    background-repeat: no-repeat;
+   
+   
+    
    
     
 }
@@ -28,3 +38,4 @@ body{
     background-repeat: no-repeat;
     background-size: contain;
   }
+

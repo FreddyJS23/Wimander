@@ -34,7 +34,8 @@ export interface ButtonInterface{
     type?:DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>>,
     style?:string 
     value:string
-    onClick:()=>void
+    onClick?:()=>void
+    onSubmit?:(e)=>void
     children?:React.DetailedHTMLProps
 }
 
@@ -44,3 +45,31 @@ export interface ElementSidebarInterface{
     link:string,
     style:string
 }
+
+export interface ModalBaseInterface {
+    children: React.ReactElement;
+    encabezado: string;
+    open:boolean
+    handleClose:()=>void
+  
+  }
+  
+export interface ModalInterface {
+    encabezado:string
+    open:boolean
+    handleClose:()=>void
+    cliente:number
+    
+  }
+  
+export  interface User{
+    user:string,
+    token:string
+  }
+  
+  
+export  interface LoginContext{
+    user:user
+    handleLogin:()=>void
+    handleLogout:()=>void
+  }

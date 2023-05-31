@@ -32,3 +32,15 @@
    .buttonIniciarSesion:hover img{
     transform: translateX(10px);
     }
+
+
+
+.buttonRed{
+    color: red;
+    border-color: red;
+}
+
+.buttonRed:hover{
+    color: white;
+    background: red;
+}

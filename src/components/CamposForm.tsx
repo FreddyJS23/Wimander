@@ -18,6 +18,8 @@ const CamposForm = ({
   return (
     <>
       <div className={styles['container-campos']}>
+        
+        
         <input
           onChange={handleChange}
           className={`${styles['input']} ${styles[styleInput]}`}
@@ -26,10 +28,15 @@ const CamposForm = ({
           id={id}
           value={value}
           required={true}
+          placeholder=" "
+          
         />
-        <label className={`${styles['label']} ${styles[styleLabel]}`} htmlFor={id}>
+          <label className={`${styles['label']} ${styles[styleLabel]}`} htmlFor={id}>
           {name}
         </label>
+        
+        
+      
       </div>
     </>
   );

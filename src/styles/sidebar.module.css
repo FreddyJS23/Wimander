@@ -1,9 +1,19 @@
+:root{
+    --widhtSidebar:15rem
+}
+
 .container-sidebar{
-    width: 15rem;
+    width: var(--widhtSidebar);
+   
+}
+
+.sidebar{
+  
     height: 100%;
     position: fixed;
    top: 0;
-     /* background: var(--colorFondo);  */
+     background: var(--colorFondo); 
+     width: var(--widhtSidebar); 
     
 }
 
@@ -14,8 +24,9 @@
     margin-top: 1rem;
 }
 
-.container-fotoPerfil{
-    
+.container-fotoPerfil img{
+    width:60px;
+    height:60px;
 }
 
 .container-fotoPerfil img{
@@ -23,16 +34,28 @@
 }
 
 .container-usuario{
+    height: 16px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    cursor: pointer;
 
+}
+
+.container-usuario p{
+font-size: 16px;
+font-weight: var(--textoBold);
+color: white;
 }
 
 
 .ListaOpciones{
-    margin-top: 3rem;
+    margin-top: 2rem;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1rem;
     padding: 0;
+    margin-left: 1rem;
 }
 
 .opcion{
@@ -41,9 +64,20 @@
     gap: .5rem;
     padding: .5rem;
     cursor: pointer;
+    transition: .3s all;
+    border-left: 6px solid transparent;
 }
 .opcion a{
     text-decoration: none;
     color: white;
+    font-weight: var(--textoBold);
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     
+}
+
+.opcion:hover{
+    background: #00e7ff2b;
+    border-left-color:#00e7ff;
+    width: 190px;
+    border-radius: 5px 10px 10px 5px;
 }

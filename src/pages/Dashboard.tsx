@@ -1,6 +1,10 @@
 
+import { Card, CardContent } from '@mui/material'
 import { TarjetasDasboard } from '../components/TarjetasDasboard'
 import style from '../styles/dashboard.module.css'
+import styleTable from '../styles/tablas.module.css'
+
+import Tabla from '../components/Tabla'
 
 export const Dashboard = () => {
   return (
@@ -9,52 +13,44 @@ export const Dashboard = () => {
    <div className={style['container-dashboard']}>
 
    <div className={style['container-tarjetasDashoboard']}>
-        <TarjetasDasboard titulo={'titulo'} contenido={'contenido'} style={style['tarjeta-dashboard']} />
-        <TarjetasDasboard titulo={'titulo'} contenido={'contenido'} style={style['tarjeta-dashboard']} />
-        <TarjetasDasboard titulo={'titulo'} contenido={'contenido'} style={style['tarjeta-dashboard']} />
+      
+       <Card >
+     
+     <CardContent className={style['contenidoTarjeta']}>
+     <TarjetasDasboard titulo={'titulo'} contenido={'contenido'} style={style['tituloTarjeta']} />
+     </CardContent>
+    
+       </Card>
+      
+       <Card >
+     
+     <CardContent className={style['contenidoTarjeta']}>
+     <TarjetasDasboard titulo={'titulo'} contenido={'contenido'} style={style['tituloTarjeta']} />
+     </CardContent>
+    
+       </Card>
+      
+       <Card >
+     
+     <CardContent className={style['contenidoTarjeta']}>
+     <TarjetasDasboard titulo={'titulo'} contenido={'contenido'} style={style['tituloTarjeta']} />
+     </CardContent>
+    
+       </Card>
+      
+      
+     
+       
+        {/* <TarjetasDasboard titulo={'titulo'} contenido={'contenido'} style={style['tarjeta-dashboard']} />
+        <TarjetasDasboard titulo={'titulo'} contenido={'contenido'} style={style['tarjeta-dashboard']} /> */}
     </div>
    
    
-    <div className={style['container-tabla']}>
-    <table>
-      <thead>
-        <th>nombre</th>
-        <th>nombre</th>
-        <th>nombre</th>
-        <th>nombre</th>
-        <th>nombre</th>
-      </thead>
-      <tbody>
-      <tr>
-        <td>fdffd</td>
-        <td>fdffd</td>
-        <td>fdffd</td>
-        <td>fdffd</td>
-        <td>fdffd</td>
-      </tr>
-      <tr>
-        <td>fdffd</td>
-        <td>fdffd</td>
-        <td>fdffd</td>
-        <td>fdffd</td>
-        <td>fdffd</td>
-      </tr>
-      <tr>
-        <td>fdffd</td>
-        <td>fdffd</td>
-        <td>fdffd</td>
-        <td>fdffd</td>
-        <td>fdffd</td>
-      </tr>
-      <tr>
-        <td>fdffd</td>
-        <td>fdffd</td>
-        <td>fdffd</td>
-        <td>fdffd</td>
-        <td>fdffd</td>
-      </tr>
-      </tbody>
-    </table>
+    <div className={styleTable['container-tablaCliente']}>
+  
+       <Tabla />
+
+
     </div>
     
 
