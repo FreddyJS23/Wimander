@@ -68,8 +68,8 @@ export  interface User{
   }
   
   
-export  interface LoginContext{
-    user:user
+export  interface AuthContextInterface{
+    user:User
     handleLogin:()=>void
     handleLogout:()=>void
   }

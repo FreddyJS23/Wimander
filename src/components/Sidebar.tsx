@@ -1,18 +1,18 @@
 import ElementsSidebar from "./ElementsSidebar";
 import style from "../styles/sidebar.module.css";
-import iconoDasboard from "../assets/dashboard.svg";
+import iconoDashboard from "../assets/dashboard.svg";
 import iconoAbout from "../assets/about.svg";
 import BotonLogout from "./BotonCerrarSesion";
 import iconoAvatar from "../assets/avatar.svg"
-import { AuthContext } from "../App";
+import { AuthContext } from "../context/AuthContext";
 import { useContext } from "react";
 
 const Sidebar = () => {
   //logout
-  const authContext = useContext(AuthContext);
+  const {handleLogout} = useContext(AuthContext);
   
   const hanldeClick = () => {
-    authContext?.handleLogout()
+    handleLogout()
     return;
   };
   return (
@@ -32,7 +32,7 @@ const Sidebar = () => {
 
       <ul className={style["ListaOpciones"]}>
         <ElementsSidebar name="Dashboard" link="/" style={style["opcion"]}>
-          <img src={iconoDasboard} alt="icono Dasboard" />
+          <img src={iconoDashboard} alt="icono Dasboard" />
         </ElementsSidebar>
         <ElementsSidebar name="Acerca" link="acerca" style={style["opcion"]}>
           <img src={iconoAbout} alt="icono About" />

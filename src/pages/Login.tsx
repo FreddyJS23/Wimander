@@ -7,7 +7,7 @@ import imagePrincipal from "../assets/imagen-login.svg";
 import flechaIzquierda from "../assets/arrow-left.svg";
 import LoaderSpinner from "../components/LoaderSpinner";
 
-export const Login = () => {
+const Login = () => {
   const [registrar, setRegistrar] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -60,7 +60,7 @@ export const Login = () => {
           )}
         </div>
 
-        <div className={styles["container-form"]}>
+         <div className={styles["container-form"]}>
           {loading ? (
             <LoaderSpinner />
           ) : !registrar ? (
@@ -68,8 +68,10 @@ export const Login = () => {
           ) : (
             <FormRegistroUsuario />
           )}
-        </div>
+        </div> 
       </div>
     </div>
   );
 };
+
+export default Login

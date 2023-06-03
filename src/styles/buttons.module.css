@@ -36,11 +36,11 @@
 
 
 .buttonRed{
-    color: red;
-    border-color: red;
+    color: rgba(243, 33, 33, 1);
+    border-color: rgba(243, 33, 33, 1);
 }
 
 .buttonRed:hover{
     color: white;
-    background: red;
+    background: rgba(243, 33, 33, 1);
 }

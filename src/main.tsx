@@ -1,24 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.tsx";
 import "./index.css";
-import { BrowserRouter } from "react-router-dom";
+import { RouterProvider } from "react-router-dom";
 import { ThemeProvider, createTheme } from "@mui/material";
 //tipos css dataGrid
 import type {} from "@mui/x-data-grid/themeAugmentation";
 //idioma de la tabla
 import { esES } from "@mui/x-data-grid";
-
-import { createContext, useState } from "react";
-import { Login } from "./pages/Login.tsx";
-import { Routes, Route,useNavigate } from "react-router-dom";
-import { Dashboard } from "./pages/Dashboard.tsx";
-import { Layout } from "./components/Layout.tsx";
-import Acerca from "./pages/Acerca.tsx";
-import { LoginContext, User } from "./types";
-import ErrorRuta from "./components/ErrorRuta.tsx";
-
-const AuthContext = createContext<LoginContext | undefined>(undefined);
+import AuthProvider from "./context/AuthContext.tsx";
+import { router } from "./routes/index.tsx";
 
 const themeCard = {
   styleOverrides: {
@@ -37,6 +27,7 @@ const theme = createTheme(
 
     components: {
       MuiCard: themeCard,
+      MuiBackdrop:{styleOverrides:{root:{zIndex:'100'}}},
       MuiFormControlLabel: {
         styleOverrides: {
           label: { fontWeight: "700" },
@@ -45,7 +36,7 @@ const theme = createTheme(
       MuiFormLabel: {
         styleOverrides: {
           root: { fontWeight: "700" },
-          focused:{color:'red'}
+         
         },
       },
       MuiDataGrid: {
@@ -68,9 +59,9 @@ const theme = createTheme(
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <AuthProvider >
+        <RouterProvider router={router} />
+      </AuthProvider>
     </ThemeProvider>
   </React.StrictMode>
 );

@@ -1,8 +1,8 @@
-import { Navigate, Outlet, useNavigate } from 'react-router-dom'
-import Sidebar from './Sidebar'
+import {  Outlet  } from 'react-router-dom'
+import Sidebar from '../components/Sidebar'
 import style from '../styles/layout.module.css'
 import logo from '../assets/logo.svg'
-export const Layout = () => {
+ const Layout = () => {
   
 
 
@@ -25,3 +25,5 @@ export const Layout = () => {
     
   );
 };
+
+export default Layout

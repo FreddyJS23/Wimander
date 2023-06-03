@@ -3,7 +3,8 @@ import { useContext, useState } from "react";
 import styles from "../styles/login.module.css";
 import flechaButton from "../assets/right-arrow.svg";
 import Button from "./Button";
-import { AuthContext } from "../App";
+import { AuthContext } from "../context/AuthContext";
+
 
 interface Props {
   handleClick: () => void;
@@ -14,7 +15,7 @@ const FormSesion = ({ handleClick }: Props) => {
 
   const [form, setForm] = useState(initialState);
 
-  const authContext = useContext(AuthContext);
+  const {handleLogin} = useContext(AuthContext);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -24,7 +25,7 @@ const FormSesion = ({ handleClick }: Props) => {
 //logica validacion de usuario
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    authContext?.handleLogin();
+    handleLogin();
   };
 
   return (
