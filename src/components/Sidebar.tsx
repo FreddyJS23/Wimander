@@ -6,13 +6,18 @@ import BotonLogout from "./BotonCerrarSesion";
 import iconoAvatar from "../assets/avatar.svg"
 import { AuthContext } from "../context/AuthContext";
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Sidebar = () => {
   //logout
   const {handleLogout} = useContext(AuthContext);
-  
+  const navigation=useNavigate();
+
+
   const hanldeClick = () => {
+    
     handleLogout()
+    navigation('/')
     return;
   };
   return (

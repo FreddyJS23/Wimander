@@ -1,6 +1,7 @@
 import {  createContext, useState } from "react";
 import { AuthContextInterface, User } from "../types";
 
+
 const initialContext:AuthContextInterface={
     user:{user:'',token:''},
     handleLogin: function (): void {
@@ -27,14 +28,16 @@ const AuthProvider = ({ children }:Props) => {
   const initialState = { user: "", token: "" };
   const [user, setUser] = useState<User>(initialState);
   
+
   
   const handleLogin = () => {
     setUser({ ...user, token: "login" });
   };
   
   const handleLogout = () => {
-    
     setUser({ ...user, token: "" });
+   
+    
   };
   //Enviar operaciones al provider, debe ir tipadas dichas operaciones a enviar
   const auth: AuthContextInterface = { user, handleLogin, handleLogout };

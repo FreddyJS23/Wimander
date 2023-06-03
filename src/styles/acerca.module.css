@@ -1,0 +1,48 @@
+.container-acerca{
+    display: flex;
+    flex-direction: column;
+   gap: .5rem;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    margin-top: 3rem;
+    cursor: default;
+
+}
+
+
+.container-acerca > img{
+    width: 15rem;
+
+}
+
+.texto-principal{
+    text-align: center;
+    font-size: 1.4rem;
+    margin: 0;
+}
+
+.texto-footer{
+    align-self: flex-start;
+    margin: 0;
+    margin-top: 2.6rem;
+    display: flex;
+    flex-direction: column;
+    gap: .6rem;
+   
+}
+.texto-footer p{
+    margin: 0;
+    margin-top: 5px;
+}
+
+.colaboradores{
+    display: flex;
+    gap: .5rem;
+}
+
+.colaboradores img{
+    width: 1.8rem;
+    cursor: pointer;
+}

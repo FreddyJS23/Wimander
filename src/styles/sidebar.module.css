@@ -63,7 +63,7 @@ color: white;
     align-items: center;
     gap: .5rem;
     padding: .5rem;
-    cursor: pointer;
+    
     transition: .3s all;
     border-left: 6px solid transparent;
 }

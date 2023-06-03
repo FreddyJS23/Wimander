@@ -6,7 +6,7 @@ import styleTable from '../styles/tablas.module.css'
 
 import Tabla from '../components/Tabla'
 
-export const Dashboard = () => {
+ const Dashboard = () => {
   return (
     <>
   
@@ -63,3 +63,5 @@ export const Dashboard = () => {
     </>
   )
 }
+
+export default Dashboard

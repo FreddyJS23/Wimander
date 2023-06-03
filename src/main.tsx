@@ -1,4 +1,4 @@
-import React from "react";
+import React,{Suspense} from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import { RouterProvider } from "react-router-dom";
@@ -9,6 +9,7 @@ import type {} from "@mui/x-data-grid/themeAugmentation";
 import { esES } from "@mui/x-data-grid";
 import AuthProvider from "./context/AuthContext.tsx";
 import { router } from "./routes/index.tsx";
+import DisplayLoader from "./components/DisplayLoader.tsx";
 
 const themeCard = {
   styleOverrides: {
@@ -27,6 +28,7 @@ const theme = createTheme(
 
     components: {
       MuiCard: themeCard,
+      MuiLinearProgress:{styleOverrides:{root:{height:'8px',borderRadius:'3px'}}},
       MuiBackdrop:{styleOverrides:{root:{zIndex:'100'}}},
       MuiFormControlLabel: {
         styleOverrides: {
@@ -58,10 +60,13 @@ const theme = createTheme(
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
+     <Suspense fallback={ <DisplayLoader /> }>
     <ThemeProvider theme={theme}>
+     
       <AuthProvider >
         <RouterProvider router={router} />
       </AuthProvider>
     </ThemeProvider>
+      </Suspense>
   </React.StrictMode>
 );
