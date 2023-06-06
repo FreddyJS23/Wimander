@@ -5,7 +5,7 @@ import Logo from "../assets/logo.svg";
 import styles from "../styles/login.module.css";
 import imagePrincipal from "../assets/imagen-login.svg";
 import flechaIzquierda from "../assets/arrow-left.svg";
-import LoaderSpinner from "../components/LoaderSpinner";
+
 
 const Login = () => {
   const [registrar, setRegistrar] = useState(false);
@@ -20,7 +20,10 @@ const Login = () => {
   };
 
   return (
-    <div className={styles["container-login"]}>
+   
+   
+   
+   <div className={styles["container-login"]}>
       <div className={styles["login-izquierdo"]}>
         <div className={styles["encabezado-izquierdo"]}>
           <p>Bienvenido a</p>
@@ -61,9 +64,9 @@ const Login = () => {
         </div>
 
          <div className={styles["container-form"]}>
-          {loading ? (
-            <LoaderSpinner />
-          ) : !registrar ? (
+          { 
+            
+           !registrar ? (
             <FormSesion handleClick={handleClick} />
           ) : (
             <FormRegistroUsuario />

@@ -1,4 +1,4 @@
-import React,{Suspense} from "react";
+import {Suspense} from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import { RouterProvider } from "react-router-dom";
@@ -59,7 +59,7 @@ const theme = createTheme(
 );
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  <React.StrictMode>
+  
      <Suspense fallback={ <DisplayLoader /> }>
     <ThemeProvider theme={theme}>
      
@@ -68,5 +68,5 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
       </AuthProvider>
     </ThemeProvider>
       </Suspense>
-  </React.StrictMode>
+ 
 );

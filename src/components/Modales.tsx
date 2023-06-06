@@ -1,4 +1,4 @@
-import { Fade, Modal } from "@mui/material";
+import { Modal } from "@mui/material";
 import { useState } from "react";
 import style from "../styles/modales.module.css";
 import Button from "./Button";
@@ -7,6 +7,7 @@ import cerrarIcon from "../assets/cerrar.svg";
 import { ModalBaseInterface, ModalInterface } from "../types";
 import RadioButton from "./RadioButton";
 import alertOrangeIcon from "../assets/alertaOrange.svg";
+import {AnimacionModal} from '../components/AnimacionModal'
 
 interface Props {
   modalBase: ModalBaseInterface;
@@ -20,20 +21,30 @@ const ModalBase = ({
   open,
   handleClose,
 }: Props["modalBase"]) => {
+  
   return (
-    <Modal open={open} closeAfterTransition>
-      <Fade in={open}>
-        <div className={`${style["container-modal"]} `}>
+    <Modal open={open} closeAfterTransition onClose={handleClose}>
+      
+   <AnimacionModal in={open} >
+   <div className={`${style["container-modal"]} `}>
           <div className={style["container-encabezado"]}>
             <p>{encabezado}</p>
             <img onClick={handleClose} src={cerrarIcon} alt="cerrar" />
           </div>
           <div className={style["container-cuerpo"]}>{children}</div>
         </div>
-      </Fade>
+
+   </AnimacionModal>
+       
+      
+        
+     
     </Modal>
   );
 };
+
+
+
 
 //modal para editar cliente
 export const ModalEditarClient = ({
@@ -42,6 +53,8 @@ export const ModalEditarClient = ({
   handleClose,
   cliente,
 }: Props["modal"]) => {
+
+  
   /* aqui hiria una peticion para pedir la informacion dle cliente enviado el id del cliente
   obteniendo la infomacion llenar el state form*/
   const initialForm = { nombre: "", apellido: "", correo: "", telefono: "" };
@@ -155,3 +168,5 @@ export const ModalDeleteClient = ({
     </ModalBase>
   );
 };
+
+

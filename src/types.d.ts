@@ -73,3 +73,15 @@ export  interface AuthContextInterface{
     handleLogin:()=>void
     handleLogout:()=>void
   }
+
+
+interface AnimacionContainer{
+  children: React.ReactElement |  JSXElementConstructor;
+}
+
+
+export  interface AnimacionModalInterface extends AnimacionContainer {
+    in?: boolean;
+
+  }
+ 

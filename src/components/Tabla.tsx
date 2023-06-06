@@ -90,6 +90,7 @@ export default function DataTable() {
   const [openModal, setOpenModal] = useState(false);
   const [controlModal, setControlModal] = useState("");
   const [cliente, setCliente] = useState(0);
+ 
 
   const handleClick = (e: React.MouseEvent<HTMLImageElement>) => {
     //identificar image que se dio click
@@ -101,7 +102,8 @@ export default function DataTable() {
   const handleClose = () => {
     setOpenModal(false);
     setCliente(0);
-    setControlModal("");
+  //se necesita vaciar el state despues de cierto tiempo ya que anula animacion de salida
+    setTimeout(()=>setControlModal(""),500)  
   };
 
   //columnas dataGrid
@@ -132,9 +134,10 @@ export default function DataTable() {
         }}
         initialState={{
           pagination: {
-            paginationModel: { page: 0, pageSize: 8 },
+            paginationModel: { pageSize:10 },
           },
         }}
+        pageSizeOptions={[5, 10]}
         density="compact"
       />
 
