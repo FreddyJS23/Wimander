@@ -1,17 +1,21 @@
-import { ElementSidebarInterface } from "../types"
-import { Link } from 'react-router-dom'
+import { ElementSidebarInterface } from "../types";
+import { Link } from "react-router-dom";
 
-
-interface Props{
-    ElementSidebar:ElementSidebarInterface
+interface Props {
+  ElementSidebar: ElementSidebarInterface;
 }
 
-const ElementsSidebar = ({children,name,link,style}:Props['ElementSidebar']) => {
+const ElementsSidebar = ({
+  children,
+  name,
+  link,
+  style,
+}: Props["ElementSidebar"]) => {
   return (
-   <li className={style}> {children} <Link to={link}>{name}</Link>   </li>
-   
-  
-  )
-}
+    <li className={style}>
+      {children} <Link to={link}>{name}</Link>{" "}
+    </li>
+  );
+};
 
-export default ElementsSidebar
+export default ElementsSidebar;

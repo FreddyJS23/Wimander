@@ -2,9 +2,7 @@ import { motion } from "framer-motion";
 import { useLocation } from "react-router-dom";
 import { AnimacionContainer } from "../types";
 
-
-
-export const AnimacionesLayout = ({ children }:AnimacionContainer) => {
+export const AnimacionesLayout = ({ children }: AnimacionContainer) => {
   const location = useLocation();
 
   const pageAnimation = {
@@ -14,8 +12,8 @@ export const AnimacionesLayout = ({ children }:AnimacionContainer) => {
 
   return (
     <motion.div
-    //cada vez que haya un cambio de url se ejecutara la animacion  
-    key={location.pathname}
+      //cada vez que haya un cambio de url se ejecutara la animacion
+      key={location.pathname}
       variants={pageAnimation}
       initial="hidden"
       animate="visible"

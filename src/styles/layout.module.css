@@ -1,25 +1,22 @@
-
-.container-principal{
-    display: flex;
+.container-principal {
+  display: flex;
 }
 
-
-.contenido{
-
-    /* margin-left: 14rem;
+.contenido {
+  /* margin-left: 14rem;
     margin-right: 1rem; */
-    height: 560px;
-    background: white;
-    margin-top: 3rem;
-    margin-bottom: 2rem;
-    border-radius: 10px;
-    display: flex;
-    width:80%;
+  height: 560px;
+  background: white;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+  border-radius: 10px;
+  display: flex;
+  width: 80%;
 }
 
-.logo-layout{
-    position: absolute;
-    height: 3rem;
-    top:.4rem;
-    left:17rem;
+.logo-layout {
+  position: absolute;
+  height: 3rem;
+  top: 0.4rem;
+  left: 17rem;
 }

@@ -7,20 +7,7 @@ import { AuthContext } from "../context/AuthContext";
 const LayoutPrivate = () => {
   const { user } = useContext(AuthContext);
 
-
-
-  return (
-    <>
-      
-      {!user.token ? <Login /> : 
-   
-
-       <Layout />
-    
-  }
-  
-    </>
-  );
+  return <>{!user.token ? <Login /> : <Layout />}</>;
 };
 
 export default LayoutPrivate;

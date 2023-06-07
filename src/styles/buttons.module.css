@@ -1,46 +1,43 @@
 /* ------------------------- estilos predeterminados ------------------------ */
-.button{
-    width: 9.375rem;
-    height: 2.18rem;
-    border-radius: 13px;
-    border: none;
-    border: 1px solid var(--colorSecundario);
-    background: none;
-    font-weight: var(--textoBold);
-    color: var(--colorSecundario);
-    font-size: 16px;
-    transition:.3s all;
-    cursor: pointer;
-   
+.button {
+  width: 9.375rem;
+  height: 2.18rem;
+  border-radius: 13px;
+  border: none;
+  border: 1px solid var(--colorSecundario);
+  background: none;
+  font-weight: var(--textoBold);
+  color: var(--colorSecundario);
+  font-size: 16px;
+  transition: 0.3s all;
+  cursor: pointer;
 }
 
-   .button:hover{
-    background-color: var(--colorSecundario);
-    color: white;
-  }
+.button:hover {
+  background-color: var(--colorSecundario);
+  color: white;
+}
 
 /* ------------------------- estilos personalizados ------------------------- */
 
 .buttonIniciarSesion {
-    display:flex;
-    align-items: center;
-    justify-content: center;
-   }
-   .buttonIniciarSesion img{
-       transition: .3s all;
-   }
-   .buttonIniciarSesion:hover img{
-    transform: translateX(10px);
-    }
-
-
-
-.buttonRed{
-    color: rgba(243, 33, 33, 1);
-    border-color: rgba(243, 33, 33, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.buttonIniciarSesion img {
+  transition: 0.3s all;
+}
+.buttonIniciarSesion:hover img {
+  transform: translateX(10px);
 }
 
-.buttonRed:hover{
-    color: white;
-    background: rgba(243, 33, 33, 1);
+.buttonRed {
+  color: rgba(243, 33, 33, 1);
+  border-color: rgba(243, 33, 33, 1);
+}
+
+.buttonRed:hover {
+  color: white;
+  background: rgba(243, 33, 33, 1);
 }

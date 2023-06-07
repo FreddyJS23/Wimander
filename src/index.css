@@ -24,7 +24,6 @@ body {
   background: white;
   background: var(--colorFondo);
   background-repeat: no-repeat;
-  
 }
 
 /* etiquetas img de iconos */
@@ -33,4 +32,3 @@ body {
   background-repeat: no-repeat;
   background-size: contain;
 }
-

@@ -1,21 +1,19 @@
-.container-dashboard{
-    margin-top: 2rem;
-    margin-left: 4rem;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-} 
-
-.container-tarjetasDashoboard{
-display: flex;
-gap: 2rem;
-margin-bottom: 2rem;
-align-items: flex-start;
-margin-left: 2rem;
-
+.container-dashboard {
+  margin-top: 2rem;
+  margin-left: 4rem;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
-.contenidoTarjeta h2{
-    margin: 0;
+.container-tarjetasDashoboard {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  align-items: flex-start;
+  margin-left: 2rem;
+}
 
+.contenidoTarjeta h2 {
+  margin: 0;
 }

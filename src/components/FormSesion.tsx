@@ -50,7 +50,6 @@ const FormSesion = ({ handleClick }: Props) => {
       />
       <div className={styles["container-buttons"]}>
         <Button type={"submit"} value="Iniciar" style="buttonIniciarSesion">
-          {" "}
           <img src={flechaButton} alt="icono flecha derecha" />{" "}
         </Button>
 

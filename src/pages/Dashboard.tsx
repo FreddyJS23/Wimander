@@ -4,19 +4,18 @@ import style from "../styles/dashboard.module.css";
 import styleTable from "../styles/tablas.module.css";
 
 import Tabla from "../components/Tabla";
-import { AnimacionTarjetasChildren, AnimacionTarjetasContainer } from "../components/AnimacionTarjetas";
-
+import {
+  AnimacionTarjetasChildren,
+  AnimacionTarjetasContainer,
+} from "../components/AnimacionTarjetas";
 
 const Dashboard = () => {
-  
-
   return (
     <>
       <div className={style["container-dashboard"]}>
-        
-            <AnimacionTarjetasContainer>
+        <AnimacionTarjetasContainer>
           <div className={style["container-tarjetasDashoboard"]}>
-              <AnimacionTarjetasChildren>
+            <AnimacionTarjetasChildren>
               <Card>
                 <CardContent className={style["contenidoTarjeta"]}>
                   <TarjetasDasboard
@@ -26,9 +25,9 @@ const Dashboard = () => {
                   />
                 </CardContent>
               </Card>
-              </AnimacionTarjetasChildren>
+            </AnimacionTarjetasChildren>
 
-              <AnimacionTarjetasChildren>
+            <AnimacionTarjetasChildren>
               <Card>
                 <CardContent className={style["contenidoTarjeta"]}>
                   <TarjetasDasboard
@@ -38,8 +37,8 @@ const Dashboard = () => {
                   />
                 </CardContent>
               </Card>
-              </AnimacionTarjetasChildren>
-              <AnimacionTarjetasChildren>
+            </AnimacionTarjetasChildren>
+            <AnimacionTarjetasChildren>
               <Card>
                 <CardContent className={style["contenidoTarjeta"]}>
                   <TarjetasDasboard
@@ -49,12 +48,11 @@ const Dashboard = () => {
                   />
                 </CardContent>
               </Card>
-              </AnimacionTarjetasChildren>
+            </AnimacionTarjetasChildren>
             {/* <TarjetasDasboard titulo={'titulo'} contenido={'contenido'} style={style['tarjeta-dashboard']} />
         <TarjetasDasboard titulo={'titulo'} contenido={'contenido'} style={style['tarjeta-dashboard']} /> */}
           </div>
         </AnimacionTarjetasContainer>
-      
 
         <div className={styleTable["container-tablaCliente"]}>
           <Tabla />

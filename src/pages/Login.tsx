@@ -6,7 +6,6 @@ import styles from "../styles/login.module.css";
 import imagePrincipal from "../assets/imagen-login.svg";
 import flechaIzquierda from "../assets/arrow-left.svg";
 
-
 const Login = () => {
   const [registrar, setRegistrar] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -20,10 +19,7 @@ const Login = () => {
   };
 
   return (
-   
-   
-   
-   <div className={styles["container-login"]}>
+    <div className={styles["container-login"]}>
       <div className={styles["login-izquierdo"]}>
         <div className={styles["encabezado-izquierdo"]}>
           <p>Bienvenido a</p>
@@ -63,18 +59,16 @@ const Login = () => {
           )}
         </div>
 
-         <div className={styles["container-form"]}>
-          { 
-            
-           !registrar ? (
+        <div className={styles["container-form"]}>
+          {!registrar ? (
             <FormSesion handleClick={handleClick} />
           ) : (
             <FormRegistroUsuario />
           )}
-        </div> 
+        </div>
       </div>
     </div>
   );
 };
 
-export default Login
+export default Login;

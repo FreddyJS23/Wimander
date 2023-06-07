@@ -1,19 +1,18 @@
-.container-accionesTabla{
-    display: flex;
-    gap: 10px;
-    align-items: center;
+.container-accionesTabla {
+  display: flex;
+  gap: 10px;
+  align-items: center;
 }
 
 /* segundo icono */
-.container-accionesTabla img:nth-child(2){
-    width: 37px;
-    height:37px;
-    cursor: pointer;
+.container-accionesTabla img:nth-child(2) {
+  width: 37px;
+  height: 37px;
+  cursor: pointer;
 }
 
-.container-accionesTabla img{
-    width:28px;
-    height:28px;
-    cursor: pointer;
+.container-accionesTabla img {
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
 }
-
