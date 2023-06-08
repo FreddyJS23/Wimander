@@ -202,6 +202,8 @@
     animation: none;
     height: initial;
     background:transparent;
+   
+    margin-top: -2rem;
   }
 /* seccion izquierda */
 .login-izquierdo{
@@ -236,8 +238,7 @@
 
 .formLoginRegistro {
   margin-top: .5rem;
-  
-  gap: 1rem;
+  gap: 1.5rem;
   background: transparent;
 }
 
