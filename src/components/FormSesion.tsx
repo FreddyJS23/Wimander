@@ -40,6 +40,7 @@ const FormSesion = ({ handleClick }: Props) => {
         id="usuario"
         name="Usuario"
         type="text"
+        styleLabel="labelLogin"
       />
       <InputLogin
         handleChange={handleChange}
@@ -47,6 +48,7 @@ const FormSesion = ({ handleClick }: Props) => {
         id="password"
         name="Contraseña"
         type="password"
+        styleLabel="labelLogin"
       />
       <div className={styles["container-buttons"]}>
         <Button type={"submit"} value="Iniciar" style="buttonIniciarSesion">

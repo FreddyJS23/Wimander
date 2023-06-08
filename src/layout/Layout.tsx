@@ -34,11 +34,12 @@ const Layout = () => {
         </Drawer>
 
         {/* loader mientras se cargar los componentes diferidos */}
-        <Suspense fallback={<PageLoading />}>
+        
+         <Suspense fallback={<PageLoading />}>
           <AnimacionesLayout>
             <Outlet />
           </AnimacionesLayout>
-        </Suspense>
+        </Suspense> 
       </main>
     </div>
   );

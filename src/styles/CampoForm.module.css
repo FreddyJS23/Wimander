@@ -49,3 +49,12 @@
 
 
 /* ------------------------- estilos personalizados ------------------------- */
+@media screen and (max-width:768px){
+  .input:focus ~ .labelLogin,
+  .input:not(:placeholder-shown) ~ .labelLogin{
+    background: transparent;
+    font-weight: 700;
+    transform: translateY(-121%) scale(0.9);
+    color: var(--colorPrimario);
+  }
+}

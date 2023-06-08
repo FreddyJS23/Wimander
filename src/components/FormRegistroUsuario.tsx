@@ -33,6 +33,7 @@ export const FormRegistroUsuario = () => {
         handleChange={handleChange}
         id="nombre"
         name="Nombre"
+        styleLabel="labelLogin"
       />
       <CamposForm
         type="text"
@@ -40,6 +41,7 @@ export const FormRegistroUsuario = () => {
         handleChange={handleChange}
         id="apellido"
         name="Apellido"
+        styleLabel="labelLogin"
       />
       <CamposForm
         type="text"
@@ -47,6 +49,7 @@ export const FormRegistroUsuario = () => {
         handleChange={handleChange}
         id="correo"
         name="Correo"
+        styleLabel="labelLogin"
       />
       <CamposForm
         type="text"
@@ -54,6 +57,7 @@ export const FormRegistroUsuario = () => {
         handleChange={handleChange}
         id="usuario"
         name="Usuario"
+        styleLabel="labelLogin"
       />
       <CamposForm
         type="password"
@@ -61,6 +65,7 @@ export const FormRegistroUsuario = () => {
         handleChange={handleChange}
         id="password"
         name="Contraseña"
+        styleLabel="labelLogin"
       />
       <CamposForm
         type="password"
@@ -68,6 +73,7 @@ export const FormRegistroUsuario = () => {
         handleChange={handleChange}
         id="password2"
         name="Repetir contraseña"
+        styleLabel="labelLogin"
       />
 
       <Button onClick={handleSubmit} value="Registrar" type={"submit"} />
