@@ -1,9 +1,10 @@
 :root {
   --widhtSidebar: 15rem;
 }
-
+/* container */
 .container-sidebar {
   width: var(--widhtSidebar);
+  flex-shrink: 0;
 }
 
 .sidebar {
@@ -12,8 +13,11 @@
   top: 0;
   background: var(--colorFondo);
   width: var(--widhtSidebar);
+  display: flex;
+  flex-direction: column;
+  
 }
-
+/* encabezado */
 .encabezado {
   display: flex;
   flex-direction: column;
@@ -26,8 +30,7 @@
   height: 60px;
 }
 
-.container-fotoPerfil img {
-}
+
 
 .container-usuario {
   height: 16px;
@@ -43,6 +46,7 @@
   color: white;
 }
 
+/* cuerpo */
 .ListaOpciones {
   margin-top: 2rem;
   display: flex;
@@ -73,4 +77,34 @@
   border-left-color: #00e7ff;
   width: 190px;
   border-radius: 5px 10px 10px 5px;
+}
+
+
+/* footer */
+
+.footer{
+  align-self: center;
+  position: absolute;
+  bottom: 9px;
+  display: none;
+}
+
+.footer img{
+  width: 11rem;
+}
+
+
+/* ------------------------------ media querys ------------------------------ */
+
+@media screen and  (max-width:1024px){
+
+  .container-sidebar{
+    display: none;
+  }
+.sidebarResponsive{
+  display: block;
+}
+  .footer{
+    display:block;
+  }
 }

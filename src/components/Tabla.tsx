@@ -108,16 +108,17 @@ export default function DataTable() {
 
   //columnas dataGrid
   const columns: GridColDef[] = [
-    { field: "nombre", headerName: "Nombre", flex: 1, editable: false },
-    { field: "apellido", headerName: "Apellido", flex: 1 },
-    { field: "fecha_inicio", headerName: "Fecha de inicio", flex: 0.8 },
-    { field: "fecha_expiracion", headerName: "Fecha de expiracion", flex: 1 },
-    { field: "mac", headerName: "Mac", sortable: false, flex: 0.9 },
+    { field: "nombre", headerName: "Nombre", flex: 1, editable: false, minWidth: 70 },
+    { field: "apellido", headerName: "Apellido", flex: 1,minWidth: 70 },
+    { field: "fecha_inicio", headerName: "Fecha de inicio", flex: 0.8,minWidth: 70 },
+    { field: "fecha_expiracion", headerName: "Fecha de expiracion", flex: 1,minWidth: 70 },
+    { field: "mac", headerName: "Mac", sortable: false, flex: 0.9,minWidth: 70 },
     {
       field: "accion",
       headerName: "Accion",
       sortable: false,
-      flex: 0.9,
+      minWidth: 120,
+      flex: 0.8,
       headerAlign: "center",
       //renderizar columna con informacion personalizada
       renderCell: () => <AcccionesTabla handleClick={handleClick} />,
@@ -129,15 +130,16 @@ export default function DataTable() {
       <DataGrid
         rows={rows}
         columns={columns}
+        autoHeight
         onRowClick={(params: GridRowParams) => {
           setCliente(params.row.id);
         }}
         initialState={{
           pagination: {
-            paginationModel: { pageSize:10 },
+            paginationModel: { pageSize:8 },
           },
         }}
-        pageSizeOptions={[5, 10]}
+        pageSizeOptions={[8, 10,15,20]}
         density="compact"
       />
 

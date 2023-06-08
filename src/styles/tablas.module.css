@@ -1,4 +1,10 @@
 .container-tablaCliente{
-    width: 90%;
-    height:72%
+    width: 98%;
+    height:380px
+}
+
+@media screen and (max-width:1024px){
+    .container-tablaCliente{
+        margin: auto;
+    }
 }

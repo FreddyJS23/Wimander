@@ -7,8 +7,10 @@ import iconoAvatar from "../assets/avatar.svg";
 import { AuthContext } from "../context/AuthContext";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import  logo from '../assets/logo.svg'
 
-const Sidebar = () => {
+
+const Sidebar = ({responsive}:any) => {
   //logout
   const { handleLogout } = useContext(AuthContext);
   const navigation = useNavigate();
@@ -19,7 +21,7 @@ const Sidebar = () => {
     return;
   };
   return (
-    <nav className={style["container-sidebar"]}>
+    <nav className={`${style["container-sidebar"]} ${responsive ? style['sidebarResponsive'] : ''}  `}>
       <div className={style["sidebar"]}>
         <div className={style["encabezado"]}>
           <div className={style["container-fotoPerfil"]}>
@@ -40,6 +42,13 @@ const Sidebar = () => {
             <img src={iconoAbout} alt="icono About" />
           </ElementsSidebar>
         </ul>
+
+        <div className={style["footer"]}>
+          <div className={style["container-logo"]}>
+            <img src={logo} alt="logo" />
+          </div>
+        </div>
+
       </div>
     </nav>
   );

@@ -5,12 +5,12 @@
   margin: auto;
   justify-content: center;
   align-items: center;
-  width: 40%;
+  width: 60%;
   margin-top: 3rem;
   cursor: default;
 }
 
-.container-acerca > img {
+.container-acerca >div > img {
   width: 15rem;
 }
 
@@ -41,4 +41,30 @@
 .colaboradores img {
   width: 1.8rem;
   cursor: pointer;
+}
+
+@media screen and (max-width:1024px){
+
+  .container-acerca{
+    width: 80%;
+    margin-bottom: 1rem;
+  }
+}
+
+
+
+@media screen and (max-width:500px){
+  .container-acerca{
+    width: 93%;
+    
+  }
+  .container-acerca > div > img {
+    width: 12rem;
+  }
+ 
+  .texto-principal {
+   
+    font-size: 1rem;
+   
+  }
 }

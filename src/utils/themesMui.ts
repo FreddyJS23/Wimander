@@ -15,7 +15,7 @@ export const themeCard = {
 };
 
 export const themeLinearProgress = {
-  styleOverrides: { root: { height: "8px", borderRadius: "3px" } },
+  styleOverrides: { root: { height: "8px", borderRadius: "2px" } },
 };
 
 export const themeBackdrop = { styleOverrides: { root: { zIndex: "100" } } };

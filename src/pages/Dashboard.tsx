@@ -8,15 +8,18 @@ import {
   AnimacionTarjetasChildren,
   AnimacionTarjetasContainer,
 } from "../components/AnimacionTarjetas";
+import useDocumentTitle from "../utils/useDocumentTitle";
 
 const Dashboard = () => {
+  //titulo pagina
+  useDocumentTitle('Dashboard')
   return (
     <>
       <div className={style["container-dashboard"]}>
         <AnimacionTarjetasContainer>
           <div className={style["container-tarjetasDashoboard"]}>
             <AnimacionTarjetasChildren>
-              <Card>
+              <Card className={style["tarjeta"]}>
                 <CardContent className={style["contenidoTarjeta"]}>
                   <TarjetasDasboard
                     titulo={"titulo"}
@@ -28,7 +31,7 @@ const Dashboard = () => {
             </AnimacionTarjetasChildren>
 
             <AnimacionTarjetasChildren>
-              <Card>
+              <Card className={style["tarjeta"]}>
                 <CardContent className={style["contenidoTarjeta"]}>
                   <TarjetasDasboard
                     titulo={"titulo"}
@@ -39,7 +42,7 @@ const Dashboard = () => {
               </Card>
             </AnimacionTarjetasChildren>
             <AnimacionTarjetasChildren>
-              <Card>
+              <Card className={style["tarjeta"]}>
                 <CardContent className={style["contenidoTarjeta"]}>
                   <TarjetasDasboard
                     titulo={"titulo"}
@@ -55,7 +58,10 @@ const Dashboard = () => {
         </AnimacionTarjetasContainer>
 
         <div className={styleTable["container-tablaCliente"]}>
+       
           <Tabla />
+
+       
         </div>
       </div>
     </>

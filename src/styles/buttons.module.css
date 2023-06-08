@@ -18,6 +18,13 @@
   color: white;
 }
 
+
+@media screen and (max-width:500px){
+  .button{
+    font-size:14px
+  }
+}
+
 /* ------------------------- estilos personalizados ------------------------- */
 
 .buttonIniciarSesion {

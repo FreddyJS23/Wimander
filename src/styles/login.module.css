@@ -16,23 +16,13 @@
 
 @keyframes color-change-2x {
   0% {
-    background: rgba(0, 157, 255, 0.25);
+    background: rgba(0, 157, 255, 0.35);
   }
   100% {
-    background: rgba(53, 47, 217, 0.25);
+    background: rgba(53, 47, 217, 0.45);
   }
 }
-/* media querys */
-@media screen and (max-width: 1200px) {
-  .container-login {
-    max-width: 90%;
-  }
-}
-@media screen and (max-width: 1024px) {
-  .container-login {
-    max-width: 100%;
-  }
-}
+
 
 /* ---------------------------- seccion izquierda --------------------------- */
 .login-izquierdo {
@@ -187,4 +177,91 @@
     transform-origin: top;
     opacity: 1;
   }
+}
+
+
+/* ------------------------------ media querys ------------------------------ */
+@media screen and (max-width: 1200px) {
+  .container-login {
+    max-width: 90%;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .container-login {
+    max-width: 100%;
+  }
+}
+
+
+@media screen and (max-width:768px){
+
+  .container-login{
+    flex-direction: column;
+    box-shadow: none;
+    align-items: center;
+    animation: none;
+    height: initial;
+    background:transparent;
+  }
+/* seccion izquierda */
+.login-izquierdo{
+  width: initial;
+}  
+.contenidoPrincipal,.footerLogin{
+    display: none;
+  }
+  /* seccion derecha */
+  .login-derecho{
+    background: transparent;
+    align-items: center;
+    width: 100%;
+  }
+  .encabezado-derecho {
+    margin-top: 1rem;
+    
+  }
+  
+  .encabezado-derecho p {
+   color:var(--textoColorBlanco);
+   margin-left: 0;
+  }
+  .container-form {
+    margin-top: 1rem;
+    margin-left: 0;
+    width:50%;
+  
+  }
+  .container-buttons button {
+    background-color: var(--colorSecundario);
+    color: white;
+  }
+  
+}
+
+@media screen and (max-width:500px){
+  .encabezado-izquierdo p {
+    font-size: 1.3rem;
+ 
+  }
+  .encabezado-izquierdo .icono-logo {
+    width: 11rem;
+    height: 4rem;
+    margin-top: -2.7rem;
+ 
+  }
+  .encabezado-derecho p {
+   font-size: 1.3rem;
+   }
+.container-form{
+  width: 63%;
+}
+
+.formLoginInicio{
+  gap:1.5rem
+}
+.container-buttons{
+  margin-top: 0;
+  gap:1rem
+}
+
 }

@@ -96,3 +96,14 @@ position: relative;
     cursor: default;
     
 }
+
+@media screen and (max-width:500px){
+    .container-modal{
+        width:80%
+    }
+    .container-encabezado p{
+        font-size: 22px;
+      
+    }
+    
+}

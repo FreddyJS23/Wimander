@@ -1,6 +1,6 @@
 .container-dashboard {
-  margin-top: 2rem;
-  margin-left: 4rem;
+  /* margin-top: 2rem;
+  margin-left: 4rem; */
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -10,10 +10,47 @@
   display: flex;
   gap: 2rem;
   margin-bottom: 2rem;
-  align-items: flex-start;
+  justify-content: space-around;
   margin-left: 2rem;
 }
+
+
 
 .contenidoTarjeta h2 {
   margin: 0;
 }
+
+@media screen and (max-width:1024px){
+  .container-tarjetasDashoboard{
+    flex-wrap: wrap;
+    margin-left: 0;
+  }
+  
+}
+@media screen and (max-width:500px){
+  
+  
+  .container-tarjetasDashoboard{
+    gap: 1rem;
+  }
+  .tarjeta{
+    width:8.75rem;
+    height: 4.375rem;
+  }
+
+  .contenidoTarjeta{
+    padding-top: 10px;
+    padding-left: 10px;
+  }
+
+
+  .contenidoTarjeta h2{
+    font-size: 16px;
+  }
+  .contenidoTarjeta p{
+    font-size: 14px;
+  }
+
+
+}
+

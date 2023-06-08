@@ -3,8 +3,11 @@ import style from "../styles/acerca.module.css";
 import iconoLinkedin from "../assets/linkedin.svg";
 import iconoGithub from "../assets/github.svg";
 import { AnimacionContactoContainer,AnimacionContactoIcon,AnimacionLogo } from "../components/AnimacionAcerca";
+import useDocumentTitle from "../utils/useDocumentTitle";
 
 const Acerca = () => {
+ //titulo pagina
+ useDocumentTitle('Acerca')
   return (
     <div className={style["container-acerca"]}>
       <AnimacionLogo>

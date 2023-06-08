@@ -16,3 +16,22 @@
   height: 28px;
   cursor: pointer;
 }
+
+@media screen and (max-width:1024px){
+
+  .container-accionesTabla{
+    gap: 5px;
+  }
+  .container-accionesTabla img:nth-child(2) {
+    width: 32px;
+    height: 32px;
+    
+  }
+  
+  .container-accionesTabla img {
+    width: 22px;
+    height: 22px;
+    
+  }
+
+}
