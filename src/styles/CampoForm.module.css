@@ -22,6 +22,7 @@
   transition: 0.2s;
   bottom: 9px;
   left: 14px;
+  background: transparent;
 }
 
 .input:focus ~ .label,
@@ -30,6 +31,7 @@
   margin-left: 0.3rem;
   padding: 0.1rem;
   background-color: rgb(255, 255, 255);
+  
   color: var(--colorSecundario);
 }
 

@@ -231,11 +231,28 @@
     width:50%;
   
   }
-  .container-buttons button {
-    background-color: var(--colorSecundario);
-    color: white;
-  }
   
+  /* formulario registro */
+
+.formLoginRegistro {
+  margin-top: .5rem;
+  
+  gap: 1rem;
+  background: transparent;
+}
+
+/* buttons */
+.container-buttons button {
+  background-color: var(--colorSecundario);
+  color: white;
+}
+.formLoginRegistro button[type="submit"] {
+  background-color: var(--colorSecundario);
+    color: white;
+}
+
+
+
 }
 
 @media screen and (max-width:500px){

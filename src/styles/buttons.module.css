@@ -25,6 +25,11 @@
   }
 }
 
+.button:active {
+  transform: scale(0.95);
+}
+
+
 /* ------------------------- estilos personalizados ------------------------- */
 
 .buttonIniciarSesion {
