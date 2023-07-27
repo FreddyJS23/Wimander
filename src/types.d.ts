@@ -70,7 +70,8 @@ export interface ModalInterface {
 }
 
 export interface User {
-  user: string,
+  id: string,
+  name:string,
   token: string
 }
 
