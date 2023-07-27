@@ -1,39 +1,63 @@
 import { CamposFormInterface } from "../types";
 import styles from "../styles/CampoForm.module.css";
+import { Tooltip } from "@mui/material";
 
 interface Props {
   camposForm: CamposFormInterface;
 }
 
 const CamposForm = ({
-  id,
+  inputName,
   name,
   styleLabel = "label",
   styleInput = "input",
   type,
-  handleChange,
-  value,
+  max,
+  maxLength,
+  min,
+  minLength,
+  pattern,
+  register,
+  errors,
+  required,
+  tip = null,
 }: Props["camposForm"]) => {
   return (
     <>
-      <div className={styles["container-campos"]}>
-        <input
-          onChange={handleChange}
-          className={`${styles["input"]} ${styles[styleInput]}`}
-          type={type}
-          name={id}
-          id={id}
-          value={value}
-          required={true}
-          placeholder=" "
-        />
-        <label
-          className={`${styles["label"]} ${styles[styleLabel]}`}
-          htmlFor={id}
-        >
-          {name}
-        </label>
-      </div>
+      <Tooltip
+        classes={{
+          popper: styles["toolTipError"],
+          tooltipPlacementBottom: styles["toolTipError"],
+        }}
+        title={tip}
+        placement="bottom-end"
+      >
+        <div className={styles["container-campos"]}>
+          <input
+            className={`${styles["input"]} ${styles[styleInput]}`}
+            type={type}
+            id={inputName}
+            {...register(inputName, {
+              pattern: pattern,
+              required: required,
+              maxLength: maxLength,
+              minLength: minLength,
+              min: min,
+              max: max,
+            })}
+            required={true}
+            placeholder=" "
+          />
+          <label
+            className={`${styles["label"]} ${styles[styleLabel]} ${
+              errors[inputName] && styles["labelError"]
+            } `}
+            htmlFor={inputName}
+          >
+            {name}
+          </label>
+        </div>
+      </Tooltip>
     </>
   );
 };
