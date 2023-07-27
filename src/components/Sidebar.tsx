@@ -12,11 +12,11 @@ import  logo from '../assets/logo.svg'
 
 const Sidebar = ({responsive}:any) => {
   //logout
-  const { handleLogout } = useContext(AuthContext);
+  const { setUser,initialStateUser } = useContext(AuthContext);
   const navigation = useNavigate();
 
   const hanldeClick = () => {
-    handleLogout();
+    setUser(initialStateUser)
     navigation("/");
     return;
   };
