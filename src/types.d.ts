@@ -1,3 +1,5 @@
+import { AlertColor } from "@mui/material"
+
 export interface tarjetaDashboardInterface {
   titulo: string,
   contenido: string,
@@ -102,9 +104,13 @@ export interface Response {
 export interface ResponseData {
   status: boolean
   message: string
+  errors?:ErrorsResponseData
   user?: User
 }
 
+interface ErrorsResponseData{
+  [index:string]:[]
+}
 
 export interface UserForm {
   user: string
@@ -112,8 +118,24 @@ export interface UserForm {
 }
 
 export interface AlertsInterface {
-  error: boolean,
+  open: boolean,
   mensaje: string
   onClose: () => void
-  errorType: AlertColor
+  tipo: AlertColor
+}
+
+export interface RegisterUserForm{
+    name: string,
+    last_name: string,
+    user: string,
+    email: string,
+    password: string
+    password2: string
+}
+
+export interface alertState{
+
+  open:boolean,
+  mensaje:string
+  tipo:AlertColor
 }
