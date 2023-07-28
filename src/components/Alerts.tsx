@@ -1,10 +1,10 @@
 import { Alert, Snackbar } from "@mui/material";
 import { AlertsInterface } from "../types";
 
-const Alerts = ({ error, mensaje, onClose,errorType }: AlertsInterface) => {
+const Alerts = ({ open, mensaje, onClose,tipo }: AlertsInterface) => {
   return (
-    <Snackbar open={error} autoHideDuration={3000} onClose={onClose}>
-      <Alert severity={errorType}>{mensaje}</Alert>
+    <Snackbar open={open} autoHideDuration={3000} onClose={onClose}>
+      <Alert severity={tipo}>{mensaje}</Alert>
     </Snackbar>
   );
 };
