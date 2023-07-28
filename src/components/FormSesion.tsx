@@ -4,7 +4,7 @@ import styles from "../styles/login.module.css";
 import flechaButton from "../assets/right-arrow.svg";
 import Button from "./Button";
 import { AuthContext } from "../context/AuthContext";
-import {  UserForm } from "../types";
+import {  UserForm, alertState } from "../types";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { Autenticar } from "../services/auth";
 import Alerts from "./Alerts";
@@ -21,8 +21,12 @@ const FormSesion = ({ handleClick }: Props) => {
     formState: { errors },
   } = useForm<UserForm>();
 
-  //estado de error de alerta
-  const [error, setError] = useState({ error: false, mensaje: "" });
+  //estado de la alerta
+  const [alertOpen, setAlertOpen] = useState<alertState>({
+    open: false,
+    mensaje: "",
+    tipo: "success",
+  });
 
   //logica validacion de usuario
   const onSubmit: SubmitHandler<UserForm> = async (form) => {
@@ -30,14 +34,14 @@ const FormSesion = ({ handleClick }: Props) => {
    
     if (status == 200) setUser(data.user);
    
-    else if (status == 408) setError({ error: true, mensaje: `${status}: error de conexion` });
+    else if (status == 408) setAlertOpen({ open: true,tipo:"error", mensaje: `${status}: error de conexion` });
    
-    else setError({ error: true, mensaje: data.message });};
+    else setAlertOpen({ open: true,tipo:"success", mensaje: data.message });};
  
 
   //cierre de alerta
   const onClose = () => {
-    setError({ ...error, error: false });
+    setAlertOpen({ ...alertOpen, open: false });
   };
  
   return (
@@ -79,7 +83,7 @@ const FormSesion = ({ handleClick }: Props) => {
           <Button onClick={handleClick} value="Registrar" />
         </div>
       </form>
-      <Alerts error={error.error} mensaje={error.mensaje} onClose={onClose} errorType="error" />
+      <Alerts open={alertOpen.open} mensaje={alertOpen.mensaje} onClose={onClose} tipo={alertOpen.tipo} />
     </>
   );
 };
