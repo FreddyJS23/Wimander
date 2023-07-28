@@ -8,7 +8,11 @@ import Alerts from "./Alerts";
 import { createUser } from "../services/user";
 import { GetErrorsResponse } from "../utils/GetErrorsResponse";
 
-export const FormRegistroUsuario = () => {
+interface Props {
+  handleClick: () => void;
+}
+
+export const FormRegistroUsuario = ({ handleClick }: Props) => {
   //control de formulario
   const {
     register,
@@ -26,7 +30,7 @@ export const FormRegistroUsuario = () => {
 
   //logica validacion de registro
   const onSubmit: SubmitHandler<RegisterUserForm> = async (form, e) => {
- //comprobar si contraeñas son iguales
+    //comprobar si contraeñas son iguales
     if (getValues("password") != getValues("password2"))
       return setAlertOpen({
         open: true,
@@ -36,7 +40,7 @@ export const FormRegistroUsuario = () => {
 
     const { data, status } = await createUser(form);
     const { errors } = data;
-//obtener errores de los campos del servidor
+    //obtener errores de los campos del servidor
     if (GetErrorsResponse(errors))
       return setAlertOpen({
         open: true,
@@ -46,6 +50,9 @@ export const FormRegistroUsuario = () => {
     else if (status == 201) {
       e?.target.reset();
       setAlertOpen({ open: true, mensaje: "usuario creado", tipo: "success" });
+      setTimeout(() => {
+        handleClick();
+      }, 1000);
     }
   };
 
