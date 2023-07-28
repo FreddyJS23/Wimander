@@ -71,7 +71,7 @@ const Login = () => {
           {!registrar ? (
             <FormSesion handleClick={handleClick} />
           ) : (
-            <FormRegistroUsuario />
+            <FormRegistroUsuario handleClick={handleClick}  />
           )}
         </div>
       </div>
