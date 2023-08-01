@@ -7,6 +7,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import Alerts from "./Alerts";
 import { createUser } from "../services/user";
 import { GetErrorsResponse } from "../utils/GetErrorsResponse";
+import { CircularProgress } from "@mui/material";
 
 interface Props {
   handleClick: () => void;
@@ -28,32 +29,50 @@ export const FormRegistroUsuario = ({ handleClick }: Props) => {
     tipo: "success",
   });
 
+  //estado de carga del boton
+  const [loading, setLoading] = useState(false);
+
   //logica validacion de registro
   const onSubmit: SubmitHandler<RegisterUserForm> = async (form, e) => {
+    setLoading(true);
     //comprobar si contraeñas son iguales
-    if (getValues("password") != getValues("password2"))
+    if (getValues("password") != getValues("password2")) {
+      setLoading(false);
       return setAlertOpen({
         open: true,
         mensaje: "Las contraseñas no coinciden",
         tipo: "error",
       });
+    }
 
     const { data, status } = await createUser(form);
+    //error del servidor
+    if (status == 408) {
+      setLoading(false);
+      return setAlertOpen({
+        open: true,
+        mensaje: "408: Sin conexion al servidor",
+        tipo: "error",
+      });
+    }
+
     const { errors } = data;
     //obtener errores de los campos del servidor
-    if (GetErrorsResponse(errors))
+    if (GetErrorsResponse(errors)) {
+      setLoading(false);
       return setAlertOpen({
         open: true,
         mensaje: GetErrorsResponse(errors),
         tipo: "error",
       });
-    else if (status == 201) {
+    } else if (status == 201) {
       e?.target.reset();
       setAlertOpen({ open: true, mensaje: "usuario creado", tipo: "success" });
       setTimeout(() => {
         handleClick();
       }, 1000);
     }
+    setLoading(false);
   };
 
   //cierre de alerta
@@ -134,7 +153,20 @@ export const FormRegistroUsuario = ({ handleClick }: Props) => {
           tip={"Deben coincidir"}
         />
 
-        <Button value="Registrar" type={"submit"} />
+        <div className={styles["container-buttons"]}>
+          <Button loading={loading} type={"submit"}>
+            {loading ? (
+              <CircularProgress
+                sx={{ color: "white" }}
+                disableShrink={true}
+                size={24}
+                thickness={5}
+              />
+            ) : (
+              "Registrar"
+            )}
+          </Button>
+        </div>
       </form>
       <Alerts
         open={alertOpen.open}
