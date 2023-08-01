@@ -42,10 +42,11 @@ export interface InicioLogin {
 export interface ButtonInterface {
   type?: DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>>,
   style?: string
-  value: string
+  value?: string
   onClick?: () => void
   onSubmit?: (e) => void
   children?: React.DetailedHTMLProps
+  loading:boolean
 }
 
 export interface ElementSidebarInterface {
