@@ -12,6 +12,7 @@ const Button = ({
   onClick,
   onSubmit,
   children,
+  loading
 }: Props["button"]) => {
   return (
     <>
@@ -20,8 +21,9 @@ const Button = ({
         onSubmit={onSubmit}
         type={type}
         className={`${styles["button"]} ${styles[style]} `}
+       disabled={loading}
       >
-        {value} {children}{" "}
+        {value} {children}
       </button>
     </>
   );
