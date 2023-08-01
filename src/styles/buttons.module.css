@@ -11,6 +11,9 @@
   font-size: 16px;
   transition: 0.3s all;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .button:hover {
@@ -29,6 +32,12 @@
   transform: scale(0.95);
 }
 
+/*estilo mienstra esta en estado de carga */
+.button:disabled{
+  background-color: var(--colorSecundario);
+  color: white;
+  cursor: default;
+}
 
 /* ------------------------- estilos personalizados ------------------------- */
 
