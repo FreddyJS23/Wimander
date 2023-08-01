@@ -1,5 +1,5 @@
 import axios from "axios"
-import { RegisterUserForm, Response, UserForm } from "../types"
+import { RegisterUserForm, Response } from "../types"
 
 export const createUser= (form: RegisterUserForm) => {
 
@@ -10,7 +10,7 @@ export const createUser= (form: RegisterUserForm) => {
         }
         )
         .catch(err => {
-            const { data, status }: Response = err.response ? err.response : { data: null, status: 408 }
+            const { data, status }: Response = err.response ? err.response : { data:{errors:'Sin conexion al servidor'}, status: 408 }
             return { data, status }
 
         })
