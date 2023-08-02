@@ -1,4 +1,4 @@
-import { RegisterUserForm, alertState } from "../types";
+import { ControlFormLogin, RegisterUserForm, alertState } from "../types";
 import CamposForm from "./CamposForm";
 import { useState } from "react";
 import styles from "../styles/login.module.css";
@@ -9,11 +9,8 @@ import { createUser } from "../services/user";
 import { GetErrorsResponse } from "../utils/GetErrorsResponse";
 import { CircularProgress } from "@mui/material";
 
-interface Props {
-  handleClick: () => void;
-}
 
-export const FormRegistroUsuario = ({ handleClick }: Props) => {
+export const FormRegistroUsuario = ({ handleClick }: ControlFormLogin) => {
   //control de formulario
   const {
     register,

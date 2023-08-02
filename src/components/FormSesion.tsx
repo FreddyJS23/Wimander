@@ -4,16 +4,13 @@ import styles from "../styles/login.module.css";
 import flechaButton from "../assets/right-arrow.svg";
 import Button from "./Button";
 import { AuthContext } from "../context/AuthContext";
-import {  UserForm, alertState } from "../types";
+import {  ControlFormLogin, UserForm, alertState } from "../types";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { Autenticar } from "../services/auth";
 import Alerts from "./Alerts";
 
-interface Props {
-  handleClick: () => void;
-}
 
-const FormSesion = ({ handleClick }: Props) => {
+const FormSesion = ({ handleClick }: ControlFormLogin) => {
   const { setUser, user } = useContext(AuthContext);
   const {
     register,
@@ -40,6 +37,8 @@ const FormSesion = ({ handleClick }: Props) => {
  
 
   //cierre de alerta
+ 
+ 
   const onClose = () => {
     setAlertOpen({ ...alertOpen, open: false });
   };
