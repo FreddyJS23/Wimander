@@ -1,4 +1,6 @@
 import { AlertColor } from "@mui/material"
+import { HTMLInputTypeAttribute } from "react"
+import { FieldErrors, UseFormRegister, ValidationRule } from "react-hook-form"
 
 export interface tarjetaDashboardInterface {
   titulo: string,
@@ -8,19 +10,67 @@ export interface tarjetaDashboardInterface {
 }
 
 export interface CamposFormInterface {
+ /**
+  *id que tomara el input
+ 
+ *Nombre que tomara register
+ 
+ *id que tomara el label
+  */
   inputName: string,
+  /**
+   * Nombre del label
+   */
   name: string,
+  /**
+   * Estilo adicional del label
+   * @default "label"
+   */
   styleLabel?: string,
+  /**
+   *  Estilo adicional del input
+   * @default "input"
+   */
   styleInput?: string,
-  type: string
+  /**
+   * Tipo de input
+   */
+  type:  HTMLInputTypeAttribute
+  /**
+   * Gancho para control del input
+   */
   register: UseFormRegister,
+  /**
+   * Expresión regular para el campo
+   */
   pattern?: ValidationRule<RegExp>
+  /**
+   * Indica si el campo es requerido para la validación
+   */
   required?: boolean
+ /**
+   * Indica la longitud máxima que debe tener
+   */
   maxLength?: number,
+  /**
+   * Indica la longitud mínima que debe tener
+   */
   minLength?: number,
+  /**
+   * Indica el valor mínimo que debe tener
+   */
   min?: number,
+  /**
+   *  Indica el valor máximo que debe tener
+   */
   max?: number
+  /**
+   * Objeto con los campos que no pasen su validación
+   */
   errors: FieldErrors
+  /**
+   * Texto de ayuda en el tooltip
+   */
   tip?: string | null
 
 }
@@ -39,14 +89,31 @@ export interface InicioLogin {
   password: string,
 }
 
+
 export interface ButtonInterface {
-  type?: DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>>,
+
+   /**
+   * Tipo de boton
+   */
+  type?:'submit' | 'reset' | 'button' | undefined,
+  /**
+   * Estilo adicional
+   */
   style?: string
+  /**
+   * Entrada de texto 
+   */
   value?: string
   onClick?: () => void
   onSubmit?: (e) => void
+  /**
+   * Entrada de texto o un componente
+   */
   children?: React.DetailedHTMLProps
-  loading:boolean
+  /**
+   * Estado de carga
+   */
+  loading?:boolean
 }
 
 export interface ElementSidebarInterface {
@@ -120,8 +187,14 @@ export interface UserForm {
 
 export interface AlertsInterface {
   open: boolean,
+  /**
+  * Mensaje que tendra la alerta
+  */
   mensaje: string
   onClose: () => void
+  /**
+  * Tipo de alerta
+  */
   tipo: AlertColor
 }
 
@@ -139,4 +212,12 @@ export interface alertState{
   open:boolean,
   mensaje:string
   tipo:AlertColor
+}
+
+export interface ControlFormLogin{
+/**
+ *Alternar entre formulario de registro y inicio
+ * @returns 
+ */
+  handleClick:()=>void
 }
