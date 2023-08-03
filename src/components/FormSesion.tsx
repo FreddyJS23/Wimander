@@ -1,4 +1,4 @@
-import InputLogin from "./CamposForm";
+import CamposForm from "./CamposForm";
 import { useContext, useState } from "react";
 import styles from "../styles/login.module.css";
 import flechaButton from "../assets/right-arrow.svg";
@@ -50,7 +50,7 @@ const FormSesion = ({ handleClick }: ControlFormLogin) => {
         className={styles["formLoginInicio"]}
         onSubmit={handleSubmit(onSubmit)}
       >
-        <InputLogin
+        <CamposForm
           maxLength={20}
           minLength={3}
           required={true}
@@ -62,7 +62,7 @@ const FormSesion = ({ handleClick }: ControlFormLogin) => {
           errors={errors}
          
         />
-        <InputLogin
+        <CamposForm
           maxLength={20}
           minLength={3}
           required={true}
