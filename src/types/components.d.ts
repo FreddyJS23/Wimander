@@ -129,12 +129,3 @@ export interface AlertsInterface {
   tipo: AlertColor
 }
 
-/**Estado de la alerta */
-export interface alertState{
-  /**Determina si la alerta es visible o no */
-   open:boolean,
-   /**Mensaje de la alerta */
-   mensaje:string
-   /**Tipo de alerta */
-   tipo:AlertColor
- }

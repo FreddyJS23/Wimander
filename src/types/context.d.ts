@@ -1,9 +1,14 @@
+/**Context del usuario */
 export interface AuthContextInterface {
+    /**Informacion del usuario */
     user?: User
+    /**Estado inicial del usuario */
     initialStateUser: User
+    /**Cambiar estado del usuario */
     setUser: Dispatch<SetStateAction<User>>
   }
   
+   /**Informacion del usuario */
 export interface User {
     /** id que tiene en la bd  */
     id: string,

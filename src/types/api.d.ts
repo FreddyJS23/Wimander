@@ -17,7 +17,7 @@ export interface ResponseData {
   /**  Informacion de la se sesión del usuario */
   user?: User
 }
-
+/** Errores de validacion que presenta un campo */
 interface ErrorsResponseData {
   [index: string]: []
 }
