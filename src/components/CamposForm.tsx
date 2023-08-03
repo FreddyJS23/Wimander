@@ -1,12 +1,8 @@
-import { CamposFormInterface } from "../types/index";
+import { CamposFormInterface } from "../types";
 import styles from "../styles/CampoForm.module.css";
 import { Tooltip } from "@mui/material";
 
-interface Props {
-  camposForm: CamposFormInterface;
-}
-
-const CamposForm = ({
+ const CamposForm = ({
   inputName,
   name,
   styleLabel = "label",
@@ -21,7 +17,7 @@ const CamposForm = ({
   errors,
   required,
   tip = null,
-}: Props["camposForm"]) => {
+}: CamposFormInterface) => {
   return (
     <>
       <Tooltip
@@ -62,4 +58,4 @@ const CamposForm = ({
   );
 };
 
-export default CamposForm;
+export default CamposForm
