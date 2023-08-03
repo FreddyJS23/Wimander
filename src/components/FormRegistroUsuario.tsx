@@ -52,6 +52,14 @@ export const FormRegistroUsuario = ({ handleClick }: ControlFormLogin) => {
         tipo: "error",
       });
     }
+    else {
+      setLoading(false);
+      return setAlertOpen({
+        open: true,
+        mensaje: `Codigo de error ${status}`,
+        tipo: "error",
+      });
+    }
 
     const { errors } = data;
     //obtener errores de los campos del servidor
