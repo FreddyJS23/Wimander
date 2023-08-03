@@ -11,7 +11,7 @@ import Alerts from "./Alerts";
 
 
 const FormSesion = ({ handleClick }: ControlFormLogin) => {
-  const { setUser, user } = useContext(AuthContext);
+  const { setUser } = useContext(AuthContext);
   const {
     register,
     handleSubmit,
