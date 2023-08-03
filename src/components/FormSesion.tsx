@@ -4,7 +4,7 @@ import styles from "../styles/login.module.css";
 import flechaButton from "../assets/right-arrow.svg";
 import Button from "./Button";
 import { AuthContext } from "../context/AuthContext";
-import {  ControlFormLogin, UserForm, alertState } from "../types/index";
+import {  ControlFormLogin, UserForm, AlertState } from "../types/index";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { Autenticar } from "../services/auth";
 import Alerts from "./Alerts";
@@ -19,7 +19,7 @@ const FormSesion = ({ handleClick }: ControlFormLogin) => {
   } = useForm<UserForm>();
 
   //estado de la alerta
-  const [alertOpen, setAlertOpen] = useState<alertState>({
+  const [alertOpen, setAlertOpen] = useState<AlertState>({
     open: false,
     mensaje: "",
     tipo: "success",

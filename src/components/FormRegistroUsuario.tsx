@@ -1,4 +1,4 @@
-import { ControlFormLogin, RegisterUserForm, alertState } from "../types/index";
+import { ControlFormLogin, RegisterUserForm, AlertState } from "../types/index";
 import CamposForm from "./CamposForm";
 import { useState } from "react";
 import styles from "../styles/login.module.css";
@@ -20,7 +20,7 @@ export const FormRegistroUsuario = ({ handleClick }: ControlFormLogin) => {
   } = useForm<RegisterUserForm>({ defaultValues: { name: "", email: "" } });
 
   //estado de la alerta
-  const [alertOpen, setAlertOpen] = useState<alertState>({
+  const [alertOpen, setAlertOpen] = useState<AlertState>({
     open: false,
     mensaje: "",
     tipo: "success",
