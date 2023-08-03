@@ -1,5 +1,5 @@
 import { Alert, Snackbar } from "@mui/material";
-import { AlertsInterface } from "../types";
+import { AlertsInterface } from "../types/index";
 
 const Alerts = ({ open, mensaje, onClose,tipo }: AlertsInterface) => {
   return (

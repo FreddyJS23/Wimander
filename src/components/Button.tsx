@@ -1,4 +1,4 @@
-import { ButtonInterface } from "../types";
+import { ButtonInterface } from "../types/index";
 import styles from "../styles/buttons.module.css";
 
 interface Props {

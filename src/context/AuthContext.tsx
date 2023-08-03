@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { AuthContextInterface, User } from "../types";
+import { AuthContextInterface, User } from "../types/index";
 
 
 const initialContext: AuthContextInterface = {

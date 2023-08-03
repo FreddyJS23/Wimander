@@ -1,4 +1,4 @@
-import { CamposFormInterface } from "../types";
+import { CamposFormInterface } from "../types/index";
 import styles from "../styles/CampoForm.module.css";
 import { Tooltip } from "@mui/material";
 

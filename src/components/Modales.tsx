@@ -4,7 +4,7 @@ import style from "../styles/modales.module.css";
 import Button from "./Button";
 import CamposForm from "./CamposForm";
 import cerrarIcon from "../assets/cerrar.svg";
-import { ModalBaseInterface, ModalInterface } from "../types";
+import { ModalBaseInterface, ModalInterface } from "../types/index";
 import RadioButton from "./RadioButton";
 import alertOrangeIcon from "../assets/alertaOrange.svg";
 import { AnimacionModal } from "../components/AnimacionModal";

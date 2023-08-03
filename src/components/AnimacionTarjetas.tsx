@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { AnimacionContainer } from "../types";
+import { AnimacionContainer } from "../types/index";
 
 const tarjeta = {
   visible: { opacity: 1, x: 0 },

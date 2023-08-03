@@ -4,7 +4,7 @@ import styles from "../styles/login.module.css";
 import flechaButton from "../assets/right-arrow.svg";
 import Button from "./Button";
 import { AuthContext } from "../context/AuthContext";
-import {  ControlFormLogin, UserForm, alertState } from "../types";
+import {  ControlFormLogin, UserForm, alertState } from "../types/index";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { Autenticar } from "../services/auth";
 import Alerts from "./Alerts";

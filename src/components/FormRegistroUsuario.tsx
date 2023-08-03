@@ -1,4 +1,4 @@
-import { ControlFormLogin, RegisterUserForm, alertState } from "../types";
+import { ControlFormLogin, RegisterUserForm, alertState } from "../types/index";
 import CamposForm from "./CamposForm";
 import { useState } from "react";
 import styles from "../styles/login.module.css";

@@ -1,5 +1,5 @@
 import axios from "axios"
-import { RegisterUserForm, Response } from "../types"
+import { RegisterUserForm, Response } from "../types/index"
 
 export const createUser= (form: RegisterUserForm) => {
 

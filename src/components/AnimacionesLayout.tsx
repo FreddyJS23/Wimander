@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useLocation } from "react-router-dom";
-import { AnimacionContainer } from "../types";
+import { AnimacionContainer } from "../types/index";
 
 export const AnimacionesLayout = ({ children }: AnimacionContainer) => {
   const location = useLocation();

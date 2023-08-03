@@ -1,4 +1,4 @@
-import { AnimacionModalInterface } from "../types";
+import { AnimacionModalInterface } from "../types/index";
 import { motion, AnimatePresence } from "framer-motion";
 
 /* para animacion de salidas hay que envolver el div de la animacion con "AnimatePresence" 

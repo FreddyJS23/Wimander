@@ -1,4 +1,4 @@
-import { tarjetaDashboardInterface } from "../types";
+import { tarjetaDashboardInterface } from "../types/index";
 
 interface Props {
   tarjetaDashboard: tarjetaDashboardInterface;
