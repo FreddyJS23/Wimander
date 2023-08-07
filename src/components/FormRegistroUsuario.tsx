@@ -72,9 +72,7 @@ export const FormRegistroUsuario = ({ handleClick }: ControlFormLogin) => {
         tipo: "error",
       });
     }
-    //Cierre de alerta
-    onClose();
-   
+ 
     setLoading(false);
   };
 

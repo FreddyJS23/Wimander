@@ -37,7 +37,7 @@ const [loading, setLoading] = useState(false)
     else setAlertState({ open: true,tipo:"success", mensaje: data.message });
    
     //cierre de alerta
-   onClose() 
+   
    setLoading(false)
   };
 
