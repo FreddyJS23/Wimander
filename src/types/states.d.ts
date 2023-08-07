@@ -1,9 +1,9 @@
-/**Estado de la alerta */
-export interface AlertState{
-    /**Determina si la alerta es visible o no */
-     open:boolean,
-     /**Mensaje de la alerta */
-     mensaje:string
-     /**Tipo de alerta */
-     tipo:AlertColor
-   }
+import { GridRowId } from "@mui/x-data-grid"
+
+
+export interface ControlModal{
+  /**Identificar que modal sera abierto */
+  modal:string
+  /**Parametro que recibira el modal */
+  paramater:GridRowId
+}

@@ -1,65 +1,43 @@
+import { GridRowId } from "@mui/x-data-grid"
+
 export interface CamposFormInterface {
     /**
      *id que tomara el input
-    
+     *
     *Nombre que tomara register
-    
+    *
     *id que tomara el label
      */
      inputName: string,
-     /**
-      * Nombre del label
-      */
+     /** Nombre del label */
      name: string,
-     /**
-      * Estilo adicional del label
+     /**Estilo adicional del label
       * @default "label"
       */
      styleLabel?: string,
-     /**
-      *  Estilo adicional del input
+     /**Estilo adicional del input
       * @default "input"
       */
      styleInput?: string,
-     /**
-      * Tipo de input
-      */
+     /**Tipo de input*/
      type:  HTMLInputTypeAttribute
-     /**
-      * Hook para control del input
-      */
+     /** Hook para control del input */
      register: UseFormRegister,
-     /**
-      * Expresión regular para el campo
-      */
+     /** Expresión regular para el campo*/
      pattern?: ValidationRule<RegExp>
-     /**
-      * Indica si el campo es requerido para la validación
-      */
+     /**Indica si el campo es requerido para la validación */
      required?: boolean
-    /**
-      * Indica la longitud máxima que debe tener
-      */
+    /**Indica la longitud máxima que debe tener */
      maxLength?: number,
-     /**
-      * Indica la longitud mínima que debe tener
-      */
+     /** Indica la longitud mínima que debe tener */
      minLength?: number,
-     /**
-      * Indica el valor mínimo que debe tener
-      */
+     /**Indica el valor mínimo que debe tener */
      min?: number,
-     /**
-      *  Indica el valor máximo que debe tener
-      */
+     /**Indica el valor máximo que debe tener */
      max?: number
-     /**
-      * Objeto con los campos que no pasen su validación
-      */
+     /**Objeto con los campos que no pasen su validación, para asignar un clase error al label */
      errors: FieldErrors
-     /**
-      * Texto de ayuda en el tooltip
-      */
+     /**Texto de ayuda en el tooltip */
      tip?: string | null
    
    }
@@ -70,20 +48,25 @@ export interface CamposFormInterface {
     style: string
   }
   
-  export interface ButtonInterface {
-
+  export interface ButtonInterface { 
     /** Tipo de boton */
    type?:'submit' | 'reset' | 'button' | undefined,
    /** Estilo adicional*/
    style?: string
-   /** Entrada de texto  */
+   /** Texto que tendrá el botón  */
    value?: string
-   onClick?: () => void
+   /**Click en el boton
+    * @param paramter - parámetro que recibirá la función click
+    */
+   onClick?: (paramater?) => void
+   /**Submit */
    onSubmit?: (e) => void
-   /** Entrada de texto o un componente*/
+   /** Componente que recibirá el botón*/
    children?: React.DetailedHTMLProps
    /**Estado de carga */
    loading?:boolean
+   /**En caso que requiera enviar un parámetro para la función onClick */
+   parameter?:number | string
  }
 
  export interface ElementSidebarInterface {
@@ -93,20 +76,23 @@ export interface CamposFormInterface {
     style: string
   }
   
-  export interface ModalBaseInterface {
-    children: React.ReactElement;
+  /**Modal personalizado */
+  export interface ModalInterface {
+    /**Parámetro que recibirá el modal para hacer una petición a un endPoint */
+    parameter?:GridRowId
+    /**Titulo del modal */
     encabezado: string;
+    /**Control de apertura del modal y su animación */
     open: boolean
+    /**Cierra el modal actual */
     handleClose: () => void
   
   }
   
-  export interface ModalInterface {
-    encabezado: string
-    open: boolean
-    handleClose: () => void
-    cliente: number
-  
+  /**Modal padre que envolverá el contenido */
+  export interface ModalBaseInterface extends ModalInterface {
+     /**Contenido que tendrá el modal */
+     children: React.ReactElement;
   }
 
   interface AnimacionContainer {
@@ -122,10 +108,33 @@ export interface CamposFormInterface {
 export interface AlertsInterface {
   /** Determina si la alerta es visible o no */
   open: boolean,
-  /** Mensaje que tendra la alerta */
+  /** Mensaje que tendrá la alerta */
   mensaje: string
+  /**Cierre de la alerta */
   onClose: () => void
   /**  Tipo de alerta */
   tipo: AlertColor
 }
 
+/**Iconos con las distintas acciones disponibles */
+export interface AccionesTablaInterface{
+  /**Click en icono para la distintas opciones
+   * @param e Evento del click
+   * @param  paramId parámetro con el id de la columna 
+   */
+  handleClick:(e: React.MouseEvent<HTMLImageElement>,paramId:GridRowId)=>void
+  /**Parámetro recibido de una columna de la tabla */
+  paramId:GridRowId
+}
+
+/**Botones radio personalizados */
+export interface RadioButtonInterface {
+  /**Titulo que tendrá el botón */
+  titulo: string;
+  /**Nombre que tendrá el botón y recibirá el register */
+  name: string;
+  /**Valor de los distintos botones */
+  value: string | number;
+  /**Hook para el control del input */
+  register:UseFormRegister
+}
