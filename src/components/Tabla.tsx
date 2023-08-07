@@ -84,18 +84,15 @@ export default function DataTable() {
   return (
     <>
       <DataGrid
-        rows={rows}
+        rows={clientes}
         columns={columns}
         autoHeight
-        onRowClick={(params: GridRowParams) => {
-          setCliente(params.row.id);
-        }}
         initialState={{
           pagination: {
-            paginationModel: { pageSize:8 },
+            paginationModel: { pageSize: 8 },
           },
         }}
-        pageSizeOptions={[8, 10,15,20]}
+        pageSizeOptions={[8, 10, 15, 20]}
         density="compact"
       />
 
