@@ -17,6 +17,7 @@ import {
   themeDataTable,
   themeLinearProgress,
 } from "./utils/themesMui.ts";
+import { AlertContextProvider } from "./context/AlertContext.tsx";
 
 const theme = createTheme(
   {
@@ -35,7 +36,9 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <Suspense fallback={<DisplayLoader />}>
     <ThemeProvider theme={theme}>
       <AuthProvider>
+        <AlertContextProvider>
         <RouterProvider router={router} />
+        </AlertContextProvider>
       </AuthProvider>
     </ThemeProvider>
   </Suspense>
