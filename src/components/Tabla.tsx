@@ -38,12 +38,12 @@ export default function DataTable() {
     setOpenModal(true);
   };
 
-  //vaciar states
+  //Click en el icono de cierre en el modal
   const handleClose = () => {
     setOpenModal(false);
-    setCliente(0);
-  //se necesita vaciar el state despues de cierto tiempo ya que anula animacion de salida
-    setTimeout(()=>setControlModal(""),500)  
+    setControlModal(initialControModal);
+    //Se necesita vaciar el state después de cierto tiempo para no anular la animacion de salida
+    setTimeout(() => setControlModal(initialControModal), 500);
   };
 
   //columnas dataGrid
