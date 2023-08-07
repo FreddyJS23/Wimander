@@ -2,7 +2,6 @@ import { Card, CardContent } from "@mui/material";
 import { TarjetasDasboard } from "../components/TarjetasDasboard";
 import style from "../styles/dashboard.module.css";
 import styleTable from "../styles/tablas.module.css";
-
 import Tabla from "../components/Tabla";
 import {
   AnimacionTarjetasChildren,
@@ -33,8 +32,8 @@ const Dashboard = () => {
               <Card className={style["tarjeta"]}>
                 <CardContent className={style["contenidoTarjeta"]}>
                   <TarjetasDasboard
-                    titulo={"titulo"}
-                    contenido={"contenido"}
+                    titulo={"Ganacias totales"}
+                    contenido={`${ganancia}$`}
                     style={style["tituloTarjeta"]}
                   />
                 </CardContent>
@@ -69,10 +68,7 @@ const Dashboard = () => {
         </AnimacionTarjetasContainer>
 
         <div className={styleTable["container-tablaCliente"]}>
-       
           <Tabla />
-
-       
         </div>
       </div>
     </>
