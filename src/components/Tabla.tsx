@@ -1,8 +1,15 @@
-import {DataGrid, GridColDef,GridRowParams} from "@mui/x-data-grid";
+import { DataGrid, GridColDef, GridRowParams } from "@mui/x-data-grid";
 import AcccionesTabla from "./AcccionesTabla";
-import { useState } from "react";
-import {ModalEditarClient,ModalDeleteClient,ModalExpandirFecha,} from "./Modales";
-
+import { useContext, useEffect, useState } from "react";
+import {
+  ModalEditarClient,
+  ModalDeleteClient,
+  ModalExpandirFecha,
+} from "./Modales";
+import { GetClientes } from "../services/customer";
+import { ControlModal, Customer } from "../types";
+import Alerts from "./Alerts";
+import { AlertContext } from "../context/AlertContext";
 
 export default function DataTable() {
   const [openModal, setOpenModal] = useState(false);
