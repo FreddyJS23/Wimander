@@ -1,26 +1,35 @@
 import { ButtonInterface } from "../types/index";
 import styles from "../styles/buttons.module.css";
+import { CircularProgress } from "@mui/material";
 
 const Button = ({
   type = "button",
   style = "button",
   value,
-  onClick=()=>void{},
+  onClick = () => void {},
   onSubmit,
   children,
-  loading,
+  loading = false,
   parameter,
 }: ButtonInterface) => {
   return (
     <>
       <button
-        onClick={()=>onClick(parameter) }
+        onClick={() => onClick(parameter)}
         onSubmit={onSubmit}
         type={type}
         className={`${styles["button"]} ${styles[style]} `}
-       disabled={loading}
+        disabled={loading}
       >
-        {value} {children}
+        {loading && (
+          <CircularProgress
+            sx={{ color: "white" }}
+            disableShrink={true}
+            size={24}
+            thickness={5}
+          />
+        )}
+        {!loading && value} {!loading && children}
       </button>
     </>
   );
