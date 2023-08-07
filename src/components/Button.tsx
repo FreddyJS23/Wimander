@@ -1,23 +1,20 @@
 import { ButtonInterface } from "../types/index";
 import styles from "../styles/buttons.module.css";
 
-interface Props {
-  button: ButtonInterface;
-}
-
 const Button = ({
   type = "button",
   style = "button",
   value,
-  onClick,
+  onClick=()=>void{},
   onSubmit,
   children,
-  loading
-}: Props["button"]) => {
+  loading,
+  parameter,
+}: ButtonInterface) => {
   return (
     <>
       <button
-        onClick={onClick}
+        onClick={()=>onClick(parameter) }
         onSubmit={onSubmit}
         type={type}
         className={`${styles["button"]} ${styles[style]} `}
