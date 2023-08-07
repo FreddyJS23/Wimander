@@ -2,12 +2,11 @@ import iconoDelete from "../assets/delete.svg";
 import iconoEdit from "../assets/editar.svg";
 import iconoCalender from "../assets/calendario.svg";
 import style from "../styles/accionesTabla.module.css";
+import { AccionesTablaInterface } from "../types";
 
-interface Props {
-  handleClick: (e: React.MouseEvent<HTMLImageElement>) => void;
-}
 
-const AcccionesTabla = ({ handleClick }: Props) => {
+const AcccionesTabla = ({ handleClick,paramId }: AccionesTablaInterface) => {
+
   return (
     <div className={style["container-accionesTabla"]}>
       <img
