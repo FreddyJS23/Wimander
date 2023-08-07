@@ -7,7 +7,6 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import Alerts from "./Alerts";
 import { createUser } from "../services/user";
 import { GetErrorsResponse } from "../utils/GetErrorsResponse";
-import { CircularProgress } from "@mui/material";
 import { AlertContext } from "../context/AlertContext";
 
 export const FormRegistroUsuario = ({ handleClick }: ControlFormLogin) => {
