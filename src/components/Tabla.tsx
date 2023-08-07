@@ -72,9 +72,12 @@ export default function DataTable() {
       sortable: false,
       minWidth: 120,
       flex: 0.8,
+      type: "actions",
       headerAlign: "center",
-      //renderizar columna con informacion personalizada
-      renderCell: () => <AcccionesTabla handleClick={handleClick} />,
+      //Renderizar acciones que se aplicaran a las columnas, obteniendo su id
+      getActions: (params: GridRowParams) => [
+        <AcccionesTabla handleClick={handleClick} paramId={params.id} />,
+      ],
     },
   ];
 
