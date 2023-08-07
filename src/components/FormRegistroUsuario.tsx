@@ -1,6 +1,6 @@
-import { ControlFormLogin, RegisterUserForm, AlertState } from "../types/index";
+import { ControlFormLogin, RegisterUserForm } from "../types/index";
 import CamposForm from "./CamposForm";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import styles from "../styles/login.module.css";
 import Button from "./Button";
 import { useForm, SubmitHandler } from "react-hook-form";
@@ -8,10 +8,10 @@ import Alerts from "./Alerts";
 import { createUser } from "../services/user";
 import { GetErrorsResponse } from "../utils/GetErrorsResponse";
 import { CircularProgress } from "@mui/material";
-
+import { AlertContext } from "../context/AlertContext";
 
 export const FormRegistroUsuario = ({ handleClick }: ControlFormLogin) => {
-  //control de formulario
+  //Control de formulario
   const {
     register,
     handleSubmit,
@@ -19,70 +19,62 @@ export const FormRegistroUsuario = ({ handleClick }: ControlFormLogin) => {
     getValues,
   } = useForm<RegisterUserForm>({ defaultValues: { name: "", email: "" } });
 
-  //estado de la alerta
-  const [alertOpen, setAlertOpen] = useState<AlertState>({
-    open: false,
-    mensaje: "",
-    tipo: "success",
-  });
+  //Estado de la alerta
+  const { setAlertState, alertState, onClose } = useContext(AlertContext);
 
-  //estado de carga del boton
+  //Estado de carga del Boton
   const [loading, setLoading] = useState(false);
 
-  //logica validacion de registro
+  //Envió de formulario
   const onSubmit: SubmitHandler<RegisterUserForm> = async (form, e) => {
+    const { data, status } = await createUser(form);
+    const { errors } = data;
+
     setLoading(true);
-    //comprobar si contraeñas son iguales
+
+    //Comprobar si las contraseñas son iguales
     if (getValues("password") != getValues("password2")) {
       setLoading(false);
-      return setAlertOpen({
+      return setAlertState({
         open: true,
         mensaje: "Las contraseñas no coinciden",
         tipo: "error",
       });
     }
 
-    const { data, status } = await createUser(form);
-    //error del servidor
-    if (status == 408) {
-      setLoading(false);
-      return setAlertOpen({
-        open: true,
-        mensaje: "408: Sin conexion al servidor",
-        tipo: "error",
-      });
-    }
-    else {
-      setLoading(false);
-      return setAlertOpen({
-        open: true,
-        mensaje: `Codigo de error ${status}`,
-        tipo: "error",
-      });
-    }
-
-    const { errors } = data;
-    //obtener errores de los campos del servidor
-    if (GetErrorsResponse(errors)) {
-      setLoading(false);
-      return setAlertOpen({
-        open: true,
-        mensaje: GetErrorsResponse(errors),
-        tipo: "error",
-      });
-    } else if (status == 201) {
+    //Respuesta exitosa
+    if (status == 201) {
       e?.target.reset();
-      setAlertOpen({ open: true, mensaje: "usuario creado", tipo: "success" });
+      setAlertState({ open: true, mensaje: "usuario creado", tipo: "success" });
       setTimeout(() => {
         handleClick();
       }, 1000);
     }
-    setLoading(false);
-  };
 
-  //cierre de alerta
-  const onClose = () => {
-    setAlertOpen({ ...alertOpen, open: false });
+    //Errores en los campos
+    if (GetErrorsResponse(errors))
+      return setAlertState({
+        open: true,
+        mensaje: GetErrorsResponse(errors),
+        tipo: "error",
+      });
+
+    //Errores del servidor
+    if (status == 408) {
+      return setAlertState({
+        open: true,
+        mensaje: `Error 408: Sin conexión al servidor`,
+        tipo: "error",
+      });
+    } else if (status != 200) {
+      return setAlertState({
+        open: true,
+        mensaje: `Error${status} - ${data.message} `,
+        tipo: "error",
+      });
+    }
+    //Cierre de alerta
+    onClose();
   };
 
   return (
@@ -174,10 +166,10 @@ export const FormRegistroUsuario = ({ handleClick }: ControlFormLogin) => {
         </div>
       </form>
       <Alerts
-        open={alertOpen.open}
-        tipo={alertOpen.tipo}
+        open={alertState.open}
+        tipo={alertState.tipo}
         onClose={onClose}
-        mensaje={alertOpen.mensaje}
+        mensaje={alertState.mensaje}
       />
     </>
   );
