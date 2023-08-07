@@ -23,6 +23,10 @@ export default function DataTable() {
   //Context para las alertas
     const { alertState, onClose } = useContext(AlertContext);
 
+  //Obtener información para la table
+  useEffect(() => {
+    GetClientes().then((res) => setClientes(res.data.customers));
+  }, []);
     setOpenModal(true);
   };
 
