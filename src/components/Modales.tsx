@@ -1,26 +1,35 @@
 import { Modal } from "@mui/material";
-import { useState } from "react";
+import { useContext } from "react";
 import style from "../styles/modales.module.css";
 import Button from "./Button";
 import CamposForm from "./CamposForm";
 import cerrarIcon from "../assets/cerrar.svg";
-import { ModalBaseInterface, ModalInterface } from "../types/index";
+import {
+  CustomerFormUpdate,
+  ExtendsConnectionFom,
+  ModalBaseInterface,
+  ModalInterface,
+} from "../types/index";
 import RadioButton from "./RadioButton";
 import alertOrangeIcon from "../assets/alertaOrange.svg";
 import { AnimacionModal } from "../components/AnimacionModal";
+import { SubmitHandler, useForm } from "react-hook-form";
+import {
+  ActualizarCliente,
+  EliminarCliente,
+  GetCliente,
+} from "../services/customer";
+import { GetErrorsResponse } from "../utils/GetErrorsResponse";
+import { AlertContext } from "../context/AlertContext";
+import { extendsConnection } from "../services/extendsConnection";
 
-interface Props {
-  modalBase: ModalBaseInterface;
-  modal: ModalInterface;
-}
-
-// estrucura principal del modal
+/** estrucura principal del modal */
 const ModalBase = ({
   children,
   encabezado,
   open,
   handleClose,
-}: Props["modalBase"]) => {
+}: ModalBaseInterface) => {
   return (
     <Modal open={open} closeAfterTransition onClose={handleClose}>
       <AnimacionModal in={open}>
@@ -36,114 +45,239 @@ const ModalBase = ({
   );
 };
 
-//modal para editar cliente
+/**Modal para editar cliente */
 export const ModalEditarClient = ({
   open,
   encabezado,
   handleClose,
-  cliente,
-}: Props["modal"]) => {
-  /* aqui hiria una peticion para pedir la informacion dle cliente enviado el id del cliente
-  obteniendo la infomacion llenar el state form*/
-  const initialForm = { nombre: "", apellido: "", correo: "", telefono: "" };
+  parameter,
+}: ModalInterface) => {
+  
+  //Control alertas
+  const { setAlertState } = useContext(AlertContext);
 
-  const [form, setForm] = useState(initialForm);
+  //Control formulario
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<CustomerFormUpdate>({
+    //Obtener valores de los campos para el formulario de forma asíncrona
+    defaultValues: async () =>
+      GetCliente(parameter).then((res) => {
+        const { id, name, last_name, mac, phone } = res.data.customer;
+        return { id, name, last_name, mac, phone };
+      }),
+  });
 
-  const handleSubmit = () => {
-    return;
-  };
+  //Envió de formulario
+  const onSubmit: SubmitHandler<CustomerFormUpdate> = async (form, e) => {
+    const { data, status } = await ActualizarCliente(form.id, form);
+    const { errors } = data;
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setForm({ ...form, [name]: value });
+    //respuesta exitosa
+    if (status == 200) {
+      e?.target.reset();
+      setAlertState({
+        open: true,
+        mensaje: "Cliente editado",
+        tipo: "success",
+      });
+    }
+
+    //Errores en los campos
+    if (GetErrorsResponse(errors))
+      return setAlertState({
+        open: true,
+        mensaje: GetErrorsResponse(errors),
+        tipo: "error",
+      });
+
+    //Errores del servidor
+    if (status == 408) {
+      return setAlertState({
+        open: true,
+        mensaje: `Error 408: Sin conexión al servidor`,
+        tipo: "error",
+      });
+    } else if (status != 200) {
+      return setAlertState({
+        open: true,
+        mensaje: `Error${status} - ${data.message} `,
+        tipo: "error",
+      });
+    }
   };
 
   return (
     <ModalBase encabezado={encabezado} open={open} handleClose={handleClose}>
-      <form action="" className={style["formEdit"]} autoComplete="off">
+      <form
+        action=""
+        className={style["formEdit"]}
+        onSubmit={handleSubmit(onSubmit)}
+        autoComplete="off"
+      >
         <div className={style["container-seccion"]}>
           <CamposForm
-            id="nombre"
+            inputName="name"
+            register={register}
             type="text"
             name="Nombre"
-            value={form.nombre}
-            handleChange={handleChange}
+            maxLength={15}
+            minLength={3}
+            required={true}
+            errors={errors}
           />
           <CamposForm
-            id="apellido"
+            inputName="last_name"
+            register={register}
             type="text"
             name="Apellido"
-            value={form.apellido}
-            handleChange={handleChange}
+            maxLength={15}
+            minLength={3}
+            required={true}
+            errors={errors}
           />
         </div>
         <div className={style["container-seccion"]}>
           <CamposForm
-            id="correo"
-            type="email"
-            name="Correo"
-            value={form.correo}
-            handleChange={handleChange}
+            type="text"
+            register={register}
+            inputName="mac"
+            name="Mac"
+            errors={errors}
+            tip={"Debe ser una direccion MAC valida"}
           />
           <CamposForm
-            id="telefono"
+            inputName="phone"
+            register={register}
             type="text"
             name="Telefono"
-            value={form.telefono}
-            handleChange={handleChange}
+            maxLength={15}
+            minLength={3}
+            required={true}
+            errors={errors}
           />
         </div>
-        <Button type={"submit"} onSubmit={handleSubmit} value="Editar" />
+        <Button type={"submit"} value="Editar" />
       </form>
     </ModalBase>
   );
 };
 
-// modal para expandir fecha
+/**Modal para expandir la fecha del cliente */
 export const ModalExpandirFecha = ({
   open,
   encabezado,
   handleClose,
+  parameter,
 }: ModalInterface) => {
-  const [value, setValue] = useState("");
+  //Control alertas
+  const { setAlertState } = useContext(AlertContext);
 
-  const handleSubmit = () => {
-    return;
-  };
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value);
+  //Control formulario
+  const { register, handleSubmit } = useForm<ExtendsConnectionFom>({
+    defaultValues: { id: parameter },
+  });
+
+  //Envió de formulario
+  const onSubmit: SubmitHandler<ExtendsConnectionFom> = async (form, e) => {
+    const { data, status } = await extendsConnection(form.id, form);
+
+    //respuesta exitosa
+    if (status == 200) {
+      e?.target.reset();
+      setAlertState({
+        open: true,
+        mensaje: "Se ha extendido la fecha de vencimiento",
+        tipo: "success",
+      });
+    }
+
+    //Errores del servidor
+    if (status == 408) {
+      return setAlertState({
+        open: true,
+        mensaje: `Error 408: Sin conexión al servidor`,
+        tipo: "error",
+      });
+    } else if (status != 200) {
+      return setAlertState({
+        open: true,
+        mensaje: `Error${status} - ${data.message} `,
+        tipo: "error",
+      });
+    }
   };
 
   return (
     <ModalBase encabezado={encabezado} open={open} handleClose={handleClose}>
-      <form action="" className={style["formExpandirFecha"]}>
+      <form
+        action=""
+        className={style["formExpandirFecha"]}
+        onSubmit={handleSubmit(onSubmit)}
+      >
         <div>
           <RadioButton
-            handleChange={handleChange}
-            name="fecha"
-            titulo="Ampliar 15 dias"
-            value={15}
+            register={register}
+            name="extendsDate"
+            titulo="Ampliar 15 días"
+            value={"15D"}
           />
           <RadioButton
-            handleChange={handleChange}
-            name="fecha"
-            titulo="Ampliar 30 dias"
-            value={30}
+            register={register}
+            name="extendsDate"
+            titulo="Ampliar 30 días"
+            value={"30D"}
           />
         </div>
-
         <Button type={"submit"} onSubmit={handleSubmit} value="Expandir" />
       </form>
     </ModalBase>
   );
 };
 
-// modal para eliminar cliente
+/**Modal para eliminar un cliente */
 export const ModalDeleteClient = ({
   open,
   encabezado,
   handleClose,
+  parameter,
 }: ModalInterface) => {
+  
+  //Control alertas
+  const { setAlertState } = useContext(AlertContext);
+
+  //Eliminar cliente
+  const onClick = async (cliente?: string | number) => {
+   
+    const { data, status } = await EliminarCliente(cliente);
+
+    //respuesta exitosa
+    if (status == 200) {
+      setAlertState({
+        open: true,
+        mensaje: `Cliente con un id ${data.customerID} eliminado`,
+        tipo: "success",
+      });
+    }
+
+    //Errores del servidor
+    if (status == 408) {
+      return setAlertState({
+        open: true,
+        mensaje: `Error 408: Sin conexión al servidor`,
+        tipo: "error",
+      });
+    } else if (status != 200) {
+      return setAlertState({
+        open: true,
+        mensaje: `Error${status} - ${data.message} `,
+        tipo: "error",
+      });
+    }
+  };
+
   return (
     <ModalBase encabezado={encabezado} open={open} handleClose={handleClose}>
       <div className={style["container-eliminar"]}>
@@ -151,7 +285,12 @@ export const ModalDeleteClient = ({
           <img src={alertOrangeIcon} alt="alerta" />
           <p>Tenga en cuenta que esta accion no se puede deshacer</p>
         </div>
-        <Button value="Eliminar" style="buttonRed" />
+        <Button
+          onClick={onClick}
+          parameter={parameter}
+          value="Eliminar"
+          style="buttonRed"
+        />
       </div>
     </ModalBase>
   );
