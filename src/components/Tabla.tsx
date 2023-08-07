@@ -46,13 +46,26 @@ export default function DataTable() {
     setTimeout(() => setControlModal(initialControModal), 500);
   };
 
-  //columnas dataGrid
+  //Columnas dataGrid
   const columns: GridColDef[] = [
-    { field: "nombre", headerName: "Nombre", flex: 1, editable: false, minWidth: 70 },
-    { field: "apellido", headerName: "Apellido", flex: 1,minWidth: 70 },
-    { field: "fecha_inicio", headerName: "Fecha de inicio", flex: 0.8,minWidth: 70 },
-    { field: "fecha_expiracion", headerName: "Fecha de expiracion", flex: 1,minWidth: 70 },
-    { field: "mac", headerName: "Mac", sortable: false, flex: 0.9,minWidth: 70 },
+    { field: "id", headerName: "ID", flex: 1, editable: false, minWidth: 70 },
+    { field: "name", headerName: "Nombre", flex: 1, minWidth: 70 },
+    { field: "last_name", headerName: "Apellido", flex: 0.8, minWidth: 70 },
+    { field: "mac", headerName: "Mac", flex: 1, minWidth: 70 },
+    {
+      field: "start_date",
+      headerName: "Fecha de inicio",
+      sortable: false,
+      flex: 0.9,
+      minWidth: 70,
+    },
+    {
+      field: "expiration_date",
+      headerName: "Fecha de expiracion",
+      sortable: false,
+      flex: 0.9,
+      minWidth: 70,
+    },
     {
       field: "accion",
       headerName: "Accion",
