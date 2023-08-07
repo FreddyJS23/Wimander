@@ -1,13 +1,14 @@
 import CamposForm from "./CamposForm";
-import { useContext, useState } from "react";
+import { useContext,useState } from "react";
 import styles from "../styles/login.module.css";
 import flechaButton from "../assets/right-arrow.svg";
 import Button from "./Button";
 import { AuthContext } from "../context/AuthContext";
-import {  ControlFormLogin, UserForm, AlertState } from "../types/index";
+import {  ControlFormLogin, UserForm } from "../types/index";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { Autenticar } from "../services/auth";
 import Alerts from "./Alerts";
+import { AlertContext } from "../context/AlertContext";
 
 
 const FormSesion = ({ handleClick }: ControlFormLogin) => {
@@ -19,30 +20,27 @@ const FormSesion = ({ handleClick }: ControlFormLogin) => {
   } = useForm<UserForm>();
 
   //estado de la alerta
-  const [alertOpen, setAlertOpen] = useState<AlertState>({
-    open: false,
-    mensaje: "",
-    tipo: "success",
-  });
+ const{setAlertState,onClose,alertState}=useContext(AlertContext)
 
-  //logica validacion de usuario
+ //Estado de carga boton
+const [loading, setLoading] = useState(false)
+  //Envio de formulario
   const onSubmit: SubmitHandler<UserForm> = async (form) => {
+ 
+    setLoading(true)
     const { data, status } = await Autenticar(form);
    
     if (status == 200) setUser(data.user);
    
-    else if (status == 408) setAlertOpen({ open: true,tipo:"error", mensaje: `${status}: error de conexion` });
+    else if (status == 408) setAlertState({ open: true,tipo:"error", mensaje: `${status}: error de conexion` });
    
-    else setAlertOpen({ open: true,tipo:"success", mensaje: data.message });};
- 
-
-  //cierre de alerta
- 
- 
-  const onClose = () => {
-    setAlertOpen({ ...alertOpen, open: false });
+    else setAlertState({ open: true,tipo:"success", mensaje: data.message });
+   
+    //cierre de alerta
+   onClose() 
+   setLoading(false)
   };
- 
+
   return (
     <>
       <form
@@ -75,14 +73,14 @@ const FormSesion = ({ handleClick }: ControlFormLogin) => {
           
         />
         <div className={styles["container-buttons"]}>
-          <Button type={"submit"} value="Iniciar" style="buttonIniciarSesion">
+          <Button type={"submit"}  loading={loading} value="Iniciar" style="buttonIniciarSesion">
             <img src={flechaButton} alt="icono flecha derecha" />{" "}
           </Button>
 
-          <Button onClick={handleClick} value="Registrar" />
+          <Button  onClick={handleClick} value="Registrar" />
         </div>
       </form>
-      <Alerts open={alertOpen.open} mensaje={alertOpen.mensaje} onClose={onClose} tipo={alertOpen.tipo} />
+      <Alerts open={alertState.open} mensaje={alertState.mensaje} onClose={onClose} tipo={alertState.tipo} />
     </>
   );
 };
