@@ -13,8 +13,7 @@ import { useEffect, useState } from "react";
 import { GetGanancias } from "../services/proceeds";
 
 const Dashboard = () => {
-  //titulo pagina
-  useDocumentTitle('Dashboard')
+ 
   //Ganacias
   const [ganancia, setGanacias] = useState(0);
 
@@ -23,6 +22,8 @@ const Dashboard = () => {
     GetGanancias().then((res) => setGanacias(res.data.proceeds));
   }, []);
 
+  //Titulo pagina
+  useDocumentTitle("Dashboard");
   return (
     <>
       <div className={style["container-dashboard"]}>
