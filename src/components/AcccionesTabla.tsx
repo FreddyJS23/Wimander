@@ -10,14 +10,14 @@ const AcccionesTabla = ({ handleClick,paramId }: AccionesTablaInterface) => {
   return (
     <div className={style["container-accionesTabla"]}>
       <img
-        onClick={handleClick}
+        onClick={(e)=> handleClick(e,paramId)}
         src={iconoDelete}
         alt="Eliminar"
         id="eliminar"
       />
-      <img onClick={handleClick} src={iconoEdit} alt="Editar" id="editar" />
+      <img onClick={(e)=> handleClick(e,paramId)} src={iconoEdit} alt="Editar" id="editar" />
       <img
-        onClick={handleClick}
+        onClick={(e)=> handleClick(e,paramId)}
         src={iconoCalender}
         alt="Calendario"
         id="calendario"
