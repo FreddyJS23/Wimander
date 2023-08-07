@@ -27,6 +27,14 @@ export default function DataTable() {
   useEffect(() => {
     GetClientes().then((res) => setClientes(res.data.customers));
   }, []);
+
+  //Click en las acciones de las acciones
+  const handleClick = (
+    e: React.MouseEvent<HTMLImageElement>,
+    paramId: number | string
+  ) => {
+    //Identificar tipo de acción a realizar
+    setControlModal({ modal: e.currentTarget.id, paramater: paramId });
     setOpenModal(true);
   };
 
