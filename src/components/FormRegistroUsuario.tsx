@@ -27,14 +27,12 @@ export const FormRegistroUsuario = ({ handleClick }: ControlFormLogin) => {
 
   //Envió de formulario
   const onSubmit: SubmitHandler<RegisterUserForm> = async (form, e) => {
-   
     setLoading(true);
     const { data, status } = await createUser(form);
     const { errors } = data;
     //Comprobar si las contraseñas son iguales
     if (getValues("password") != getValues("password2")) {
-      setLoading(false);
-      return setAlertState({
+      setAlertState({
         open: true,
         mensaje: "Las contraseñas no coinciden",
         tipo: "error",
@@ -52,7 +50,7 @@ export const FormRegistroUsuario = ({ handleClick }: ControlFormLogin) => {
 
     //Errores en los campos
     if (GetErrorsResponse(errors))
-      return setAlertState({
+      setAlertState({
         open: true,
         mensaje: GetErrorsResponse(errors),
         tipo: "error",
@@ -60,19 +58,19 @@ export const FormRegistroUsuario = ({ handleClick }: ControlFormLogin) => {
 
     //Errores del servidor
     if (status == 408) {
-      return setAlertState({
+      setAlertState({
         open: true,
         mensaje: `Error 408: Sin conexión al servidor`,
         tipo: "error",
       });
     } else if (status != 200) {
-      return setAlertState({
+      setAlertState({
         open: true,
         mensaje: `Error${status} - ${data.message} `,
         tipo: "error",
       });
     }
- 
+
     setLoading(false);
   };
 
@@ -150,7 +148,7 @@ export const FormRegistroUsuario = ({ handleClick }: ControlFormLogin) => {
         />
 
         <div className={styles["container-buttons"]}>
-          <Button loading={loading} type={"submit"} value={"Registrarse"}  />
+          <Button loading={loading} type={"submit"} value={"Registrarse"} />
         </div>
       </form>
       <Alerts
