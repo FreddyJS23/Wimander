@@ -27,11 +27,10 @@ export const FormRegistroUsuario = ({ handleClick }: ControlFormLogin) => {
 
   //Envió de formulario
   const onSubmit: SubmitHandler<RegisterUserForm> = async (form, e) => {
+   
+    setLoading(true);
     const { data, status } = await createUser(form);
     const { errors } = data;
-
-    setLoading(true);
-
     //Comprobar si las contraseñas son iguales
     if (getValues("password") != getValues("password2")) {
       setLoading(false);
@@ -75,6 +74,8 @@ export const FormRegistroUsuario = ({ handleClick }: ControlFormLogin) => {
     }
     //Cierre de alerta
     onClose();
+   
+    setLoading(false);
   };
 
   return (
@@ -151,18 +152,7 @@ export const FormRegistroUsuario = ({ handleClick }: ControlFormLogin) => {
         />
 
         <div className={styles["container-buttons"]}>
-          <Button loading={loading} type={"submit"}>
-            {loading ? (
-              <CircularProgress
-                sx={{ color: "white" }}
-                disableShrink={true}
-                size={24}
-                thickness={5}
-              />
-            ) : (
-              "Registrar"
-            )}
-          </Button>
+          <Button loading={loading} type={"submit"} value={"Registrarse"}  />
         </div>
       </form>
       <Alerts
