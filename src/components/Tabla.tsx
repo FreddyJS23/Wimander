@@ -96,26 +96,26 @@ export default function DataTable() {
         density="compact"
       />
 
-      {/* identificar que modal abrir */}
-      {controlModal == "editar" && (
+      {/* Identificar que modal abrir */}
+      {controlModal.modal == "editar" && (
         <ModalEditarClient
-          cliente={cliente}
+          parameter={controlModal.paramater}
           open={openModal}
           encabezado="Editar cliente"
           handleClose={handleClose}
         />
       )}
-      {controlModal == "calendario" && (
+      {controlModal.modal == "calendario" && (
         <ModalExpandirFecha
-          cliente={cliente}
+          parameter={controlModal.paramater}
           open={openModal}
           encabezado="Expandir fecha"
           handleClose={handleClose}
         />
       )}
-      {controlModal == "eliminar" && (
+      {controlModal.modal == "eliminar" && (
         <ModalDeleteClient
-          cliente={cliente}
+          parameter={controlModal.paramater}
           open={openModal}
           encabezado="Confirmar eliminación"
           handleClose={handleClose}
