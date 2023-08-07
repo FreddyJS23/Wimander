@@ -121,6 +121,13 @@ export default function DataTable() {
           handleClose={handleClose}
         />
       )}
+      {/* Mensaje de alertas al realizar las acciones    */}
+      <Alerts
+        mensaje={alertState.mensaje}
+        open={alertState.open}
+        tipo={alertState.tipo}
+        onClose={onClose}
+      />
     </>
   );
 }
