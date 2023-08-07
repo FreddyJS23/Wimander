@@ -9,10 +9,20 @@ import {
   AnimacionTarjetasContainer,
 } from "../components/AnimacionTarjetas";
 import useDocumentTitle from "../utils/useDocumentTitle";
+import { useEffect, useState } from "react";
+import { GetGanancias } from "../services/proceeds";
 
 const Dashboard = () => {
   //titulo pagina
   useDocumentTitle('Dashboard')
+  //Ganacias
+  const [ganancia, setGanacias] = useState(0);
+
+  //Consultar ganancias
+  useEffect(() => {
+    GetGanancias().then((res) => setGanacias(res.data.proceeds));
+  }, []);
+
   return (
     <>
       <div className={style["container-dashboard"]}>
