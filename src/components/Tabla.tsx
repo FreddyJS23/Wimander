@@ -12,14 +12,17 @@ import Alerts from "./Alerts";
 import { AlertContext } from "../context/AlertContext";
 
 export default function DataTable() {
+//Estado modal
+  const initialControModal = { modal: "", paramater: 0 };
+  const [clientes, setClientes] = useState<Customer[]>([]);
+  //Apertura del modal
   const [openModal, setOpenModal] = useState(false);
-  const [controlModal, setControlModal] = useState("");
-  const [cliente, setCliente] = useState(0);
- 
+  //Informacion para enviar al modal
+  const [controlModal, setControlModal] =
+    useState<ControlModal>(initialControModal);
+  //Context para las alertas
+    const { alertState, onClose } = useContext(AlertContext);
 
-  const handleClick = (e: React.MouseEvent<HTMLImageElement>) => {
-    //identificar image que se dio click
-    setControlModal(e.currentTarget.id);
     setOpenModal(true);
   };
 
