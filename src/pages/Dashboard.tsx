@@ -10,11 +10,21 @@ import {
 import useDocumentTitle from "../utils/useDocumentTitle";
 import { useEffect, useState } from "react";
 import { GetGanancias } from "../services/proceeds";
+import BotonCrearCliente from "../components/BotonCrearCliente";
+import { ModalCrearClient } from "../components/Modales";
 
 const Dashboard = () => {
- 
   //Ganacias
   const [ganancia, setGanacias] = useState(0);
+
+  //Control modal
+  const [modalOpen, setModalOpen] = useState(false);
+
+  //Apertura modal
+  const openModal = () => setModalOpen(true);
+
+  //Cierre modal
+  const onClose = () => setModalOpen(false);
 
   //Consultar ganancias
   useEffect(() => {
@@ -51,14 +61,24 @@ const Dashboard = () => {
                 </CardContent>
               </Card>
             </AnimacionTarjetasChildren>
+
             {/* <TarjetasDasboard titulo={'titulo'} contenido={'contenido'} style={style['tarjeta-dashboard']} />
         <TarjetasDasboard titulo={'titulo'} contenido={'contenido'} style={style['tarjeta-dashboard']} /> */}
           </div>
         </AnimacionTarjetasContainer>
 
         <div className={styleTable["container-tablaCliente"]}>
+          <BotonCrearCliente onClick={openModal} />
           <Tabla />
         </div>
+        {/* Modal crear cliente */}
+        {modalOpen && (
+          <ModalCrearClient
+            encabezado="Crear cliente"
+            handleClose={onClose}
+            open={modalOpen}
+          />
+        )}
       </div>
     </>
   );
