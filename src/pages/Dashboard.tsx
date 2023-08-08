@@ -51,17 +51,6 @@ const Dashboard = () => {
                 </CardContent>
               </Card>
             </AnimacionTarjetasChildren>
-            <AnimacionTarjetasChildren>
-              <Card className={style["tarjeta"]}>
-                <CardContent className={style["contenidoTarjeta"]}>
-                  <TarjetasDasboard
-                    titulo={"titulo"}
-                    contenido={"contenido"}
-                    style={style["tituloTarjeta"]}
-                  />
-                </CardContent>
-              </Card>
-            </AnimacionTarjetasChildren>
             {/* <TarjetasDasboard titulo={'titulo'} contenido={'contenido'} style={style['tarjeta-dashboard']} />
         <TarjetasDasboard titulo={'titulo'} contenido={'contenido'} style={style['tarjeta-dashboard']} /> */}
           </div>
