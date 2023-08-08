@@ -1,0 +1,95 @@
+.boton {
+  align-self: flex-end;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 50px;
+  height: 50px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition-duration: 0.3s;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+  background-color: rgb(65, 255, 106);
+  margin-right: 1rem;
+  text-wrap: nowrap;
+}
+
+/* plus sign */
+.container-icono {
+  width: 100%;
+  transition-duration: 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container-icono img {
+  width: 22px;
+}
+
+/* text */
+.texto {
+  position: absolute;
+  right: -5%;
+  width: 90%;
+  opacity: 0;
+  color: white;
+  font-size: 1.2em;
+  font-weight: 600;
+  transition-duration: 0.3s;
+  word-break: break-all;
+  margin: 0;
+}
+
+/* hover effect on button width */
+.boton:hover {
+  width: 160px;
+  border-radius: 40px;
+  transition-duration: 0.3s;
+}
+
+.boton:hover .container-icono {
+  width: 30%;
+  transition-duration: 0.3s;
+  padding-left: 0px;
+}
+
+/* hover effect button's text */
+.boton:hover .texto {
+  opacity: 1;
+  transition-duration: 0.3s;
+  padding-right: 2px;
+}
+
+/* button click effect*/
+.boton:active {
+  transform: translate(2px, 2px);
+}
+
+@media screen and (max-width: 500px) {
+  .boton {
+    width: 35px;
+    height: 35px;
+  }
+
+  .container-icono img {
+    width: 16px;
+  }
+  .texto {
+    font-size: 0.9rem;
+  }
+  /* hover effect on button width */
+  .boton:hover {
+    width: 130px;
+    border-radius: 40px;
+    transition-duration: 0.3s;
+  }
+  .boton:hover .container-icono {
+    width: 22%;
+    transition-duration: 0.3s;
+    padding-left: 0px;
+  }
+}
