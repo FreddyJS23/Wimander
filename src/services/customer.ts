@@ -1,5 +1,5 @@
 import axios from "axios"
-import { CustomerForm, CustomerFormUpdate, Response } from "../types/index"
+import { CustomerRegister, CustomerFormUpdate, Response } from "../types/index"
 
 /**Obtener todos los clientes */
 export const GetClientes= ():Promise<Response> => {
@@ -43,6 +43,24 @@ export const ActualizarCliente= (cliente:number | string | undefined,form:Custom
    //eliminar campo id del formulario
     delete form.id
      return axios.put(`${import.meta.env.VITE_API_URL}customer/${cliente}`,form)
+         .then(res => {
+             const { data, status }: Response = res
+             return { data, status, }
+         }
+         )
+         .catch(err => {
+             const { data, status }: Response = err.response ? err.response : { data:{errors:'Sin conexion al servidor'}, status: 408 }
+             return { data, status }
+
+         })
+}
+/**Crear cliente
+ * @param form - formulario con los campos a crear
+ */
+export const CrearCliente= (form:CustomerRegister) => {
+   
+    
+     return axios.post(`${import.meta.env.VITE_API_URL}customer`,form)
          .then(res => {
              const { data, status }: Response = res
              return { data, status, }
