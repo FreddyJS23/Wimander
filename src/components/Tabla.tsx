@@ -25,7 +25,8 @@ export default function DataTable() {
 
   //Obtener información para la table
   useEffect(() => {
-    GetClientes().then((res) => setClientes(res.data.customers));
+  
+    GetClientes().then((res) =>res.status == 200 ?   setClientes(res.data.customers) : setClientes([]));
   }, []);
 
   //Click en las acciones de las acciones
