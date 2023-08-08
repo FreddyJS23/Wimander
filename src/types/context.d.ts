@@ -40,3 +40,18 @@ export interface AlertContextInterface{
  /**Cierre de la alerta */
   onClose:()=>void
  }
+  
+ 
+ /**Estado de la configuracion */
+export interface ConfigState{
+  /**Monto mensual de los usuarios */
+   amount:number
+ }
+  /**Context de la configuracion */
+export interface ConfigContextInterface{
+  /**Configuraciones de la apliacion */
+  configs:ConfigState
+  /**Cambiar configuraciones de la apliacion */
+  setConfigs:Dispatch<SetStateAction<ConfigState>>
+
+ }

@@ -18,6 +18,7 @@ import {
   themeLinearProgress,
 } from "./utils/themesMui.ts";
 import { AlertContextProvider } from "./context/AlertContext.tsx";
+import { ConfigsContextProvider } from "./context/configurations.tsx";
 
 const theme = createTheme(
   {
@@ -37,7 +38,9 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
     <ThemeProvider theme={theme}>
       <AuthProvider>
         <AlertContextProvider>
-        <RouterProvider router={router} />
+          <ConfigsContextProvider>
+            <RouterProvider router={router} />
+          </ConfigsContextProvider>
         </AlertContextProvider>
       </AuthProvider>
     </ThemeProvider>
