@@ -58,7 +58,7 @@ position: relative;
 }
 
 /* seleccionar al tercer elemento con el mismo nombre */
-.container-seccion:nth-of-type(3){
+.formRegister .container-seccion:nth-of-type(3){
     justify-content: space-evenly;
     flex-wrap: wrap;
 }
