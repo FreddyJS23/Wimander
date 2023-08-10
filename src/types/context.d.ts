@@ -3,15 +3,15 @@ import { AlertColor } from "@mui/material"
 /**Context del usuario */
 export interface AuthContextInterface {
     /**Informacion del usuario */
-    user?: User
+    user?: UserAuth
     /**Estado inicial del usuario */
-    initialStateUser: User
+    initialStateUser: UserAuth
     /**Cambio de estado del usuario */
-    setUser: Dispatch<SetStateAction<User>>
+    setUser: Dispatch<SetStateAction<UserAuth>>
   }
 
    /**Información del usuario */
-export interface User {
+export interface UserAuth {
     /** id que tiene en la bd  */
     id: string,
     /** Nombre que tiene en la bd  */
