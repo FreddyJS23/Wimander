@@ -1,3 +1,5 @@
+import { useState } from 'react';
+import { Logout } from '../services/logout';
 import ElementsSidebar from "./ElementsSidebar";
 import style from "../styles/sidebar.module.css";
 import iconoDashboard from "../assets/dashboard.svg";
@@ -8,17 +10,20 @@ import { AuthContext } from "../context/AuthContext";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import  logo from '../assets/logo.svg'
+import { ModalEditarUser } from "./Modales";
 
 
 const Sidebar = ({responsive}:any) => {
-  //logout
-  const { setUser,initialStateUser } = useContext(AuthContext);
+ 
+  const { setUser,initialStateUser,user } = useContext(AuthContext);
+ const [modalOpen, setModalOpen] = useState(false)
+ 
+ const onClose=()=> setModalOpen(false)
+ const onClick=()=> setModalOpen(true)
+ 
   const navigation = useNavigate();
-
-  const hanldeClick = () => {
-    setUser(initialStateUser)
-    navigation("/");
-    return;
+ 
+ 
   //logout
   const handleLogout =async () => {
     const {data}=await Logout()
@@ -26,6 +31,7 @@ const Sidebar = ({responsive}:any) => {
       navigation("/");}    
   };
   return (
+   <>
     <nav className={`${style["container-sidebar"]} ${responsive ? style['sidebarResponsive'] : ''}  `}>
       <div className={style["sidebar"]}>
         <div className={style["encabezado"]}>
@@ -33,7 +39,7 @@ const Sidebar = ({responsive}:any) => {
             <img src={iconoAvatar} alt="foto perfil" />
           </div>
           <div className={style["container-usuario"]}>
-            <p>Usuario</p>
+            <p onClick={onClick}>{user?.name}</p>
           </div>
 
           <BotonLogout onClick={handleLogout} />
@@ -56,6 +62,8 @@ const Sidebar = ({responsive}:any) => {
 
       </div>
     </nav>
+ {modalOpen &&  <ModalEditarUser encabezado="Editar usuario" open={modalOpen} handleClose={onClose} parameter={user?.id}  />}
+   </>
   );
 };
 
