@@ -14,6 +14,7 @@ export interface RegisterUserForm{
   password2: string
 }
 
+
 export interface Customer{
   //debe ser opcional para usar el operador delete
   id?:number | string
@@ -23,8 +24,23 @@ export interface Customer{
   phone:string,
   start_date: Date,
   expiration_date: Date,
+}
+export interface User{
+ id:number | string,
+ name:string,
+ last_name:strint,
+ user:string,
+ email:string
 
 }
+
+
+  /**Formulario de actualizacion de usuario */
+  export interface UserUpdateForm extends User{
+ id?:number | string
+  password:string,
+ last_password:string,
+  }
 
 //omitir o eliminar algunos tipos de la interface original
 export type CustomerFormUpdate  = Omit<Customer,'start_date' | 'expiration_date'> 
