@@ -19,6 +19,11 @@ const Sidebar = ({responsive}:any) => {
     setUser(initialStateUser)
     navigation("/");
     return;
+  //logout
+  const handleLogout =async () => {
+    const {data}=await Logout()
+    if(data.status) {  setUser(initialStateUser)
+      navigation("/");}    
   };
   return (
     <nav className={`${style["container-sidebar"]} ${responsive ? style['sidebarResponsive'] : ''}  `}>
@@ -31,7 +36,7 @@ const Sidebar = ({responsive}:any) => {
             <p>Usuario</p>
           </div>
 
-          <BotonLogout onClick={hanldeClick} />
+          <BotonLogout onClick={handleLogout} />
         </div>
 
         <ul className={style["ListaOpciones"]}>
