@@ -1,4 +1,4 @@
-import { Customer, ExtendsConnectionFom, User } from "."
+import { Customer, User, UserAuth } from "."
 
 /** Respuesta del servidor */
 export type Response= {
@@ -17,7 +17,9 @@ export type ResponseData ={
   /** Errores de validación que presentaron los campos del formulario */
   errors: ErrorsResponseData
   /**  Información de la se sesión del usuario */
-  user: User
+  userAuth: UserAuth
+    /**Un usuario */
+    user:User 
   /**Suma total de la mensualidad de los clientes */
   proceeds:number
    /**Todos los clientes */
