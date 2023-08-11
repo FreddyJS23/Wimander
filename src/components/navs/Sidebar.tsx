@@ -1,19 +1,19 @@
 import { useState } from 'react';
-import { Logout } from '../services/logout';
-import ElementsSidebar from "./ElementsSidebar";
-import style from "../styles/sidebar.module.css";
-import iconoDashboard from "../assets/dashboard.svg";
-import iconoAbout from "../assets/about.svg";
-import BotonLogout from "./BotonCerrarSesion";
-import iconoAvatar from "../assets/avatar.svg";
-import { AuthContext } from "../context/AuthContext";
+import { Logout } from '../../services/logout';
+import {ElementsSidebar} from "../Elements";
+import style from "../../styles/sidebar.module.css";
+import iconoDashboard from "../../assets/dashboard.svg";
+import iconoAbout from "../../assets/about.svg";
+import {BotonLogout} from "../Botones";
+import iconoAvatar from "../../assets/avatar.svg";
+import { AuthContext } from "../../context/AuthContext";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import  logo from '../assets/logo.svg'
-import { ModalEditarUser } from "./Modales";
+import  logo from '../../assets/logo.svg'
+import { ModalEditarUser } from "../Modales";
 
 
-const Sidebar = ({responsive}:any) => {
+export const Sidebar = ({responsive}:any) => {
  
   const { setUser,initialStateUser,user } = useContext(AuthContext);
  const [modalOpen, setModalOpen] = useState(false)
@@ -67,4 +67,3 @@ const Sidebar = ({responsive}:any) => {
   );
 };
 
-export default Sidebar;

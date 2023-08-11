@@ -1,18 +1,20 @@
 import { DataGrid, GridColDef, GridRowParams } from "@mui/x-data-grid";
-import AcccionesTabla from "./AcccionesTabla";
+
+import { AcccionesTabla } from "../Botones";
 import { useContext, useEffect, useState } from "react";
 import {
   ModalEditarClient,
   ModalDeleteClient,
   ModalExpandirFecha,
-} from "./Modales";
-import { GetClientes } from "../services/customer";
-import { ControlModal, Customer } from "../types";
-import Alerts from "./Alerts";
-import { AlertContext } from "../context/AlertContext";
+} from "../Modales";
+import { GetClientes } from "../../services/customer";
+import { ControlModal, Customer } from "../../types";
+import { Alerts } from "../Elements";
+import { AlertContext } from "../../context/AlertContext";
+import { columCustomer } from "./columns";
 
-export default function DataTable() {
-//Estado modal
+export const TablaCustomer=()=> {
+  //Estado modal
   const initialControModal = { modal: "", paramater: 0 };
   const [clientes, setClientes] = useState<Customer[]>([]);
   //Apertura del modal
@@ -21,12 +23,13 @@ export default function DataTable() {
   const [controlModal, setControlModal] =
     useState<ControlModal>(initialControModal);
   //Context para las alertas
-    const { alertState, onClose } = useContext(AlertContext);
+  const { alertState, onClose } = useContext(AlertContext);
 
   //Obtener información para la table
   useEffect(() => {
-  
-    GetClientes().then((res) =>res.status == 200 ?   setClientes(res.data.customers) : setClientes([]));
+    GetClientes().then((res) =>
+      res.status == 200 ? setClientes(res.data.customers) : setClientes([])
+    );
   }, []);
 
   //Click en las acciones de las acciones
@@ -47,26 +50,8 @@ export default function DataTable() {
     setTimeout(() => setControlModal(initialControModal), 500);
   };
 
-  //Columnas dataGrid
-  const columns: GridColDef[] = [
-    { field: "id", headerName: "ID", flex: 1, editable: false, minWidth: 70 },
-    { field: "name", headerName: "Nombre", flex: 1, minWidth: 70 },
-    { field: "last_name", headerName: "Apellido", flex: 0.8, minWidth: 70 },
-    { field: "mac", headerName: "Mac", flex: 1, minWidth: 70 },
-    {
-      field: "start_date",
-      headerName: "Fecha de inicio",
-      sortable: false,
-      flex: 0.9,
-      minWidth: 70,
-    },
-    {
-      field: "expiration_date",
-      headerName: "Fecha de expiracion",
-      sortable: false,
-      flex: 0.9,
-      minWidth: 70,
-    },
+  //columnas acciones
+  const Acciones: GridColDef[] = [
     {
       field: "accion",
       headerName: "Accion",
@@ -81,6 +66,9 @@ export default function DataTable() {
       ],
     },
   ];
+
+  //Columnas dataGrid
+  const columns: GridColDef[] = columCustomer.concat(Acciones);
 
   return (
     <>

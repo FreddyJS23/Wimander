@@ -1,0 +1,1 @@
+export {TablaCustomer} from './TablaCustomer'

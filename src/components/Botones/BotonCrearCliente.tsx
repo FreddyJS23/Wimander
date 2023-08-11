@@ -1,11 +1,11 @@
-import icono from "../assets/plus-icon.svg";
-import style from "../styles/botonCrearCliente.module.css";
+import icono from "../../assets/plus-icon.svg";
+import style from "../../styles/botonCrearCliente.module.css";
 
 interface Props {
   onClick: () => void;
 }
 
-const BotonCrearCliente = ({ onClick }: Props) => {
+export const BotonCrearCliente = ({ onClick }: Props) => {
   return (
     <button onClick={onClick} className={style["boton"]}>
       <div className={style["container-icono"]}>
@@ -16,4 +16,4 @@ const BotonCrearCliente = ({ onClick }: Props) => {
   );
 };
 
-export default BotonCrearCliente;
+

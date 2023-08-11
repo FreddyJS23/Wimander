@@ -1,11 +1,11 @@
-import iconoDelete from "../assets/delete.svg";
-import iconoEdit from "../assets/editar.svg";
-import iconoCalender from "../assets/calendario.svg";
-import style from "../styles/accionesTabla.module.css";
-import { AccionesTablaInterface } from "../types";
+import iconoDelete from "../../assets/delete.svg";
+import iconoEdit from "../../assets/editar.svg";
+import iconoCalender from "../../assets/calendario.svg";
+import style from "../../styles/accionesTabla.module.css";
+import { AccionesTablaInterface } from "../../types";
 
 
-const AcccionesTabla = ({ handleClick,paramId }: AccionesTablaInterface) => {
+export const AcccionesTabla = ({ handleClick,paramId }: AccionesTablaInterface) => {
 
   return (
     <div className={style["container-accionesTabla"]}>
@@ -26,4 +26,4 @@ const AcccionesTabla = ({ handleClick,paramId }: AccionesTablaInterface) => {
   );
 };
 
-export default AcccionesTabla;
+

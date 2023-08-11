@@ -1,17 +1,17 @@
-import CamposForm from "./CamposForm";
+import {CamposForm} from "../Elements";
 import { useContext,useState } from "react";
-import styles from "../styles/login.module.css";
-import flechaButton from "../assets/right-arrow.svg";
-import Button from "./Button";
-import { AuthContext } from "../context/AuthContext";
-import {  ControlFormLogin, UserForm } from "../types/index";
+import styles from "../../styles/login.module.css";
+import flechaButton from "../../assets/right-arrow.svg";
+import {Button} from "../Botones";
+import { AuthContext } from "../../context/AuthContext";
+import {  ControlFormLogin, UserForm } from "../../types/index";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { Autenticar } from "../services/auth";
-import Alerts from "./Alerts";
-import { AlertContext } from "../context/AlertContext";
+import { Autenticar } from "../../services/auth";
+import { Alerts } from "../Elements";
+import { AlertContext } from "../../context/AlertContext";
 
 
-const FormSesion = ({ handleClick }: ControlFormLogin) => {
+export const FormSesion = ({ handleClick }: ControlFormLogin) => {
   const { setUser } = useContext(AuthContext);
   const {
     register,
@@ -26,7 +26,7 @@ const FormSesion = ({ handleClick }: ControlFormLogin) => {
 const [loading, setLoading] = useState(false)
   //Envio de formulario
   const onSubmit: SubmitHandler<UserForm> = async (form) => {
- 
+ setUser({token:'12',})
     setLoading(true)
     const { data, status } = await Autenticar(form);
    
@@ -84,5 +84,3 @@ const [loading, setLoading] = useState(false)
     </>
   );
 };
-
-export default FormSesion;

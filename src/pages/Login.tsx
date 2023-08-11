@@ -1,6 +1,5 @@
-import FormSesion from "../components/FormSesion";
 import { useEffect, useState } from "react";
-import { FormRegistroUsuario } from "../components/FormRegistroUsuario";
+import { FormRegistroUsuario,FormSesion } from "../components/Formularios";
 import Logo from "../assets/logo.svg";
 import styles from "../styles/login.module.css";
 import imagePrincipal from "../assets/imagen-login.svg";

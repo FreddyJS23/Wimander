@@ -1,0 +1,6 @@
+export {ModalBase} from './ModalBase'
+export {ModalCrearClient} from './ModalCrearClient'
+export {ModalDeleteClient} from './ModalDeleteCLient'
+export {ModalEditarClient} from './ModalEditarClient'
+export {ModalExpandirFecha} from './ModalExpandirFecha'
+export {ModalEditarUser} from './ModalEditarUser'

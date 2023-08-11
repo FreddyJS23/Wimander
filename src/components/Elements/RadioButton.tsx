@@ -1,8 +1,8 @@
-import style from "../styles/radioButton.module.css";
-import { RadioButtonInterface } from "../types";
+import style from "../../styles/radioButton.module.css";
+import { RadioButtonInterface } from "../../types";
 
 
-const RadioButton = ({
+export const RadioButton = ({
   titulo,
   name,
   value,
@@ -19,5 +19,3 @@ const RadioButton = ({
     </div>
   );
 };
-
-export default RadioButton;

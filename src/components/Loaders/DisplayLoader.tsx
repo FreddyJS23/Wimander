@@ -1,7 +1,7 @@
 import { Backdrop } from "@mui/material";
-import LoaderSpinner from "./LoaderSpinner";
+import {LoaderSpinner} from "./LoaderSpinner";
 
-const DisplayLoader = () => {
+export const DisplayLoader = () => {
   return (
     <Backdrop open={true}>
       <LoaderSpinner />
@@ -9,4 +9,4 @@ const DisplayLoader = () => {
   );
 };
 
-export default DisplayLoader;
+

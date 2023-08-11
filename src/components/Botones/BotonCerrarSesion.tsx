@@ -1,11 +1,11 @@
-import icono from "../assets/salir.svg";
-import style from "../styles/botonLogut.module.css";
+import icono from "../../assets/salir.svg";
+import style from "../../styles/botonLogut.module.css";
 
 interface Props {
   onClick: () => void;
 }
 
-const BotonLogout = ({ onClick }: Props) => {
+export const BotonLogout = ({ onClick }: Props) => {
   return (
     <button onClick={onClick} className={style["boton"]}>
       <div className={style["container-icono"]}>
@@ -18,4 +18,4 @@ const BotonLogout = ({ onClick }: Props) => {
   );
 };
 
-export default BotonLogout;
+

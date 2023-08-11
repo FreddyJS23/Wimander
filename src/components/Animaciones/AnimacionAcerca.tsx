@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import { AnimacionContainer } from "../types/index";
-import style from "../styles/acerca.module.css";
+import { AnimacionContainer } from "../../types/index";
+import style from "../../styles/acerca.module.css";
 
 //constante de variantes
 const logo = {

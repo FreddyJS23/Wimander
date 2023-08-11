@@ -2,7 +2,7 @@ import logoAzul from "../assets/logoAzul.svg";
 import style from "../styles/acerca.module.css";
 import iconoLinkedin from "../assets/linkedin.svg";
 import iconoGithub from "../assets/github.svg";
-import { AnimacionContactoContainer,AnimacionContactoIcon,AnimacionLogo } from "../components/AnimacionAcerca";
+import { AnimacionContactoContainer,AnimacionContactoIcon,AnimacionLogo } from "../components/Animaciones";
 import useDocumentTitle from "../utils/useDocumentTitle";
 
 const Acerca = () => {

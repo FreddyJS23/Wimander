@@ -1,0 +1,1 @@
+export {columCustomer} from './columCustomer'

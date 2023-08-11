@@ -1,11 +1,11 @@
-import { ElementSidebarInterface } from "../types/index";
+import { ElementSidebarInterface } from "../../types/index";
 import { Link } from "react-router-dom";
 
 interface Props {
   ElementSidebar: ElementSidebarInterface;
 }
 
-const ElementsSidebar = ({
+export const ElementsSidebar = ({
   children,
   name,
   link,
@@ -18,4 +18,4 @@ const ElementsSidebar = ({
   );
 };
 
-export default ElementsSidebar;
+

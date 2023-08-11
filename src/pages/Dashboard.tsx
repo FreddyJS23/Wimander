@@ -1,16 +1,16 @@
 import { Card, CardContent } from "@mui/material";
-import { TarjetasDasboard } from "../components/TarjetasDasboard";
+import { TarjetasDasboard } from "../components/Elements";
 import style from "../styles/dashboard.module.css";
 import styleTable from "../styles/tablas.module.css";
-import Tabla from "../components/Tabla";
+import {TablaCustomer} from "../components/Tablas";
 import {
   AnimacionTarjetasChildren,
   AnimacionTarjetasContainer,
-} from "../components/AnimacionTarjetas";
+} from "../components/Animaciones";
 import useDocumentTitle from "../utils/useDocumentTitle";
 import { useEffect, useState } from "react";
 import { GetGanancias } from "../services/proceeds";
-import BotonCrearCliente from "../components/BotonCrearCliente";
+import {BotonCrearCliente} from "../components/Botones";
 import { ModalCrearClient } from "../components/Modales";
 
 const Dashboard = () => {
@@ -69,7 +69,7 @@ const Dashboard = () => {
 
         <div className={styleTable["container-tablaCliente"]}>
           <BotonCrearCliente onClick={openModal} />
-          <Tabla />
+          <TablaCustomer />
         </div>
         {/* Modal crear cliente */}
         {modalOpen && (

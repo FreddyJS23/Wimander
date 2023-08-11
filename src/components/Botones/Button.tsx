@@ -1,8 +1,8 @@
-import { ButtonInterface } from "../types/index";
-import styles from "../styles/buttons.module.css";
+import { ButtonInterface } from "../../types/index";
+import styles from "../../styles/buttons.module.css";
 import { CircularProgress } from "@mui/material";
 
-const Button = ({
+export const Button = ({
   type = "button",
   style = "button",
   value,
@@ -35,4 +35,4 @@ const Button = ({
   );
 };
 
-export default Button;
+

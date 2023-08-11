@@ -1,8 +1,8 @@
-import { CamposFormInterface } from "../types";
-import styles from "../styles/CampoForm.module.css";
+import { CamposFormInterface } from "../../types";
+import styles from "../../styles/CampoForm.module.css";
 import { Tooltip } from "@mui/material";
 
- const CamposForm = ({
+export const CamposForm = ({
   inputName,
   name,
   styleLabel = "label",
@@ -58,4 +58,4 @@ import { Tooltip } from "@mui/material";
   );
 };
 
-export default CamposForm
+

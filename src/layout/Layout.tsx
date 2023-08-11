@@ -1,11 +1,11 @@
 import { Suspense } from "react";
 import { Outlet } from "react-router-dom";
-import Sidebar from "../components/Sidebar";
+import {Sidebar} from "../components/navs/Sidebar";
 import style from "../styles/layout.module.css";
 import logo from "../assets/logo.svg";
-import { PageLoading } from "../components/PageLoading";
-import { AnimacionesLayout } from "../components/AnimacionesLayout";
-import ButtonBurger from "../components/ButtonBurger";
+import { PageLoading } from "../components/Loaders";
+import { AnimacionesLayout } from "../components/Animaciones";
+import {ButtonBurger} from "../components/Botones";
 import { Drawer } from "@mui/material";
 import { useState } from "react";
 

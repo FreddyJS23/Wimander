@@ -1,6 +1,6 @@
-import style from '../styles/buttonBurger.module.css'
+import style from '../../styles/buttonBurger.module.css'
 
-const ButtonBurger = ({handleClick,cheked}:any) => {
+export const ButtonBurger = ({handleClick,cheked}:any) => {
   return (
    <>
    
@@ -17,4 +17,3 @@ const ButtonBurger = ({handleClick,cheked}:any) => {
   )
 }
 
-export default ButtonBurger
