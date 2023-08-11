@@ -1,11 +1,13 @@
-/** Formulario de logeo*/
-export interface UserForm {
-    user: string
-    password: string
-  }
+import { Customer, User } from "."
 
-  /**Formulario de registro de usuario */
-export interface RegisterUserForm{
+/** Formulario de login*/
+export type UserForm = {
+  user: string
+  password: string
+}
+
+/**Formulario de registro de usuario */
+export type RegisterUserForm = {
   name: string,
   last_name: string,
   user: string,
@@ -14,46 +16,29 @@ export interface RegisterUserForm{
   password2: string
 }
 
-
-export interface Customer{
-  //debe ser opcional para usar el operador delete
-  id?:number | string
-  name: string,
-  last_name: string,
-  mac: string,
-  phone:string,
-  start_date: Date,
-  expiration_date: Date,
+/**Formulario de actualización de usuario */
+export interface UserUpdateForm extends User {
+  password: string,
+  last_password: string,
 }
-export interface User{
- id:number | string,
- name:string,
- last_name:strint,
- user:string,
- email:string
-
-}
-
-
-  /**Formulario de actualizacion de usuario */
-  export interface UserUpdateForm extends User{
- id?:number | string
-  password:string,
- last_password:string,
-  }
 
 //omitir o eliminar algunos tipos de la interface original
-export type CustomerFormUpdate  = Omit<Customer,'start_date' | 'expiration_date'> 
-  
-export interface ExtendsConnectionFom{
-id?:number | string
-/**Extender la conexión 15 o 30 dias */
-extendsConnection:'15D' | '30D'
+export type CustomerFormUpdate = Omit<Customer, 'start_date' | 'expiration_date'>
+
+export type ExtendsConnectionFom = {
+  id?: number | string
+  /**Extender la conexión 15 o 30 dias */
+  extendsConnection: '15D' | '30D'
 }
 
-interface CustomerFormRegister extends Customer{
-  plan:'15D' | '30D'
-  amount:number
-} 
+interface CustomerFormRegister extends Customer {
+  /**Plan de conexion */
+  plan: '15D' | '30D'
+  /**Monto*/
+  amount: number
+}
 
-export type CustomerRegister=Omit<CustomerFormRegister, 'id' | 'expiration_date'>
+/**Formulario registro de cliente */
+export type CustomerRegister = Omit<CustomerFormRegister, 'id' | 'expiration_date'>
+
+

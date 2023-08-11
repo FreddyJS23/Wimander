@@ -1,7 +1,7 @@
 import { Customer, User, UserAuth } from "."
 
 /** Respuesta del servidor */
-export type Response= {
+export type Response = {
   /** Informacion de la repuesta */
   data: ResponseData
   /**Código de respuesta del servidor*/
@@ -9,7 +9,7 @@ export type Response= {
 }
 
 /* Información obtenida del servidor*/
-export type ResponseData ={
+export type ResponseData = {
   /** Indica si la operación solicitada a sido exitosa */
   status: boolean
   /**  Mensaje de la operación */
@@ -18,19 +18,19 @@ export type ResponseData ={
   errors: ErrorsResponseData
   /**  Información de la se sesión del usuario */
   userAuth: UserAuth
-    /**Un usuario */
-    user:User 
+  /**Un usuario */
+  user: User
   /**Suma total de la mensualidad de los clientes */
-  proceeds:number
-   /**Todos los clientes */
-  customers:Customer[] 
-   /**Un cliente */
-  customer:Customer 
-   /**Id del cliente afectado */
+  proceeds: number
+  /**Todos los clientes */
+  customers: Customer[]
+  /**Un cliente */
+  customer: Customer
+  /**Id del cliente afectado */
   customerID: number
 }
 /** Errores de validación que presenta un campo */
-interface ErrorsResponseData {
+type ErrorsResponseData = {
   [index: string]: []
 }
 

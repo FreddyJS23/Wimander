@@ -1,111 +1,117 @@
 import { GridRowId } from "@mui/x-data-grid"
+import { HTMLInputTypeAttribute } from "react"
 
-export interface CamposFormInterface {
-    /**
-     *id que tomara el input
-     *
-    *Nombre que tomara register
-    *
-    *id que tomara el label
-     */
-     inputName: string,
-     /** Nombre del label */
-     name: string,
-     /**Estilo adicional del label
-      * @default "label"
-      */
-     styleLabel?: string,
-     /**Estilo adicional del input
-      * @default "input"
-      */
-     styleInput?: string,
-     /**Tipo de input*/
-     type:  HTMLInputTypeAttribute
-     /** Hook para control del input */
-     register: UseFormRegister,
-     /** Expresión regular para el campo*/
-     pattern?: ValidationRule<RegExp>
-     /**Indica si el campo es requerido para la validación */
-     required?: boolean
-    /**Indica la longitud máxima que debe tener */
-     maxLength?: number,
-     /** Indica la longitud mínima que debe tener */
-     minLength?: number,
-     /**Indica el valor mínimo que debe tener */
-     min?: number,
-     /**Indica el valor máximo que debe tener */
-     max?: number
-     /**Objeto con los campos que no pasen su validación, para asignar un clase error al label */
-     errors: FieldErrors
-     /**Texto de ayuda en el tooltip */
-     tip?: string | null
-   
-   }
-   
-   export interface tarjetaDashboardInterface {
-    titulo: string,
-    contenido: string,
-    style: string
-  }
-  
-  export interface ButtonInterface { 
-    /** Tipo de boton */
-   type?:'submit' | 'reset' | 'button' | undefined,
-   /** Estilo adicional*/
-   style?: string
-   /** Texto que tendrá el botón  */
-   value?: string
-   /**Click en el boton
-    * @param paramter - parámetro que recibirá la función click
-    */
-   onClick?: (paramater?) => void
-   /**Submit */
-   onSubmit?: (e) => void
-   /** Componente que recibirá el botón*/
-   children?: React.DetailedHTMLProps
-   /**Estado de carga */
-   loading?:boolean
-   /**En caso que requiera enviar un parámetro para la función onClick */
-   parameter?:number | string
- }
+export type CamposFormInterface = {
+  /**
+   *id que tomara el input
+   *
+  *Nombre que tomara register
+  *
+  *id que tomara el label
+   */
+  inputName: string,
+  /** Nombre del label */
+  name: string,
+  /**Estilo adicional del label
+   * @default "label"
+   */
+  styleLabel?: string,
+  /**Estilo adicional del input
+   * @default "input"
+   */
+  styleInput?: string,
+  /**Tipo de input*/
+  type: HTMLInputTypeAttribute
+  /** Hook para control del input */
+  register: UseFormRegister,
+  /** Expresión regular para el campo*/
+  pattern?: ValidationRule<RegExp>
+  /**Indica si el campo es requerido para la validación */
+  required?: boolean
+  /**Indica la longitud máxima que debe tener */
+  maxLength?: number,
+  /** Indica la longitud mínima que debe tener */
+  minLength?: number,
+  /**Indica el valor mínimo que debe tener */
+  min?: number,
+  /**Indica el valor máximo que debe tener */
+  max?: number
+  /**Objeto con los campos que no pasen su validación, para asignar un clase error al label */
+  errors: FieldErrors
+  /**Texto de ayuda en el tooltip */
+  tip?: string | null
 
- export interface ElementSidebarInterface {
-    children?: React.DetailedHTMLProps
-    name: string,
-    link: string,
-    style: string
-  }
-  
-  /**Modal personalizado */
-  export interface ModalInterface {
-    /**Parámetro que recibirá el modal para hacer una petición a un endPoint */
-    parameter?:GridRowId
-    /**Titulo del modal */
-    encabezado: string;
-    /**Control de apertura del modal y su animación */
-    open: boolean
-    /**Cierra el modal actual */
-    handleClose: () => void
-  
-  }
-  
-  /**Modal padre que envolverá el contenido */
-  export interface ModalBaseInterface extends ModalInterface {
-     /**Contenido que tendrá el modal */
-     children: React.ReactElement;
-  }
+}
 
-  interface AnimacionContainer {
-    children: React.ReactElement | JSXElementConstructor;
-  }
-  
-  export interface AnimacionModalInterface extends AnimacionContainer {
-    in?: boolean;
-  
-  }
+export type tarjetaDashboardInterface = {
+  titulo: string,
+  contenido: string,
+  style: string
+}
 
-  /**Alerta personalizada */
-export interface AlertsInterface {
+export type ButtonInterface = {
+  /** Tipo de boton */
+  type?: 'submit' | 'reset' | 'button' | undefined,
+  /** Estilo adicional*/
+  style?: string
+  /** Texto que tendrá el botón  */
+  value?: string
+  /**Click en el boton
+   * @param paramter - parámetro que recibirá la función click
+   */
+  onClick?: (paramater?) => void
+  /**Submit */
+  onSubmit?: (e) => void
+  /** Componente que recibirá el botón*/
+  children?: React.DetailedHTMLProps
+  /**Estado de carga */
+  loading?: boolean
+  /**En caso que requiera enviar un parámetro para la función onClick */
+  parameter?: number | string
+}
+
+/**Elemento lista del sidebar */
+export type ElementSidebarInterface = {
+  /**Contenido adicional que puede tener */
+  children?: React.DetailedHTMLProps
+  /**Titulo del elemento */
+  name: string,
+  /**Ruta a la que redireccionara */
+  link: string,
+  /**Estilo del elemento */
+  style: string
+}
+
+/**Modal personalizado */
+export interface ModalInterface {
+  /**Parámetro que recibirá el modal para hacer una petición a un endPoint */
+  parameter?: GridRowId
+  /**Titulo del modal */
+  encabezado: string;
+  /**Control de apertura del modal y su animación */
+  open: boolean
+  /**Cierra el modal actual */
+  handleClose: () => void
+
+}
+
+/**Modal padre que envolverá el contenido */
+export interface ModalBaseInterface extends ModalInterface {
+  /**Contenido que tendrá el modal */
+  children: React.ReactElement;
+}
+
+interface AnimacionContainer {
+  children: React.ReactElement | JSXElementConstructor;
+}
+
+export interface AnimacionModalInterface extends AnimacionContainer {
+  in?: boolean;
+
+}
+
+/**Alerta personalizada */
+export type AlertsInterface = {
   /** Determina si la alerta es visible o no */
   open: boolean,
   /** Mensaje que tendrá la alerta */
@@ -117,18 +123,18 @@ export interface AlertsInterface {
 }
 
 /**Iconos con las distintas acciones disponibles */
-export interface AccionesTablaInterface{
+export type AccionesTablaInterface = {
   /**Click en icono para la distintas opciones
    * @param e Evento del click
    * @param  paramId parámetro con el id de la columna 
    */
-  handleClick:(e: React.MouseEvent<HTMLImageElement>,paramId:GridRowId)=>void
+  handleClick: (e: React.MouseEvent<HTMLImageElement>, paramId: GridRowId) => void
   /**Parámetro recibido de una columna de la tabla */
-  paramId:GridRowId
+  paramId: GridRowId
 }
 
 /**Botones radio personalizados */
-export interface RadioButtonInterface {
+export type RadioButtonInterface = {
   /**Titulo que tendrá el botón */
   titulo: string;
   /**Nombre que tendrá el botón y recibirá el register */
@@ -136,5 +142,5 @@ export interface RadioButtonInterface {
   /**Valor de los distintos botones */
   value: string | number;
   /**Hook para el control del input */
-  register:UseFormRegister
+  register: UseFormRegister
 }

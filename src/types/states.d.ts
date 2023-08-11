@@ -1,9 +1,8 @@
 import { GridRowId } from "@mui/x-data-grid"
 
-
-export interface ControlModal{
+export interface ControlModal {
   /**Identificar que modal sera abierto */
-  modal:string
+  modal: string
   /**Parametro que recibira el modal */
-  paramater:GridRowId
+  paramater: GridRowId
 }
