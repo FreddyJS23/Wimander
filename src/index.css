@@ -40,3 +40,29 @@ body {
     height: initial;
   }
 } */
+
+
+/* Estilos alerta de fecha en la DataTable */
+.dateOrange{
+ 
+   color:orange;
+   font-weight: 600;
+}
+.dateRed{
+   color:red;
+   font-weight: 600;
+}
+
+.dateOrange::before,
+.dateRed::before {
+  content:'';
+  background-image: url('/src/assets/alertaOrange.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 25px;
+  height: 25px;
+ margin-right: 2px;
+}
+.dateRed::before{
+  background-image: url('/src/assets/alertaRed.svg');
+}
