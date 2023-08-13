@@ -101,11 +101,20 @@ export interface ModalBaseInterface extends ModalInterface {
   children: React.ReactElement;
 }
 
-interface AnimacionContainer {
-  children: React.ReactElement | JSXElementConstructor;
+/**Animación base */
+interface AnimacionBase {
+  /**Elementos que tendrán una animación */
+  children: React.ReactElement;
+  in?: boolean;
+  onClick?: any;
+  onEnter?: (node: HTMLElement, isAppearing: boolean) => void;
+  onExited?: (node: HTMLElement, isAppearing: boolean) => void;
+  ownerState?: any;
+  
 }
 
-export interface AnimacionModalInterface extends AnimacionContainer {
+export interface AnimacionModalInterface extends AnimacionBase {
+  
   in?: boolean;
 
 }
