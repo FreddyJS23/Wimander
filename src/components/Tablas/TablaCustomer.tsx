@@ -16,7 +16,9 @@ import { columCustomer } from "./columns";
 export const TablaCustomer=()=> {
   //Estado modal
   const initialControModal = { modal: "", paramater: 0 };
+  //clientes dataTable
   const [clientes, setClientes] = useState<Customer[]>([]);
+  const [loader, setLoader] = useState(false)
   //Apertura del modal
   const [openModal, setOpenModal] = useState(false);
   //Informacion para enviar al modal
@@ -27,9 +29,11 @@ export const TablaCustomer=()=> {
 
   //Obtener información para la table
   useEffect(() => {
+   setLoader(true)
     GetClientes().then((res) =>
       res.status == 200 ? setClientes(res.data.customers) : setClientes([])
     );
+    setLoader(false)
   }, []);
 
   //Click en las acciones de las acciones
@@ -83,6 +87,7 @@ export const TablaCustomer=()=> {
         }}
         pageSizeOptions={[8, 10, 15, 20]}
         density="compact"
+        loading={loader}  
       />
 
       {/* Identificar que modal abrir */}
