@@ -32,6 +32,7 @@
   
   .container-tarjetasDashoboard{
     gap: 1rem;
+    margin-bottom: .8rem;
   }
   .tarjeta{
     width:8.75rem;
