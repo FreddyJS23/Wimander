@@ -15,6 +15,18 @@
  
 }
 
+/* media querys
+
+sm:576px - telefonos
+
+md:768px - table
+
+lg:1024px- lapto
+
+xl:1280px- desktop */
+
+
+
  html {
   height: 100%;
 } 
@@ -34,13 +46,6 @@ body {
   background-repeat: no-repeat;
   background-size: contain;
 }
-
-/* @media screen and (max-width:730px){
-  html{
-    height: initial;
-  }
-} */
-
 
 /* Estilos alerta de fecha en la DataTable */
 .dateOrange{
@@ -66,3 +71,4 @@ body {
 .dateRed::before{
   background-image: url('/src/assets/alertaRed.svg');
 }
+

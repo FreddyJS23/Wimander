@@ -154,7 +154,7 @@
 }
 
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 576px) {
   .cl-checkbox > input {
 
     width: 27px;

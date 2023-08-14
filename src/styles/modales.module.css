@@ -136,7 +136,7 @@ font-weight: 700;
     
 }
 
-@media screen and (max-width:500px){
+@media screen and (max-width:576px){
     .container-modal{
         width:80%
     }
