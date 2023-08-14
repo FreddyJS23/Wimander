@@ -13,7 +13,6 @@ import  logo from '../../assets/logo.svg'
 import { ModalEditarUser } from "../Modales";
 
 
-export const Sidebar = ({responsive}:any) => {
  
   const { setUser,initialStateUser,user } = useContext(AuthContext);
  const [modalOpen, setModalOpen] = useState(false)

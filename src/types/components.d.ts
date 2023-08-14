@@ -153,3 +153,9 @@ export type RadioButtonInterface = {
   /**Hook para el control del input */
   register: UseFormRegister
 }
+
+/**Interfaz del sidebar */
+export type SidebarInterface = {
+  /**Activar estilos para un sidebar responsive */
+  responsive?:boolean
+}
