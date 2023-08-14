@@ -79,7 +79,7 @@ export const TablaCustomer=()=> {
       <DataGrid
         rows={clientes}
         columns={columns}
-        autoHeight
+        
         initialState={{
           pagination: {
             paginationModel: { pageSize: 8 },
