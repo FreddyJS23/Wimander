@@ -15,18 +15,17 @@ import { columCustomer } from "./columns";
 
 export const TablaCustomer=()=> {
   //Estado modal
-  const initialControModal = { modal: "", paramater: 0 };
+  const initialControModal = { modal:'', paramater: 0, open:false };
   //clientes dataTable
   const [clientes, setClientes] = useState<Customer[]>([]);
+  //loader para la tabla
   const [loader, setLoader] = useState(false)
-  //Apertura del modal
-  const [openModal, setOpenModal] = useState(false);
   //Informacion para enviar al modal
   const [controlModal, setControlModal] =
     useState<ControlModal>(initialControModal);
   //Context para las alertas
   const { alertState, onClose } = useContext(AlertContext);
-
+ 
   //Obtener información para la table
   useEffect(() => {
    setLoader(true)
@@ -42,13 +41,13 @@ export const TablaCustomer=()=> {
     paramId: number | string
   ) => {
     //Identificar tipo de acción a realizar
-    setControlModal({ modal: e.currentTarget.id, paramater: paramId });
-    setOpenModal(true);
+    setControlModal({ modal: e.currentTarget.id, paramater: paramId,open:true });
+    
   };
 
   //Click en el icono de cierre en el modal
   const handleClose = () => {
-    setOpenModal(false);
+    
     setControlModal(initialControModal);
     //Se necesita vaciar el state después de cierto tiempo para no anular la animacion de salida
     setTimeout(() => setControlModal(initialControModal), 500);
@@ -76,6 +75,7 @@ export const TablaCustomer=()=> {
 
   return (
     <>
+    
       <DataGrid
         rows={clientes}
         columns={columns}
@@ -87,34 +87,33 @@ export const TablaCustomer=()=> {
         }}
         pageSizeOptions={[8, 10, 15, 20]}
         density="compact"
-        loading={loader}  
+        loading={loader} 
+        
       />
 
-      {/* Identificar que modal abrir */}
-      {controlModal.modal == "editar" && (
         <ModalEditarClient
           parameter={controlModal.paramater}
-          open={openModal}
+          open={controlModal.modal === 'editar' &&   controlModal.open}
           encabezado="Editar cliente"
           handleClose={handleClose}
         />
-      )}
-      {controlModal.modal == "calendario" && (
+    
+    
         <ModalExpandirFecha
           parameter={controlModal.paramater}
-          open={openModal}
+          open={controlModal.modal == 'calendario' &&   controlModal.open}
           encabezado="Expandir fecha"
           handleClose={handleClose}
         />
-      )}
-      {controlModal.modal == "eliminar" && (
+      
+      
         <ModalDeleteClient
           parameter={controlModal.paramater}
-          open={openModal}
+          open={controlModal.modal == 'eliminar' &&   controlModal.open}
           encabezado="Confirmar eliminación"
           handleClose={handleClose}
         />
-      )}
+     
       {/* Mensaje de alertas al realizar las acciones    */}
       <Alerts
         mensaje={alertState.mensaje}
