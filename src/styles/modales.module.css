@@ -138,7 +138,8 @@ font-weight: 700;
 
 @media screen and (max-width:576px){
     .container-modal{
-        width:80%
+        width:80%;
+        box-shadow: 0px 0px 3px 1px var(--colorPrimario);
     }
     .container-encabezado p{
         font-size: 22px;
@@ -153,7 +154,7 @@ font-weight: 700;
    
 }
 
-@media screen and (max-width:376px){
+/* @media screen and (max-width:376px){
    
     .container-plan{
         height: 32px;
@@ -162,4 +163,4 @@ font-weight: 700;
        gap: 2rem;
     }
    
-}
+} */
