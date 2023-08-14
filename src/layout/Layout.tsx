@@ -1,11 +1,11 @@
 import { Suspense } from "react";
 import { Outlet } from "react-router-dom";
-import {Sidebar} from "../components/navs/Sidebar";
+import { Sidebar } from "../components/navs/Sidebar";
 import style from "../styles/layout.module.css";
 import logo from "../assets/logo.svg";
 import { PageLoading } from "../components/Loaders";
 import { AnimacionesLayout } from "../components/Animaciones";
-import {ButtonBurger} from "../components/Botones";
+import { ButtonBurger } from "../components/Botones";
 import { Drawer } from "@mui/material";
 import { useState } from "react";
 
@@ -21,25 +21,28 @@ const Layout = () => {
 
   return (
     <div className={style["container-principal"]}>
-      <Sidebar />
-
-      <main className={style["contenido"]}>
-        <img className={style["logo-layout"]} src={logo} alt="logo" />
-        {/* contenido responsive */}
-        <div className={style["container-buttonBurger"]}>
-          <ButtonBurger handleClick={handleClick} cheked={cheked} />
-        </div>
+      <header>
+        <Sidebar />
+        {/* nav responsive */}
+        <nav className={style["nav-responsive"]}>
+          <div className={style["container-buttonBurger"]}>
+            <ButtonBurger handleClick={handleClick} cheked={cheked} />
+          </div>
+        </nav>
+        {/* sidebar responsive */}
         <Drawer open={sidebarResponsive} onClose={handleClick}>
           <Sidebar responsive={true} />
         </Drawer>
-
-        {/* loader mientras se cargar los componentes diferidos */}
+      </header>
+      <main className={style["contenido"]}>
+        <img className={style["logo-layout"]} src={logo} alt="logo" />
         
-         <Suspense fallback={<PageLoading />}>
+        {/* loader mientras se cargar los componentes diferidos */}
+        <Suspense fallback={<PageLoading />}>
           <AnimacionesLayout>
             <Outlet />
           </AnimacionesLayout>
-        </Suspense> 
+        </Suspense>
       </main>
     </div>
   );
