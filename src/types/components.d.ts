@@ -106,10 +106,10 @@ interface AnimacionBase {
   /**Elementos que tendrán una animación */
   children: React.ReactElement;
   in?: boolean;
-  onClick?: any;
+  onClick?: ()=>void;
   onEnter?: (node: HTMLElement, isAppearing: boolean) => void;
   onExited?: (node: HTMLElement, isAppearing: boolean) => void;
-  ownerState?: any;
+  ownerState?: ()=>void;
   
 }
 
