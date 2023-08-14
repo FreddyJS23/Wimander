@@ -72,13 +72,13 @@ const Dashboard = () => {
           <TablaCustomer />
         </div>
         {/* Modal crear cliente */}
-        {modalOpen && (
+        
           <ModalCrearClient
             encabezado="Crear cliente"
             handleClose={onClose}
             open={modalOpen}
           />
-        )}
+       
       </div>
     </>
   );
