@@ -11,8 +11,10 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import  logo from '../../assets/logo.svg'
 import { ModalEditarUser } from "../Modales";
+import { SidebarInterface } from '../../types';
 
 
+export const Sidebar = ({responsive}:SidebarInterface) => {
  
   const { setUser,initialStateUser,user } = useContext(AuthContext);
  const [modalOpen, setModalOpen] = useState(false)
@@ -61,7 +63,7 @@ import { ModalEditarUser } from "../Modales";
 
       </div>
     </nav>
- {modalOpen &&  <ModalEditarUser encabezado="Editar usuario" open={modalOpen} handleClose={onClose} parameter={user?.id}  />}
+ <ModalEditarUser encabezado="Editar usuario" open={modalOpen} handleClose={onClose} parameter={user?.id}  />
    </>
   );
 };
