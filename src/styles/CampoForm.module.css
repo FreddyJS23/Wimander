@@ -51,6 +51,7 @@
    font-weight: 700;
    color: white;
    font-size: 18px;
+   cursor: default;
 }
 .decoracion img{
    width:18px;
