@@ -12,9 +12,9 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import  logo from '../../assets/logo.svg'
 import { ModalEditarUser } from "../Modales";
-import { SidebarInterface } from '../../types';
 import { ControlModal, SidebarInterface } from '../../types';
 import { ButtonSidebar } from '../Botones/ButtonSidebar';
+import { ModalSettings } from '../Modales/ModalSettings';
 
 
 export const Sidebar = ({responsive}:SidebarInterface) => {
@@ -74,6 +74,7 @@ export const Sidebar = ({responsive}:SidebarInterface) => {
       </div>
     </nav>
  <ModalEditarUser encabezado="Editar usuario" open={controlModal.modal == 'editarUsuario' && controlModal.open} handleClose={onClose} parameter={user?.id}  />
+ <ModalSettings encabezado="Configuracion" open={controlModal.modal == 'configuracion' && controlModal.open} handleClose={onClose} />
    </>
   );
 };
