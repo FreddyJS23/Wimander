@@ -1,5 +1,4 @@
 import { GridRowId } from "@mui/x-data-grid"
-import { HTMLInputTypeAttribute } from "react"
 import { HTMLInputTypeAttribute, MouseEvent } from "react"
 
 export type CamposFormInterface = {
