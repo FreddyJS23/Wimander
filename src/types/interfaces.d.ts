@@ -19,6 +19,11 @@ export interface User {
   email: string
 }
 
+/**Configuracion */
+export interface Configs{
+  amount:number
+}
+
 /**Información de sesión del usuario */
 export interface UserAuth {
   /** id que tiene en la bd  */

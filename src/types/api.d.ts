@@ -1,4 +1,5 @@
 import { Customer, User, UserAuth } from "."
+import { ConfigState, Configs, Customer, User, UserAuth } from "."
 
 /** Respuesta del servidor */
 export type Response = {
@@ -28,6 +29,8 @@ export type ResponseData = {
   customer: Customer
   /**Id del cliente afectado */
   customerID: number
+  /**Configuración del cliente */
+  configs:Configs
 }
 /** Errores de validación que presenta un campo */
 type ErrorsResponseData = {

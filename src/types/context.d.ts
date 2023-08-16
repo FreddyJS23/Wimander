@@ -1,4 +1,5 @@
 import { AlertColor } from "@mui/material"
+import { Configs } from "."
 
 /**Context del usuario */
 export interface AuthContextInterface {
@@ -33,16 +34,11 @@ export interface AlertContextInterface {
   onClose: () => void
 }
 
-/**Estado de la configuración */
-export interface ConfigState {
-  /**Monto mensual de los usuarios */
-  amount: number
-}
 
 /**Context de la configuración */
 export interface ConfigContextInterface {
   /**Configuraciones de la apliacion */
-  configs: ConfigState
+  configs: Configs
   /**Cambiar configuraciones de la aplicación */
   setConfigs: Dispatch<SetStateAction<ConfigState>>
 }
