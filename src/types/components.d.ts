@@ -81,6 +81,19 @@ export type ElementSidebarInterface = {
   /**Estilo del elemento */
   style: string
 }
+/**Elemento botón lista del sidebar */
+export type ButtonSidebarInterface={
+   /**Contenido adicional que puede tener */
+   children?: React.DetailedHTMLProps
+   /**Titulo del elemento */
+   name: string,
+   /**Evento botón */
+   onClick: (e:React.MouseEvent)=>void,
+   /**Estilo del elemento */
+   style: string
+   /**Identificar el nombre del botón para apertura modales */
+   id:string
+} 
 
 /**Modal personalizado */
 export interface ModalInterface {

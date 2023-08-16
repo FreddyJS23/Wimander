@@ -65,11 +65,12 @@
   transition: 0.3s all;
   border-left: 6px solid transparent;
 }
-.opcion a {
+.opcion a,.opcion {
   text-decoration: none;
   color: white;
   font-weight: var(--textoBold);
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
 }
 
 .opcion:hover {
