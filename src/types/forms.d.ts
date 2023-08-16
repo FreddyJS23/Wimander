@@ -1,4 +1,3 @@
-import { Customer, User } from "."
 import { Configs, Customer, User } from "."
 
 /** Formulario de login*/
