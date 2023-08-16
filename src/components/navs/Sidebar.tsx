@@ -13,16 +13,21 @@ import { useNavigate } from "react-router-dom";
 import  logo from '../../assets/logo.svg'
 import { ModalEditarUser } from "../Modales";
 import { SidebarInterface } from '../../types';
+import { ControlModal, SidebarInterface } from '../../types';
 import { ButtonSidebar } from '../Botones/ButtonSidebar';
 
 
 export const Sidebar = ({responsive}:SidebarInterface) => {
  
   const { setUser,initialStateUser,user } = useContext(AuthContext);
- const [modalOpen, setModalOpen] = useState(false)
+
+  //Control modales
+  const initialControModal = { modal:'', paramater: 0, open:false };
+  const [controlModal, setControlModal] =
+    useState<ControlModal>(initialControModal);
  
- const onClose=()=> setModalOpen(false)
- const onClick=()=> setModalOpen(true)
+ const onClose=()=> setControlModal(initialControModal)
+ const onClick=(e:React.MouseEvent)=> setControlModal({modal:e.currentTarget.id,open:true})
  
   const navigation = useNavigate();
  
@@ -42,7 +47,7 @@ export const Sidebar = ({responsive}:SidebarInterface) => {
             <img src={iconoAvatar} alt="foto perfil" />
           </div>
           <div className={style["container-usuario"]}>
-            <p onClick={onClick}>{user?.name}</p>
+            <p id='editarUsuario' onClick={onClick}>{user?.name}</p>
           </div>
 
           <BotonLogout onClick={handleLogout} />
@@ -68,7 +73,7 @@ export const Sidebar = ({responsive}:SidebarInterface) => {
 
       </div>
     </nav>
- <ModalEditarUser encabezado="Editar usuario" open={modalOpen} handleClose={onClose} parameter={user?.id}  />
+ <ModalEditarUser encabezado="Editar usuario" open={controlModal.modal == 'editarUsuario' && controlModal.open} handleClose={onClose} parameter={user?.id}  />
    </>
   );
 };
