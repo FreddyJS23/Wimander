@@ -40,6 +40,10 @@ export type CamposFormInterface = {
   errors: FieldErrors
   /**Texto de ayuda en el tooltip */
   tip?: string | null
+  /**Tipo de decoracion que tendra el input */
+  decoracion?:'texto' | 'icono'
+  /**Elemento decorativo */
+element?:string
 
 }
 

@@ -17,6 +17,8 @@ export const CamposForm = ({
   errors,
   required,
   tip = null,
+  element,
+  decoracion
 }: CamposFormInterface) => {
   return (
     <>
@@ -29,8 +31,12 @@ export const CamposForm = ({
         placement="bottom-end"
       >
         <div className={styles["container-campos"]}>
+        {decoracion && <div className={styles['decoracion']}>
+          {decoracion == 'texto' ? <p>{element}</p> : <img src={element} alt="icono" />    }
+          
+         </div>}
           <input
-            className={`${styles["input"]} ${styles[styleInput]}`}
+            className={`${styles["input"]} ${styles[styleInput]}  ${decoracion && styles['inputWithDecoracion']}`}
             type={type}
             id={inputName}
             {...register(inputName, {
@@ -47,7 +53,7 @@ export const CamposForm = ({
           <label
             className={`${styles["label"]} ${styles[styleLabel]} ${
               errors[inputName] && styles["labelError"]
-            } `}
+            } ${decoracion && styles['labelWithDecoracion']} `}
             htmlFor={inputName}
           >
             {name}
