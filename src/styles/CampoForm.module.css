@@ -34,8 +34,43 @@
   color: var(--colorSecundario);
 }
 
+.decoracion{
+  padding: 0.7rem;
+  background-color: var(--colorSecundario);
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  box-shadow: -2px 0px 3px 2px rgba(0, 231, 255, 0.3);
+  border: none;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  width: 10px;
+}
+.decoracion p{
+   margin:0;
+   font-weight: 700;
+   color: white;
+   font-size: 18px;
+}
+.decoracion img{
+   width:18px;
+   position: absolute;
+}
+.labelWithDecoracion{
+left: 40px;
+}
+.inputWithDecoracion{
+border-top-left-radius: 0px;
+border-bottom-left-radius: 0px;
+}
+.input:focus ~ .labelWithDecoracion,
+.input:not(:placeholder-shown) ~ .labelWithDecoracion {
+  margin-left: -0.4rem;
+}
+
+
 @media screen and (max-width: 500px) {
-  .input {
+  .input,.decoracion {
     padding: 0.5rem;
     font-size: 15px;
   }
