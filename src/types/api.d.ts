@@ -1,4 +1,3 @@
-import { Customer, User, UserAuth } from "."
 import { ConfigState, Configs, Customer, User, UserAuth } from "."
 
 /** Respuesta del servidor */

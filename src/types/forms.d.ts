@@ -1,4 +1,5 @@
 import { Customer, User } from "."
+import { Configs, Customer, User } from "."
 
 /** Formulario de login*/
 export type UserForm = {
@@ -41,4 +42,6 @@ interface CustomerFormRegister extends Customer {
 /**Formulario registro de cliente */
 export type CustomerRegister = Omit<CustomerFormRegister, 'id' | 'expiration_date'>
 
+/**Formulario para las configuraciones */
+export type ConfigsForm=Pick<Configs,'amount'>
 
