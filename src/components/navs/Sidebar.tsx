@@ -4,6 +4,7 @@ import {ElementsSidebar} from "../Elements";
 import style from "../../styles/sidebar.module.css";
 import iconoDashboard from "../../assets/dashboard.svg";
 import iconoAbout from "../../assets/about.svg";
+import iconoSetting from "../../assets/setting.svg";
 import {BotonLogout} from "../Botones";
 import iconoAvatar from "../../assets/avatar.svg";
 import { AuthContext } from "../../context/AuthContext";
@@ -12,6 +13,7 @@ import { useNavigate } from "react-router-dom";
 import  logo from '../../assets/logo.svg'
 import { ModalEditarUser } from "../Modales";
 import { SidebarInterface } from '../../types';
+import { ButtonSidebar } from '../Botones/ButtonSidebar';
 
 
 export const Sidebar = ({responsive}:SidebarInterface) => {
@@ -53,6 +55,9 @@ export const Sidebar = ({responsive}:SidebarInterface) => {
           <ElementsSidebar name="Acerca" link="acerca" style={style["opcion"]}>
             <img src={iconoAbout} alt="icono About" />
           </ElementsSidebar>
+          <ButtonSidebar id='configuracion' onClick={onClick} name="Configuracion"  style={style["opcion"]}>
+            <img src={iconoSetting} alt="icono configutacion" />
+          </ButtonSidebar>
         </ul>
 
         <div className={style["footer"]}>
