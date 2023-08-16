@@ -89,6 +89,19 @@ border-bottom-left-radius: 0px;
 }
 
 /* ------------------------- estilos personalizados ------------------------- */
+.inputSmall{
+  width: 50%;
+}
+
+.labelSmall{
+  left:10px
+}
+.inputSmall:focus ~ .labelSmall,
+.inputSmall:not(:placeholder-shown) ~ .labelSmall {
+  margin-left: -0.4rem;
+}
+
+
 @media screen and (max-width: 768px) {
   .input:focus ~ .labelLogin,
   .input:not(:placeholder-shown) ~ .labelLogin {
@@ -101,4 +114,16 @@ border-bottom-left-radius: 0px;
   .input:not(:placeholder-shown) ~ .labelError {
     color: red;
   }
+}
+
+@media screen and (max-width: 500px) {
+
+  .labelSmall {
+   left:30px
+  }
+  .inputSmall:focus ~ .labelSmall,
+.inputSmall:not(:placeholder-shown) ~ .labelSmall {
+  margin-left: -0.4rem;
+}
+ 
 }
