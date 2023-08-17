@@ -15,7 +15,7 @@ import { ModalEditarUser } from "../Modales";
 import { ControlModal, SidebarInterface } from '../../types';
 import { ButtonSidebar } from '../Botones/ButtonSidebar';
 import { ModalSettings } from '../Modales/ModalSettings';
-
+import {useCookies} from 'react-cookie'
 
 export const Sidebar = ({responsive}:SidebarInterface) => {
  
@@ -25,7 +25,7 @@ export const Sidebar = ({responsive}:SidebarInterface) => {
   const initialControModal = { modal:'', paramater: 0, open:false };
   const [controlModal, setControlModal] =
     useState<ControlModal>(initialControModal);
- 
+ const{2:removeCookie}=useCookies()
  const onClose=()=> setControlModal(initialControModal)
  const onClick=(e:React.MouseEvent)=> setControlModal({modal:e.currentTarget.id,open:true})
  
@@ -35,7 +35,9 @@ export const Sidebar = ({responsive}:SidebarInterface) => {
   //logout
   const handleLogout =async () => {
     const {data}=await Logout()
-    if(data.status) {  setUser(initialStateUser)
+    if(data.status) {  
+      removeCookie('SessionUser')
+      setUser(initialStateUser)
       navigation("/");}    
   };
   return (
