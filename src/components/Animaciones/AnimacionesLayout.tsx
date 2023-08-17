@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
 import { useLocation } from "react-router-dom";
-import { AnimacionContainer } from "../../types/index";
+import { AnimacionBase } from "../../types/index";
 
-export const AnimacionesLayout = ({ children }: AnimacionContainer) => {
+export const AnimacionesLayout = ({ children }: AnimacionBase) => {
   const location = useLocation();
 
   const pageAnimation = {

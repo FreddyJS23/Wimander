@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { AnimacionContainer } from "../../types/index";
+import { AnimacionBase } from "../../types/index";
 
 const tarjeta = {
   visible: { opacity: 1, x: 0 },
@@ -27,7 +27,7 @@ const container = {
 
 export const AnimacionTarjetasContainer = ({
   children,
-}: AnimacionContainer) => {
+}: AnimacionBase) => {
   return (
     //para lograr animaciones en orden subsecuente se necesitan crear un contenedor
     //crear sus variantes y asignar los valores iniciales y aniamdos
@@ -37,7 +37,7 @@ export const AnimacionTarjetasContainer = ({
   );
 };
 
-export const AnimacionTarjetasChildren = ({ children }: AnimacionContainer) => {
+export const AnimacionTarjetasChildren = ({ children }: AnimacionBase) => {
   //los elementos tienen que ser hijos del contenedor
   //los hijos no necesitan valores iniciales ya toman los del padre para animarse en orden
   return <motion.div variants={tarjeta}>{children}</motion.div>;

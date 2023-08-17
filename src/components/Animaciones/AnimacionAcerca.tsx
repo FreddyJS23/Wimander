@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { AnimacionContainer } from "../../types/index";
+import { AnimacionBase } from "../../types/index";
 import style from "../../styles/acerca.module.css";
 
 //constante de variantes
@@ -30,7 +30,7 @@ const iconoContacto = {
 };
 
 //Animacion logo
-export const AnimacionLogo = ({ children }: AnimacionContainer) => {
+export const AnimacionLogo = ({ children }: AnimacionBase) => {
   return (
     //las variantes son objetos, las claves del objeto se asignan a los valores iniciales y animados
     <motion.div variants={logo} initial="hidden" animate="visible">
@@ -42,7 +42,7 @@ export const AnimacionLogo = ({ children }: AnimacionContainer) => {
 //container iconos de contactos
 export const AnimacionContactoContainer = ({
   children,
-}: AnimacionContainer) => {
+}: AnimacionBase) => {
   return (
     <motion.div
       variants={iconoContactoContainer}
@@ -56,7 +56,7 @@ export const AnimacionContactoContainer = ({
 };
 
 //iconos
-export const AnimacionContactoIcon = ({ children }: AnimacionContainer) => {
+export const AnimacionContactoIcon = ({ children }: AnimacionBase) => {
   return (
     <motion.div animate variants={iconoContacto}>
       {children}
