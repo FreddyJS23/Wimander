@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AlertContext } from "../../context/AlertContext";
 import { ExtendsConnectionFom, ModalInterface } from "../../types";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -17,7 +17,7 @@ export const ModalExpandirFecha = ({
 }: ModalInterface) => {
   //Control alertas
   const { setAlertState } = useContext(AlertContext);
-
+const [loader, setLoader] = useState(false)
   //Control formulario
   const { register, handleSubmit } = useForm<ExtendsConnectionFom>({
     defaultValues: { id: parameter },
@@ -25,6 +25,7 @@ export const ModalExpandirFecha = ({
 
   //Envió de formulario
   const onSubmit: SubmitHandler<ExtendsConnectionFom> = async (form, e) => {
+    setLoader(true)
     const { data, status } = await extendsConnection(form.id, form);
 
     //respuesta exitosa
@@ -35,6 +36,7 @@ export const ModalExpandirFecha = ({
         mensaje: "Se ha extendido la fecha de vencimiento",
         tipo: "success",
       });
+      handleClose()
     }
 
     //Errores del servidor
@@ -51,6 +53,7 @@ export const ModalExpandirFecha = ({
         tipo: "error",
       });
     }
+    setLoader(false)
   };
 
   return (
@@ -74,7 +77,7 @@ export const ModalExpandirFecha = ({
             value={"30D"}
           />
         </div>
-        <Button type={"submit"} onSubmit={handleSubmit} value="Expandir" />
+        <Button type={"submit"} onSubmit={handleSubmit} value="Expandir" loading={loader} />
       </form>
     </ModalBase>
   );

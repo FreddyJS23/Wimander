@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AlertContext } from "../../context/AlertContext";
 import { ModalBase } from ".";
 import style from "../../styles/modales.module.css";
@@ -16,9 +16,11 @@ export const ModalDeleteClient = ({
 }: ModalInterface) => {
   //Control alertas
   const { setAlertState } = useContext(AlertContext);
+  const [loader, setLoader] = useState(false)
 
   //Eliminar cliente
   const onClick = async (cliente?: string | number) => {
+    setLoader(true)
     const { data, status } = await EliminarCliente(cliente);
 
     //respuesta exitosa
@@ -28,6 +30,7 @@ export const ModalDeleteClient = ({
         mensaje: `Cliente con un id ${data.customerID} eliminado`,
         tipo: "success",
       });
+      handleClose()
     }
 
     //Errores del servidor
@@ -44,6 +47,7 @@ export const ModalDeleteClient = ({
         tipo: "error",
       });
     }
+    setLoader(false)
   };
 
   return (
@@ -58,6 +62,7 @@ export const ModalDeleteClient = ({
           parameter={parameter}
           value="Eliminar"
           style="buttonRed"
+          loading={loader}
         />
       </div>
     </ModalBase>

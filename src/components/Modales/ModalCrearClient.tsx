@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AlertContext } from "../../context/AlertContext";
 import { ConfigsContext } from "../../context/configurations";
 import { CustomerRegister, ModalInterface } from "../../types";
@@ -19,7 +19,7 @@ export const ModalCrearClient = ({
   //Control alertas
   const { setAlertState } = useContext(AlertContext);
   const { configs } = useContext(ConfigsContext);
-
+  const [loader, setLoader] = useState(false)
   //Control formulario
   const {
     register,
@@ -29,6 +29,7 @@ export const ModalCrearClient = ({
 
   //Envió de formulario
   const onSubmit: SubmitHandler<CustomerRegister> = async (form, e) => {
+    setLoader(true)
     const { data, status } = await CrearCliente(form);
     const { errors } = data;
 
@@ -40,6 +41,7 @@ export const ModalCrearClient = ({
         mensaje: "Cliente creado",
         tipo: "success",
       });
+      handleClose()
     }
 
     //Errores en los campos
@@ -64,6 +66,7 @@ export const ModalCrearClient = ({
         tipo: "error",
       });
     }
+    setLoader(false)
   };
 
   return (
@@ -147,7 +150,7 @@ export const ModalCrearClient = ({
           </div>
         </div>
 
-        <Button type={"submit"} value="Crear" />
+        <Button type={"submit"} value="Crear" loading={loader} />
       </form>
     </ModalBase>
   );

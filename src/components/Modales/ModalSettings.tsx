@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AlertContext } from "../../context/AlertContext";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { ModalBase } from ".";
@@ -18,7 +18,7 @@ export const ModalSettings = ({
   //Control alertas
   const { setAlertState } = useContext(AlertContext);
   const { configs, setConfigs } = useContext(ConfigsContext);
-
+  const [loader, setLoader] = useState(false)
   //Control formulario
   const {
     register,
@@ -30,18 +30,20 @@ export const ModalSettings = ({
 
   //Envió de formulario
   const onSubmit: SubmitHandler<ConfigsForm> = async (form, e) => {
+    setLoader(true)
     const { data, status } = await UpdateConfigs(form);
 
     //respuesta exitosa
     if (status == 200 || status == 201) {
       const { data } = await GetConfigs();
+      e?.target.reset();
       setConfigs(data.configs);
-      handleClose();
       setAlertState({
         open: true,
         mensaje: "Se ha guardado la configuración",
         tipo: "success",
       });
+      handleClose();
     }
 
     //Errores del servidor
@@ -58,6 +60,7 @@ export const ModalSettings = ({
         tipo: "error",
       });
     }
+    setLoader(false)
   };
 
   return (

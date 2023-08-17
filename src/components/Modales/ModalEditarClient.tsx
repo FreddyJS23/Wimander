@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AlertContext } from "../../context/AlertContext";
 import { CustomerFormUpdate, ModalInterface } from "../../types";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -18,7 +18,8 @@ export const ModalEditarClient = ({
 }: ModalInterface) => {
   //Control alertas
   const { setAlertState } = useContext(AlertContext);
-
+  //loader
+  const [loader, setLoader] = useState(false)
   //Control formulario
   const {
     register,
@@ -35,6 +36,7 @@ export const ModalEditarClient = ({
 
   //Envió de formulario
   const onSubmit: SubmitHandler<CustomerFormUpdate> = async (form, e) => {
+    setLoader(true)
     const { data, status } = await ActualizarCliente(form.id, form);
     const { errors } = data;
 
@@ -46,6 +48,7 @@ export const ModalEditarClient = ({
         mensaje: "Cliente editado",
         tipo: "success",
       });
+      handleClose()
     }
 
     //Errores en los campos
@@ -70,6 +73,7 @@ export const ModalEditarClient = ({
         tipo: "error",
       });
     }
+    setLoader(false)
   };
 
   return (
@@ -122,7 +126,7 @@ export const ModalEditarClient = ({
             errors={errors}
           />
         </div>
-        <Button type={"submit"} value="Editar" />
+        <Button type={"submit"} value="Editar"  loading={loader}/>
       </form>
     </ModalBase>
   );

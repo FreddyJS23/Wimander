@@ -55,6 +55,7 @@ export const ModalEditarUser = ({
         mensaje: "Usuario editado",
         tipo: "success",
       });
+      handleClose()
     }
 
     //Errores en los campos
