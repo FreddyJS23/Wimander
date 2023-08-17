@@ -1,6 +1,5 @@
 import { useContext } from 'react';
 import { AlertContext } from '../../context/AlertContext';
-
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { ModalBase } from '.';
 import style from "../../styles/modales.module.css";
@@ -8,7 +7,7 @@ import {CamposForm} from '../Elements';
 import { Button } from '../Botones';
 import { ConfigsForm, ModalInterface } from '../../types';
 import { GetConfigs, UpdateConfigs } from '../../services/config';
-import about from '../../assets/about.svg'
+import { ConfigsContext } from '../../context/configurations';
 
 /**Modal para cambiar configuracion dle usuario */
 export const ModalSettings = ({
@@ -19,10 +18,11 @@ export const ModalSettings = ({
     
     //Control alertas
     const { setAlertState } = useContext(AlertContext);
-  
+    const {configs,setConfigs}=useContext(ConfigsContext)
+
     //Control formulario
     const { register, handleSubmit,formState:{errors} } = useForm<ConfigsForm>({
-      defaultValues:async()=> GetConfigs().then(res=> res.data.configs) ,
+      defaultValues:configs
     });
   
     //Envió de formulario
@@ -31,6 +31,10 @@ export const ModalSettings = ({
   
       //respuesta exitosa
       if (status == 200 || status == 201) {
+        
+        const{data}=await GetConfigs()
+        setConfigs(data.configs) 
+        handleClose()
         setAlertState({
           open: true,
           mensaje: "Se ha guardado la configuración",
