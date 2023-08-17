@@ -2,7 +2,7 @@ import axios from "axios"
 import { Response } from "../types/index"
 
 
-export const Logout = ():Promise<Response> => {
+export const Logout = (): Promise<Response> => {
 
     return axios.get(`${import.meta.env.VITE_API_URL}logout`)
         .then(res => {

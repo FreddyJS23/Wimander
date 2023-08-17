@@ -15,5 +15,3 @@ export const BotonCrearCliente = ({ onClick }: Props) => {
     </button>
   );
 };
-
-

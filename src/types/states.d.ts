@@ -6,5 +6,5 @@ export interface ControlModal {
   /**Parametro que recibira el modal */
   paramater?: GridRowId
   /**Apertura del modal */
-  open:boolean
+  open: boolean
 }

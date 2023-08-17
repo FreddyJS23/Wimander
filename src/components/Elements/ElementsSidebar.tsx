@@ -17,5 +17,3 @@ export const ElementsSidebar = ({
     </li>
   );
 };
-
-

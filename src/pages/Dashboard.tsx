@@ -2,7 +2,7 @@ import { Card, CardContent } from "@mui/material";
 import { TarjetasDasboard } from "../components/Elements";
 import style from "../styles/dashboard.module.css";
 import styleTable from "../styles/tablas.module.css";
-import {TablaCustomer} from "../components/Tablas";
+import { TablaCustomer } from "../components/Tablas";
 import {
   AnimacionTarjetasChildren,
   AnimacionTarjetasContainer,
@@ -10,7 +10,7 @@ import {
 import useDocumentTitle from "../utils/useDocumentTitle";
 import { useEffect, useState } from "react";
 import { GetGanancias } from "../services/proceeds";
-import {BotonCrearCliente} from "../components/Botones";
+import { BotonCrearCliente } from "../components/Botones";
 import { ModalCrearClient } from "../components/Modales";
 
 const Dashboard = () => {
@@ -49,7 +49,6 @@ const Dashboard = () => {
                 </CardContent>
               </Card>
             </AnimacionTarjetasChildren>
-
           </div>
         </AnimacionTarjetasContainer>
 
@@ -58,13 +57,12 @@ const Dashboard = () => {
           <TablaCustomer />
         </div>
         {/* Modal crear cliente */}
-        
-          <ModalCrearClient
-            encabezado="Crear cliente"
-            handleClose={onClose}
-            open={modalOpen}
-          />
-       
+
+        <ModalCrearClient
+          encabezado="Crear cliente"
+          handleClose={onClose}
+          open={modalOpen}
+        />
       </div>
     </>
   );

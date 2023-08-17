@@ -5,11 +5,11 @@ export const ButtonSidebar = ({
   name,
   style,
   onClick,
-  id
-}:ButtonSidebarInterface) => {
+  id,
+}: ButtonSidebarInterface) => {
   return (
     <li id={id} onClick={(e) => onClick(e)} className={style}>
-      {children}  {name}
+      {children} {name}
     </li>
   );
 };

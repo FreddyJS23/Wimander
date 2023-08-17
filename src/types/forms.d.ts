@@ -42,5 +42,4 @@ interface CustomerFormRegister extends Customer {
 export type CustomerRegister = Omit<CustomerFormRegister, 'id' | 'expiration_date'>
 
 /**Formulario para las configuraciones */
-export type ConfigsForm=Pick<Configs,'amount'>
-
+export type ConfigsForm = Pick<Configs, 'amount'>

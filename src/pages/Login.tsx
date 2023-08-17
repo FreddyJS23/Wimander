@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { FormRegistroUsuario,FormSesion } from "../components/Formularios";
+import { FormRegistroUsuario, FormSesion } from "../components/Formularios";
 import Logo from "../assets/logo.svg";
 import styles from "../styles/login.module.css";
 import imagePrincipal from "../assets/imagen-login.svg";
@@ -8,11 +8,10 @@ import useDocumentTitle from "../utils/useDocumentTitle";
 import { getTokenCrfs } from "../services/tokenCsrf";
 
 const Login = () => {
-
   useEffect(() => {
-  getTokenCrfs();
-  }, [])
- 
+    getTokenCrfs();
+  }, []);
+
   const [registrar, setRegistrar] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -23,8 +22,8 @@ const Login = () => {
       setRegistrar(!registrar);
     }, 300);
   };
- //titulo pagina
- useDocumentTitle('Login')
+  //titulo pagina
+  useDocumentTitle("Login");
   return (
     <div className={styles["container-login"]}>
       <div className={styles["login-izquierdo"]}>
@@ -70,7 +69,7 @@ const Login = () => {
           {!registrar ? (
             <FormSesion handleClick={handleClick} />
           ) : (
-            <FormRegistroUsuario handleClick={handleClick}  />
+            <FormRegistroUsuario handleClick={handleClick} />
           )}
         </div>
       </div>

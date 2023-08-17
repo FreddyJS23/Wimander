@@ -9,7 +9,7 @@ import type {} from "@mui/x-data-grid/themeAugmentation";
 import { esES } from "@mui/x-data-grid";
 import AuthProvider from "./context/AuthContext.tsx";
 import { router } from "./routes/index.tsx";
-import {DisplayLoader} from "./components/Loaders";
+import { DisplayLoader } from "./components/Loaders";
 import {
   themePalette,
   themeCard,

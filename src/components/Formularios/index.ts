@@ -1,2 +1,2 @@
-export {FormRegistroUsuario} from './FormRegistroUsuario'
-export {FormSesion} from './FormSesion'
+export { FormRegistroUsuario } from './FormRegistroUsuario'
+export { FormSesion } from './FormSesion'

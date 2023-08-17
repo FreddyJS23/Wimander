@@ -29,7 +29,7 @@ export type ResponseData = {
   /**Id del cliente afectado */
   customerID: number
   /**Configuración del cliente */
-  configs:Configs
+  configs: Configs
 }
 /** Errores de validación que presenta un campo */
 type ErrorsResponseData = {

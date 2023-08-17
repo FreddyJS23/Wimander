@@ -1,92 +1,98 @@
-import {  useState,useContext } from 'react';
-import { AlertContext } from '../../context/AlertContext';
-import { SubmitHandler, useForm } from 'react-hook-form';
-import { GetErrorsResponse } from '../../utils/GetErrorsResponse';
-import { ModalBase } from '.';
+import { useState, useContext } from "react";
+import { AlertContext } from "../../context/AlertContext";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { GetErrorsResponse } from "../../utils/GetErrorsResponse";
+import { ModalBase } from ".";
 import style from "../../styles/modales.module.css";
-import {CamposForm} from '../Elements';
-import { Button } from '../Botones';
-import { ModalInterface, UserUpdateForm } from '../../types';
-import { ActualizarUser, GetUser } from '../../services/user';
+import { CamposForm } from "../Elements";
+import { Button } from "../Botones";
+import { ModalInterface, UserUpdateForm } from "../../types";
+import { ActualizarUser, GetUser } from "../../services/user";
 
 /**Modal para editar usuario */
 export const ModalEditarUser = ({
-    open,
-    encabezado,
-    handleClose,
-    parameter,
-  }: ModalInterface) => {
-    //Control alertas
-    const { setAlertState } = useContext(AlertContext);
-    const [loader, setLoader] = useState(false)
-    //Control formulario
-    const {
-      register,
-      handleSubmit,
-      formState: { errors },
-    } = useForm<UserUpdateForm>({
-      //Obtener valores de los campos para el formulario de forma asíncrona
-      defaultValues: async () =>
-        GetUser(parameter).then((res) => {
-          const { id,name,last_name,user,email,} = res.data.user;
-          return {  id,name,last_name,user,email,password:'',last_password:''};
-        }),
-    });
-  
-    //Envió de formulario
-    const onSubmit: SubmitHandler<UserUpdateForm> = async (form, e) => {
-      setLoader(true)
-      const { data, status } = await ActualizarUser(form.id, form);
-      const { errors } = data;
-   
-      //respuesta exitosa
-      if (status == 200) {
-        e?.target.reset();
-        setAlertState({
-          open: true,
-          mensaje: "Usuario editado",
-          tipo: "success",
-        });
-       
-      }
-  
-      //Errores en los campos
-      if (GetErrorsResponse(errors)){
-        setLoader(false)
-        return setAlertState({
-          open: true,
-          mensaje: GetErrorsResponse(errors),
-          tipo: "error",
-        });
-      }
-      
-  
-      //Errores del servidor
-      if (status == 408) {
-        return setAlertState({
-          open: true,
-          mensaje: `Error 408: Sin conexión al servidor`,
-          tipo: "error",
-        });
-      } else if (status != 200) {
-        return setAlertState({
-          open: true,
-          mensaje: `Error${status} - ${data.message} `,
-          tipo: "error",
-        });
-      }
-      setLoader(false)
-    };
-  
-    return (
-      <ModalBase encabezado={encabezado} open={open} handleClose={handleClose}>
-        <form
-          action=""
-          className={style["formEdit"]}
-          onSubmit={handleSubmit(onSubmit)}
-          autoComplete="off"
-        >
-          <div className={style["container-seccion"]}>
+  open,
+  encabezado,
+  handleClose,
+  parameter,
+}: ModalInterface) => {
+  //Control alertas
+  const { setAlertState } = useContext(AlertContext);
+  const [loader, setLoader] = useState(false);
+  //Control formulario
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<UserUpdateForm>({
+    //Obtener valores de los campos para el formulario de forma asíncrona
+    defaultValues: async () =>
+      GetUser(parameter).then((res) => {
+        const { id, name, last_name, user, email } = res.data.user;
+        return {
+          id,
+          name,
+          last_name,
+          user,
+          email,
+          password: "",
+          last_password: "",
+        };
+      }),
+  });
+
+  //Envió de formulario
+  const onSubmit: SubmitHandler<UserUpdateForm> = async (form, e) => {
+    setLoader(true);
+    const { data, status } = await ActualizarUser(form.id, form);
+    const { errors } = data;
+
+    //respuesta exitosa
+    if (status == 200) {
+      e?.target.reset();
+      setAlertState({
+        open: true,
+        mensaje: "Usuario editado",
+        tipo: "success",
+      });
+    }
+
+    //Errores en los campos
+    if (GetErrorsResponse(errors)) {
+      setLoader(false);
+      return setAlertState({
+        open: true,
+        mensaje: GetErrorsResponse(errors),
+        tipo: "error",
+      });
+    }
+
+    //Errores del servidor
+    if (status == 408) {
+      return setAlertState({
+        open: true,
+        mensaje: `Error 408: Sin conexión al servidor`,
+        tipo: "error",
+      });
+    } else if (status != 200) {
+      return setAlertState({
+        open: true,
+        mensaje: `Error${status} - ${data.message} `,
+        tipo: "error",
+      });
+    }
+    setLoader(false);
+  };
+
+  return (
+    <ModalBase encabezado={encabezado} open={open} handleClose={handleClose}>
+      <form
+        action=""
+        className={style["formEdit"]}
+        onSubmit={handleSubmit(onSubmit)}
+        autoComplete="off"
+      >
+        <div className={style["container-seccion"]}>
           <CamposForm
             type="text"
             register={register}
@@ -107,9 +113,9 @@ export const ModalEditarUser = ({
             maxLength={25}
             tip={"Minimo 3 caracteres y maximo 25 "}
           />
-          </div>
-         
-          <div className={style["container-seccion"]}>
+        </div>
+
+        <div className={style["container-seccion"]}>
           <CamposForm
             type="text"
             register={register}
@@ -129,8 +135,8 @@ export const ModalEditarUser = ({
             maxLength={15}
             tip={"Minimo 3 caracteres y maximo 15 "}
           />
-          </div>
-          <div className={style["container-seccion"]}>
+        </div>
+        <div className={style["container-seccion"]}>
           <CamposForm
             type="password"
             register={register}
@@ -139,7 +145,6 @@ export const ModalEditarUser = ({
             errors={errors}
             minLength={7}
             maxLength={15}
-            
           />
           <CamposForm
             type="password"
@@ -151,11 +156,10 @@ export const ModalEditarUser = ({
             maxLength={15}
             tip={"Minimo 7 caracteres y maximo 25 "}
           />
-          </div>
-         
-          
-          <Button type={"submit"} value="Editar" loading={loader}/>
-        </form>
-      </ModalBase>
-    );
-  };
+        </div>
+
+        <Button type={"submit"} value="Editar" loading={loader} />
+      </form>
+    </ModalBase>
+  );
+};

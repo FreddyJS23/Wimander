@@ -1,10 +1,10 @@
 import { ControlFormLogin, RegisterUserForm } from "../../types/index";
-import {CamposForm} from "../Elements";
+import { CamposForm } from "../Elements";
 import { useContext, useState } from "react";
 import styles from "../../styles/login.module.css";
-import {Button} from "../Botones";
+import { Button } from "../Botones";
 import { useForm, SubmitHandler } from "react-hook-form";
-import {Alerts} from "../Elements/Alerts";
+import { Alerts } from "../Elements/Alerts";
 import { createUser } from "../../services/user";
 import { GetErrorsResponse } from "../../utils/GetErrorsResponse";
 import { AlertContext } from "../../context/AlertContext";

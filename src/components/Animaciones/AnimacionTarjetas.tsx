@@ -25,9 +25,7 @@ const container = {
   },
 };
 
-export const AnimacionTarjetasContainer = ({
-  children,
-}: AnimacionBase) => {
+export const AnimacionTarjetasContainer = ({ children }: AnimacionBase) => {
   return (
     //para lograr animaciones en orden subsecuente se necesitan crear un contenedor
     //crear sus variantes y asignar los valores iniciales y aniamdos

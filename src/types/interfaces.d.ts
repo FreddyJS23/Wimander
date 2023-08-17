@@ -20,8 +20,8 @@ export interface User {
 }
 
 /**Configuracion */
-export interface Configs{
-  amount:number
+export interface Configs {
+  amount: number
 }
 
 /**Información de sesión del usuario */

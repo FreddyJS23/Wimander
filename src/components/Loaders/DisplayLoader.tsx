@@ -1,5 +1,5 @@
 import { Backdrop } from "@mui/material";
-import {LoaderSpinner} from "./LoaderSpinner";
+import { LoaderSpinner } from "./LoaderSpinner";
 
 export const DisplayLoader = () => {
   return (
@@ -8,5 +8,3 @@ export const DisplayLoader = () => {
     </Backdrop>
   );
 };
-
-

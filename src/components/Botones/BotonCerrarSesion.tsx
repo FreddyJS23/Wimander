@@ -17,5 +17,3 @@ export const BotonLogout = ({ onClick }: Props) => {
     </button>
   );
 };
-
-

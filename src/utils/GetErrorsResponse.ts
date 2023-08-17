@@ -4,10 +4,10 @@ import { ErrorsResponseData } from "../types/index"
  * @param errors Objecto con los nombres de los campos del formulario
  * @example  "Input": [ "The last name field is required."]
  */
-export const GetErrorsResponse=(errors:ErrorsResponseData | undefined):string=>{
-    let error:string[]=[''] 
-   for(const  input in errors){
-   error=errors[input]
+export const GetErrorsResponse = (errors: ErrorsResponseData | undefined): string => {
+  let error: string[] = ['']
+  for (const input in errors) {
+    error = errors[input]
   }
   return error[0]
 }

@@ -16,30 +16,35 @@ const Layout = () => {
   const [sidebarResponsive, setSidebarResponsive] = useState<boolean>(false);
   const [cheked, setCheked] = useState(false);
   //revisar si existen configuraciones inciales
-  const [configsInitials, setConfigsInitials] = useState(false)
- 
+  const [configsInitials, setConfigsInitials] = useState(false);
+
   //cierre de sidebar responsive
   const handleClick = () => {
     setSidebarResponsive(!sidebarResponsive);
     setCheked(!cheked);
   };
-  const handleClose=()=>setConfigsInitials(false)
-  const{setConfigs}=useContext(ConfigsContext)
+  const handleClose = () => setConfigsInitials(false);
+  const { setConfigs } = useContext(ConfigsContext);
 
   useEffect(() => {
-    const request=async()=>{
-      const {data,status}=await GetConfigs()
-     if( status == 200 ) 
-    { setConfigs(data.configs)
-    setConfigsInitials(false)
-    }else setConfigsInitials(true)
-    }
-   request()
-  }, [setConfigs])
-  
-  return (
-   
-  ( configsInitials ? <ModalSettings encabezado="Configuracion inicial" open={configsInitials}  handleClose={handleClose}  /> :  <div className={style["container-principal"]}>
+    const request = async () => {
+      const { data, status } = await GetConfigs();
+      if (status == 200) {
+        setConfigs(data.configs);
+        setConfigsInitials(false);
+      } else setConfigsInitials(true);
+    };
+    request();
+  }, [setConfigs]);
+
+  return configsInitials ? (
+    <ModalSettings
+      encabezado="Configuracion inicial"
+      open={configsInitials}
+      handleClose={handleClose}
+    />
+  ) : (
+    <div className={style["container-principal"]}>
       <header>
         <Sidebar />
         {/* nav responsive */}
@@ -55,7 +60,7 @@ const Layout = () => {
       </header>
       <main className={style["contenido"]}>
         <img className={style["logo-layout"]} src={logo} alt="logo" />
-        
+
         {/* loader mientras se cargar los componentes diferidos */}
         <Suspense fallback={<PageLoading />}>
           <AnimacionesLayout>
@@ -63,7 +68,7 @@ const Layout = () => {
           </AnimacionesLayout>
         </Suspense>
       </main>
-    </div>   )
+    </div>
   );
 };
 

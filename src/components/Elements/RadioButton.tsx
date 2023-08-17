@@ -1,7 +1,6 @@
 import style from "../../styles/radioButton.module.css";
 import { RadioButtonInterface } from "../../types";
 
-
 export const RadioButton = ({
   titulo,
   name,

@@ -41,9 +41,9 @@ export type CamposFormInterface = {
   /**Texto de ayuda en el tooltip */
   tip?: string | null
   /**Tipo de decoracion que tendra el input */
-  decoracion?:'texto' | 'icono'
+  decoracion?: 'texto' | 'icono'
   /**Elemento decorativo */
-element?:string
+  element?: string
 
 }
 
@@ -86,18 +86,18 @@ export type ElementSidebarInterface = {
   style: string
 }
 /**Elemento botón lista del sidebar */
-export type ButtonSidebarInterface={
-   /**Contenido adicional que puede tener */
-   children?: React.DetailedHTMLProps
-   /**Titulo del elemento */
-   name: string,
-   /**Evento botón */
-   onClick: (e:React.MouseEvent)=>void,
-   /**Estilo del elemento */
-   style: string
-   /**Identificar el nombre del botón para apertura modales */
-   id:string
-} 
+export type ButtonSidebarInterface = {
+  /**Contenido adicional que puede tener */
+  children?: React.DetailedHTMLProps
+  /**Titulo del elemento */
+  name: string,
+  /**Evento botón */
+  onClick: (e: React.MouseEvent) => void,
+  /**Estilo del elemento */
+  style: string
+  /**Identificar el nombre del botón para apertura modales */
+  id: string
+}
 
 /**Modal personalizado */
 export interface ModalInterface {
@@ -123,15 +123,15 @@ interface AnimacionBase {
   /**Elementos que tendrán una animación */
   children: React.ReactElement;
   in?: boolean;
-  onClick?: ()=>void;
+  onClick?: () => void;
   onEnter?: (node: HTMLElement, isAppearing: boolean) => void;
   onExited?: (node: HTMLElement, isAppearing: boolean) => void;
-  ownerState?: ()=>void;
-  
+  ownerState?: () => void;
+
 }
 
 export interface AnimacionModalInterface extends AnimacionBase {
-  
+
   in?: boolean;
 
 }
@@ -174,5 +174,5 @@ export type RadioButtonInterface = {
 /**Interfaz del sidebar */
 export type SidebarInterface = {
   /**Activar estilos para un sidebar responsive */
-  responsive?:boolean
+  responsive?: boolean
 }

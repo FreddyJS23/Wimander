@@ -13,7 +13,7 @@ export const ModalBase = ({
 }: ModalBaseInterface) => {
   return (
     <Modal open={open} closeAfterTransition onClose={handleClose}>
-      <Zoom in={open} >
+      <Zoom in={open}>
         <div className={`${style["container-modal"]} `}>
           <div className={style["container-encabezado"]}>
             <p>{encabezado}</p>

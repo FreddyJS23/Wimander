@@ -40,9 +40,7 @@ export const AnimacionLogo = ({ children }: AnimacionBase) => {
 };
 
 //container iconos de contactos
-export const AnimacionContactoContainer = ({
-  children,
-}: AnimacionBase) => {
+export const AnimacionContactoContainer = ({ children }: AnimacionBase) => {
   return (
     <motion.div
       variants={iconoContactoContainer}
