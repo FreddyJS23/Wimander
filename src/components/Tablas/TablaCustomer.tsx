@@ -48,7 +48,7 @@ export const TablaCustomer=()=> {
   //Click en el icono de cierre en el modal
   const handleClose = () => {
     
-    setControlModal(initialControModal);
+    setControlModal({...controlModal,open:false});
     //Se necesita vaciar el state después de cierto tiempo para no anular la animacion de salida
     setTimeout(() => setControlModal(initialControModal), 500);
   };
@@ -91,28 +91,28 @@ export const TablaCustomer=()=> {
         
       />
 
-        <ModalEditarClient
+      {controlModal.modal === 'editar' &&  <ModalEditarClient
           parameter={controlModal.paramater}
-          open={controlModal.modal === 'editar' &&   controlModal.open}
+          open={controlModal.open}
           encabezado="Editar cliente"
           handleClose={handleClose}
-        />
+        />}
     
     
-        <ModalExpandirFecha
+       {controlModal.modal == 'calendario' &&  <ModalExpandirFecha
           parameter={controlModal.paramater}
-          open={controlModal.modal == 'calendario' &&   controlModal.open}
+          open={  controlModal.open}
           encabezado="Expandir fecha"
           handleClose={handleClose}
-        />
+        />}
       
       
-        <ModalDeleteClient
+      {controlModal.modal == 'eliminar' &&   <ModalDeleteClient
           parameter={controlModal.paramater}
-          open={controlModal.modal == 'eliminar' &&   controlModal.open}
+          open={controlModal.open}
           encabezado="Confirmar eliminación"
           handleClose={handleClose}
-        />
+        />}
      
       {/* Mensaje de alertas al realizar las acciones    */}
       <Alerts
