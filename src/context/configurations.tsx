@@ -1,12 +1,12 @@
 import { createContext, useState } from "react";
-import { ConfigContextInterface, ConfigState } from "../types";
+import { ConfigContextInterface,Configs } from "../types";
 
 interface Props {
   children: JSX.Element | JSX.Element[];
 }
 
-const initialConfigs: ConfigState = {
-  amount: 3,
+const initialConfigs: Configs = {
+  amount: 0,
 };
 
 const initialConfigsContext: ConfigContextInterface = {
@@ -19,7 +19,7 @@ export const ConfigsContext = createContext<ConfigContextInterface>(
 );
 
 export const ConfigsContextProvider = ({ children }: Props) => {
-  const [configs, setConfigs] = useState<ConfigState>(initialConfigs);
+  const [configs, setConfigs] = useState<Configs>(initialConfigs);
 
   const configsContext: ConfigContextInterface = {
     configs,
