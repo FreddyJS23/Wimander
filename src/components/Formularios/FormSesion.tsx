@@ -11,6 +11,7 @@ import { Alerts } from "../Elements";
 import { AlertContext } from "../../context/AlertContext";
 
 
+
 export const FormSesion = ({ handleClick }: ControlFormLogin) => {
   const { setUser } = useContext(AuthContext);
   const {
@@ -21,16 +22,17 @@ export const FormSesion = ({ handleClick }: ControlFormLogin) => {
 
   //estado de la alerta
  const{setAlertState,onClose,alertState}=useContext(AlertContext)
+  
 
  //Estado de carga boton
 const [loading, setLoading] = useState(false)
   //Envio de formulario
   const onSubmit: SubmitHandler<UserForm> = async (form) => {
- setUser({token:'12',})
+
     setLoading(true)
     const { data, status } = await Autenticar(form);
    
-    if (status == 200) setUser(data.user);
+    if (status == 200) setUser(data.user)
    
     else if (status == 408) setAlertState({ open: true,tipo:"error", mensaje: `${status}: error de conexion` });
    
