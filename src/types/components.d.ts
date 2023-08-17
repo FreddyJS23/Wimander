@@ -1,5 +1,5 @@
 import { GridRowId } from "@mui/x-data-grid"
-import { HTMLInputTypeAttribute, MouseEvent } from "react"
+import { HTMLInputTypeAttribute, JSXElementConstructor, MouseEvent } from "react"
 
 export type CamposFormInterface = {
   /**
@@ -121,7 +121,7 @@ export interface ModalBaseInterface extends ModalInterface {
 /**Animación base */
 interface AnimacionBase {
   /**Elementos que tendrán una animación */
-  children: React.ReactElement;
+  children: React.ReactElement | JSXElementConstructor;
   in?: boolean;
   onClick?: () => void;
   onEnter?: (node: HTMLElement, isAppearing: boolean) => void;
