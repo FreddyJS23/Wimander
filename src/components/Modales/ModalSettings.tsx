@@ -84,7 +84,7 @@ export const ModalSettings = ({
             styleInput="inputSmall"
           />
         </div>
-        <Button type={"submit"} onSubmit={handleSubmit} value="Guardar" />
+        <Button type={"submit"} onSubmit={handleSubmit} value="Guardar" loading={loader} />
       </form>
     </ModalBase>
   );
