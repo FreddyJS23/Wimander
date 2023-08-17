@@ -9,6 +9,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { Autenticar } from "../../services/auth";
 import { Alerts } from "../Elements";
 import { AlertContext } from "../../context/AlertContext";
+import { useCookies } from "react-cookie";
 
 
 
@@ -22,7 +23,7 @@ export const FormSesion = ({ handleClick }: ControlFormLogin) => {
 
   //estado de la alerta
  const{setAlertState,onClose,alertState}=useContext(AlertContext)
-  
+ const {1:setCookie}=useCookies()
 
  //Estado de carga boton
 const [loading, setLoading] = useState(false)
@@ -32,7 +33,9 @@ const [loading, setLoading] = useState(false)
     setLoading(true)
     const { data, status } = await Autenticar(form);
    
-    if (status == 200) setUser(data.user)
+    if (status == 200){ 
+      setCookie('SessionUser',data.user,{path:'/'})
+      setUser(data.user) }
    
     else if (status == 408) setAlertState({ open: true,tipo:"error", mensaje: `${status}: error de conexion` });
    
