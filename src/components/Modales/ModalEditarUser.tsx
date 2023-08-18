@@ -8,6 +8,7 @@ import { CamposForm } from "../Elements";
 import { Button } from "../Botones";
 import { ModalInterface, UserUpdateForm } from "../../types";
 import { ActualizarUser, GetUser } from "../../services/user";
+import {ALERT_SUCCESS,ALERT_MSJ_USER_EDITED,ALERT_ERROR, ALERT_MSJ_ERROR_408} from '../constants'
 
 /**Modal para editar usuario */
 export const ModalEditarUser = ({
@@ -51,9 +52,8 @@ export const ModalEditarUser = ({
     if (status == 200) {
       e?.target.reset();
       setAlertState({
-        open: true,
-        mensaje: "Usuario editado",
-        tipo: "success",
+       ...ALERT_SUCCESS,
+       ...ALERT_MSJ_USER_EDITED
       });
       handleClose()
     }
@@ -62,24 +62,23 @@ export const ModalEditarUser = ({
     if (GetErrorsResponse(errors)) {
       setLoader(false);
       return setAlertState({
-        open: true,
+        ...ALERT_ERROR,
         mensaje: GetErrorsResponse(errors),
-        tipo: "error",
       });
     }
 
     //Errores del servidor
     if (status == 408) {
       return setAlertState({
-        open: true,
-        mensaje: `Error 408: Sin conexión al servidor`,
-        tipo: "error",
+        ...ALERT_ERROR,
+        ...ALERT_MSJ_ERROR_408
+        
       });
     } else if (status != 200) {
       return setAlertState({
-        open: true,
+       ...ALERT_ERROR,
         mensaje: `Error${status} - ${data.message} `,
-        tipo: "error",
+       
       });
     }
     setLoader(false);

@@ -8,6 +8,7 @@ import style from "../../styles/modales.module.css";
 import { CamposForm } from "../Elements";
 import { Button } from "../Botones";
 import { ActualizarCliente, GetCliente } from "../../services/customer";
+import {ALERT_ERROR, ALERT_MSJ_CUSTOMER_EDITED, ALERT_MSJ_ERROR_408, ALERT_SUCCESS} from '../constants'
 
 /**Modal para editar cliente */
 export const ModalEditarClient = ({
@@ -44,9 +45,9 @@ export const ModalEditarClient = ({
     if (status == 200) {
       e?.target.reset();
       setAlertState({
-        open: true,
-        mensaje: "Cliente editado",
-        tipo: "success",
+       ...ALERT_SUCCESS,
+       ...ALERT_MSJ_CUSTOMER_EDITED
+     
       });
       handleClose()
     }
@@ -54,23 +55,20 @@ export const ModalEditarClient = ({
     //Errores en los campos
     if (GetErrorsResponse(errors))
       return setAlertState({
-        open: true,
+        ...ALERT_ERROR,
         mensaje: GetErrorsResponse(errors),
-        tipo: "error",
       });
 
     //Errores del servidor
     if (status == 408) {
       return setAlertState({
-        open: true,
-        mensaje: `Error 408: Sin conexión al servidor`,
-        tipo: "error",
+        ...ALERT_ERROR,
+        ...ALERT_MSJ_ERROR_408
       });
     } else if (status != 200) {
       return setAlertState({
-        open: true,
+        ...ALERT_ERROR,
         mensaje: `Error${status} - ${data.message} `,
-        tipo: "error",
       });
     }
     setLoader(false)

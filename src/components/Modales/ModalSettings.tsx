@@ -8,6 +8,7 @@ import { Button } from "../Botones";
 import { ConfigsForm, ModalInterface } from "../../types";
 import { GetConfigs, UpdateConfigs } from "../../services/config";
 import { ConfigsContext } from "../../context/configurations";
+import {ALERT_SUCCESS,ALERT_ERROR, ALERT_MSJ_ERROR_408,ALERT_MSJ_CONFIGURATION_SAVED} from '../constants'
 
 /**Modal para cambiar configuracion dle usuario */
 export const ModalSettings = ({
@@ -39,9 +40,8 @@ export const ModalSettings = ({
       e?.target.reset();
       setConfigs(data.configs);
       setAlertState({
-        open: true,
-        mensaje: "Se ha guardado la configuración",
-        tipo: "success",
+        ...ALERT_SUCCESS,
+        ...ALERT_MSJ_CONFIGURATION_SAVED
       });
       handleClose();
     }
@@ -49,15 +49,13 @@ export const ModalSettings = ({
     //Errores del servidor
     if (status == 408) {
       return setAlertState({
-        open: true,
-        mensaje: `Error 408: Sin conexión al servidor`,
-        tipo: "error",
+        ...ALERT_ERROR,
+        ...ALERT_MSJ_ERROR_408
       });
     } else if (status != 200) {
       return setAlertState({
-        open: true,
+        ...ALERT_ERROR,
         mensaje: `Error${status} - ${data.message} `,
-        tipo: "error",
       });
     }
     setLoader(false)

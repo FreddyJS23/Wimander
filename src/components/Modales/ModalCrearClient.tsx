@@ -9,6 +9,7 @@ import { ModalBase } from ".";
 import style from "../../styles/modales.module.css";
 import { CamposForm, RadioButton } from "../Elements";
 import { Button } from "../Botones";
+import {ALERT_ERROR,ALERT_MSJ_USER_CREATED,ALERT_MSJ_ERROR_408, ALERT_SUCCESS} from "../constants"
 
 /**Modal para crear cliente */
 export const ModalCrearClient = ({
@@ -37,9 +38,8 @@ export const ModalCrearClient = ({
     if (status == 201) {
       e?.target.reset();
       setAlertState({
-        open: true,
-        mensaje: "Cliente creado",
-        tipo: "success",
+      ...ALERT_MSJ_USER_CREATED,
+      ...ALERT_SUCCESS 
       });
       handleClose()
     }
@@ -47,23 +47,21 @@ export const ModalCrearClient = ({
     //Errores en los campos
     if (GetErrorsResponse(errors))
       return setAlertState({
-        open: true,
+        ...ALERT_ERROR,
         mensaje: GetErrorsResponse(errors),
-        tipo: "error",
+       
       });
 
     //Errores del servidor
     if (status == 408) {
       setAlertState({
-        open: true,
-        mensaje: `Error 408: Sin conexión al servidor`,
-        tipo: "error",
+        ...ALERT_ERROR,
+        ...ALERT_MSJ_ERROR_408 
       });
     } else if (status != 201) {
       setAlertState({
-        open: true,
+        ...ALERT_ERROR,
         mensaje: `Error${status} - ${data.message} `,
-        tipo: "error",
       });
     }
     setLoader(false)

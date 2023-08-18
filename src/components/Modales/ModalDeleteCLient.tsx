@@ -6,6 +6,7 @@ import { Button } from "../Botones";
 import { EliminarCliente } from "../../services/customer";
 import { ModalInterface } from "../../types";
 import alertOrangeIcon from "../../assets/alertaOrange.svg";
+import {ALERT_ERROR,ALERT_MSJ_ERROR_408,ALERT_MSJ_USER_DELETE, ALERT_SUCCESS} from '../constants'
 
 /**Modal para eliminar un cliente */
 export const ModalDeleteClient = ({
@@ -26,9 +27,8 @@ export const ModalDeleteClient = ({
     //respuesta exitosa
     if (status == 200) {
       setAlertState({
-        open: true,
-        mensaje: `Cliente con un id ${data.customerID} eliminado`,
-        tipo: "success",
+        ...ALERT_MSJ_USER_DELETE,
+        ...ALERT_SUCCESS
       });
       handleClose()
     }
@@ -36,15 +36,14 @@ export const ModalDeleteClient = ({
     //Errores del servidor
     if (status == 408) {
       return setAlertState({
-        open: true,
-        mensaje: `Error 408: Sin conexión al servidor`,
-        tipo: "error",
+        ...ALERT_ERROR,
+        ...ALERT_MSJ_ERROR_408
+        
       });
     } else if (status != 200) {
       return setAlertState({
-        open: true,
+        ...ALERT_ERROR,
         mensaje: `Error${status} - ${data.message} `,
-        tipo: "error",
       });
     }
     setLoader(false)

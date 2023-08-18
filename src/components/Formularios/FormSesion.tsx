@@ -10,6 +10,8 @@ import { Autenticar } from "../../services/auth";
 import { Alerts } from "../Elements";
 import { AlertContext } from "../../context/AlertContext";
 import { useCookies } from "react-cookie";
+import {ALERT_ERROR,ALERT_SUCCESS,ALERT_MSJ_USER_CREATED,ALERT_MSJ_ERROR_408, ALERT_MSJ_PASSWORDS_NOT_MATCH} from '../constants'
+
 
 export const FormSesion = ({ handleClick }: ControlFormLogin) => {
   const { setUser } = useContext(AuthContext);
@@ -35,11 +37,10 @@ export const FormSesion = ({ handleClick }: ControlFormLogin) => {
       setUser(data.user);
     } else if (status == 408)
       setAlertState({
-        open: true,
-        tipo: "error",
+       ...ALERT_ERROR,
         mensaje: `${status}: error de conexion`,
       });
-    else setAlertState({ open: true, tipo: "success", mensaje: data.message });
+    else setAlertState({...ALERT_ERROR, mensaje: data.message });
 
     //cierre de alerta
 

@@ -8,6 +8,7 @@ import { Alerts } from "../Elements/Alerts";
 import { createUser } from "../../services/user";
 import { GetErrorsResponse } from "../../utils/GetErrorsResponse";
 import { AlertContext } from "../../context/AlertContext";
+import {ALERT_ERROR,ALERT_SUCCESS,ALERT_MSJ_USER_CREATED,ALERT_MSJ_ERROR_408, ALERT_MSJ_PASSWORDS_NOT_MATCH} from '../constants'
 
 export const FormRegistroUsuario = ({ handleClick }: ControlFormLogin) => {
   //Control de formulario
@@ -32,16 +33,15 @@ export const FormRegistroUsuario = ({ handleClick }: ControlFormLogin) => {
     //Comprobar si las contraseñas son iguales
     if (getValues("password") != getValues("password2")) {
       setAlertState({
-        open: true,
-        mensaje: "Las contraseñas no coinciden",
-        tipo: "error",
+        ...ALERT_ERROR,
+        ...ALERT_MSJ_PASSWORDS_NOT_MATCH
       });
     }
 
     //Respuesta exitosa
     if (status == 201) {
       e?.target.reset();
-      setAlertState({ open: true, mensaje: "usuario creado", tipo: "success" });
+      setAlertState({...ALERT_SUCCESS, ...ALERT_MSJ_USER_CREATED});
       setTimeout(() => {
         handleClick();
       }, 1000);
@@ -50,23 +50,21 @@ export const FormRegistroUsuario = ({ handleClick }: ControlFormLogin) => {
     //Errores en los campos
     if (GetErrorsResponse(errors))
       setAlertState({
-        open: true,
+        ...ALERT_ERROR,
         mensaje: GetErrorsResponse(errors),
-        tipo: "error",
       });
 
     //Errores del servidor
     if (status == 408) {
       setAlertState({
-        open: true,
-        mensaje: `Error 408: Sin conexión al servidor`,
-        tipo: "error",
+        ...ALERT_ERROR,
+       ...ALERT_MSJ_ERROR_408
+        
       });
     } else if (status != 200) {
       setAlertState({
-        open: true,
+        ...ALERT_ERROR,
         mensaje: `Error${status} - ${data.message} `,
-        tipo: "error",
       });
     }
 

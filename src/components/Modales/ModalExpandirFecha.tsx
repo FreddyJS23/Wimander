@@ -7,6 +7,7 @@ import style from "../../styles/modales.module.css";
 import { RadioButton } from "../Elements";
 import { Button } from "../Botones";
 import { extendsConnection } from "../../services/extendsConnection";
+import {ALERT_SUCCESS,ALERT_ERROR, ALERT_MSJ_ERROR_408, ALERT_MSJ_CONNECTION_EDITED} from '../constants'
 
 /**Modal para expandir la fecha del cliente */
 export const ModalExpandirFecha = ({
@@ -32,9 +33,9 @@ const [loader, setLoader] = useState(false)
     if (status == 200) {
       e?.target.reset();
       setAlertState({
-        open: true,
-        mensaje: "Se ha extendido la fecha de vencimiento",
-        tipo: "success",
+        ...ALERT_SUCCESS,
+        ...ALERT_MSJ_CONNECTION_EDITED
+        
       });
       handleClose()
     }
@@ -42,15 +43,13 @@ const [loader, setLoader] = useState(false)
     //Errores del servidor
     if (status == 408) {
       return setAlertState({
-        open: true,
-        mensaje: `Error 408: Sin conexión al servidor`,
-        tipo: "error",
+        ...ALERT_ERROR,
+        ...ALERT_MSJ_ERROR_408
       });
     } else if (status != 200) {
       return setAlertState({
-        open: true,
+        ...ALERT_ERROR,
         mensaje: `Error${status} - ${data.message} `,
-        tipo: "error",
       });
     }
     setLoader(false)
