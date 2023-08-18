@@ -25,7 +25,13 @@ export const Sidebar = ({ responsive }: SidebarInterface) => {
   const [controlModal, setControlModal] =
     useState<ControlModal>(initialControModal);
   const { 2: removeCookie } = useCookies();
-  const onClose = () => setControlModal(initialControModal);
+ 
+  const onClose = () => {
+    setControlModal({ ...controlModal, open: false });
+    setTimeout(() => {
+      setControlModal(initialControModal);
+    }, 500);
+  };
   const onClick = (e: React.MouseEvent) =>
     setControlModal({ modal: e.currentTarget.id, open: true });
 
@@ -89,17 +95,22 @@ export const Sidebar = ({ responsive }: SidebarInterface) => {
           </div>
         </div>
       </nav>
-      <ModalEditarUser
-        encabezado="Editar usuario"
-        open={controlModal.modal == "editarUsuario" && controlModal.open}
-        handleClose={onClose}
-        parameter={user?.id}
-      />
-      <ModalSettings
-        encabezado="Configuracion"
-        open={controlModal.modal == "configuracion" && controlModal.open}
-        handleClose={onClose}
-      />
+
+      {controlModal.modal == "editarUsuario" && (
+        <ModalEditarUser
+          encabezado="Editar usuario"
+          open={controlModal.open}
+          handleClose={onClose}
+          parameter={user?.id}
+        />
+      )}
+      {controlModal.modal == "configuracion" && (
+        <ModalSettings
+          encabezado="Configuracion"
+          open={controlModal.open}
+          handleClose={onClose}
+        />
+      )}
     </>
   );
 };
