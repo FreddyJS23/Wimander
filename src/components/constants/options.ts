@@ -1,0 +1,2 @@
+export const TIMED_CLOSE_MODAL = 500
+export const TIMED_ANIMATION_MODAL = 350
