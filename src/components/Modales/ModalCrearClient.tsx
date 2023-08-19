@@ -4,12 +4,12 @@ import { ConfigsContext } from "../../context/configurations";
 import { CustomerRegister, ModalInterface } from "../../types";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { CrearCliente } from "../../services/customer";
-import { GetErrorsResponse } from "../../utils/GetErrorsResponse";
 import { ModalBase } from ".";
 import style from "../../styles/modales.module.css";
 import { CamposForm, RadioButton } from "../Elements";
 import { Button } from "../Botones";
-import {ALERT_ERROR,ALERT_MSJ_USER_CREATED,ALERT_MSJ_ERROR_408, ALERT_SUCCESS} from "../constants"
+import { ALERT_MSJ_CUSTOMER_CREATED} from "../../constants"
+import { handleResponseForm } from "../../utils/handleResponseForm";
 
 /**Modal para crear cliente */
 export const ModalCrearClient = ({
@@ -34,37 +34,7 @@ export const ModalCrearClient = ({
     const { data, status } = await CrearCliente(form);
     const { errors } = data;
 
-    //respuesta exitosa
-    if (status == 201) {
-      e?.target.reset();
-      setAlertState({
-      ...ALERT_MSJ_USER_CREATED,
-      ...ALERT_SUCCESS 
-      });
-      handleClose()
-    }
-
-    //Errores en los campos
-    if (GetErrorsResponse(errors))
-      return setAlertState({
-        ...ALERT_ERROR,
-        mensaje: GetErrorsResponse(errors),
-       
-      });
-
-    //Errores del servidor
-    if (status == 408) {
-      setAlertState({
-        ...ALERT_ERROR,
-        ...ALERT_MSJ_ERROR_408 
-      });
-    } else if (status != 201) {
-      setAlertState({
-        ...ALERT_ERROR,
-        mensaje: `Error${status} - ${data.message} `,
-      });
-    }
-    setLoader(false)
+   handleResponseForm(status,handleClose,setLoader,setAlertState,ALERT_MSJ_CUSTOMER_CREATED,e,errors)
   };
 
   return (

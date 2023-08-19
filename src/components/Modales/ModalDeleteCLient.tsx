@@ -6,7 +6,8 @@ import { Button } from "../Botones";
 import { EliminarCliente } from "../../services/customer";
 import { ModalInterface } from "../../types";
 import alertOrangeIcon from "../../assets/alertaOrange.svg";
-import {ALERT_ERROR,ALERT_MSJ_ERROR_408,ALERT_MSJ_USER_DELETE, ALERT_SUCCESS} from '../constants'
+import {ALERT_MSJ_USER_DELETE} from '../../constants'
+import { handleResponseForm } from "../../utils/handleResponseForm";
 
 /**Modal para eliminar un cliente */
 export const ModalDeleteClient = ({
@@ -22,31 +23,9 @@ export const ModalDeleteClient = ({
   //Eliminar cliente
   const onClick = async (cliente?: string | number) => {
     setLoader(true)
-    const { data, status } = await EliminarCliente(cliente);
+    const { status } = await EliminarCliente(cliente);
 
-    //respuesta exitosa
-    if (status == 200) {
-      setAlertState({
-        ...ALERT_MSJ_USER_DELETE,
-        ...ALERT_SUCCESS
-      });
-      handleClose()
-    }
-
-    //Errores del servidor
-    if (status == 408) {
-      return setAlertState({
-        ...ALERT_ERROR,
-        ...ALERT_MSJ_ERROR_408
-        
-      });
-    } else if (status != 200) {
-      return setAlertState({
-        ...ALERT_ERROR,
-        mensaje: `Error${status} - ${data.message} `,
-      });
-    }
-    setLoader(false)
+    handleResponseForm(status,handleClose,setLoader,setAlertState,ALERT_MSJ_USER_DELETE)
   };
 
   return (

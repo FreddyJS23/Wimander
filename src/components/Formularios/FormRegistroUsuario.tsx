@@ -6,9 +6,9 @@ import { Button } from "../Botones";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { Alerts } from "../Elements/Alerts";
 import { createUser } from "../../services/user";
-import { GetErrorsResponse } from "../../utils/GetErrorsResponse";
 import { AlertContext } from "../../context/AlertContext";
-import {ALERT_ERROR,ALERT_SUCCESS,ALERT_MSJ_USER_CREATED,ALERT_MSJ_ERROR_408, ALERT_MSJ_PASSWORDS_NOT_MATCH} from '../constants'
+import {ALERT_ERROR,ALERT_MSJ_USER_CREATED, ALERT_MSJ_PASSWORDS_NOT_MATCH} from '../../constants'
+import { handleResponseForm } from "../../utils/handleResponseForm";
 
 export const FormRegistroUsuario = ({ handleClick }: ControlFormLogin) => {
   //Control de formulario
@@ -23,11 +23,11 @@ export const FormRegistroUsuario = ({ handleClick }: ControlFormLogin) => {
   const { setAlertState, alertState, onClose } = useContext(AlertContext);
 
   //Estado de carga del Boton
-  const [loading, setLoading] = useState(false);
+  const [loader, setLoader] = useState(false);
 
   //Envió de formulario
   const onSubmit: SubmitHandler<RegisterUserForm> = async (form, e) => {
-    setLoading(true);
+    setLoader(true);
     const { data, status } = await createUser(form);
     const { errors } = data;
     //Comprobar si las contraseñas son iguales
@@ -37,38 +37,8 @@ export const FormRegistroUsuario = ({ handleClick }: ControlFormLogin) => {
         ...ALERT_MSJ_PASSWORDS_NOT_MATCH
       });
     }
-
-    //Respuesta exitosa
-    if (status == 201) {
-      e?.target.reset();
-      setAlertState({...ALERT_SUCCESS, ...ALERT_MSJ_USER_CREATED});
-      setTimeout(() => {
-        handleClick();
-      }, 1000);
-    }
-
-    //Errores en los campos
-    if (GetErrorsResponse(errors))
-      setAlertState({
-        ...ALERT_ERROR,
-        mensaje: GetErrorsResponse(errors),
-      });
-
-    //Errores del servidor
-    if (status == 408) {
-      setAlertState({
-        ...ALERT_ERROR,
-       ...ALERT_MSJ_ERROR_408
-        
-      });
-    } else if (status != 200) {
-      setAlertState({
-        ...ALERT_ERROR,
-        mensaje: `Error${status} - ${data.message} `,
-      });
-    }
-
-    setLoading(false);
+    handleResponseForm(status,handleClick,setLoader,setAlertState,ALERT_MSJ_USER_CREATED,e,errors)
+   
   };
 
   return (
@@ -145,7 +115,7 @@ export const FormRegistroUsuario = ({ handleClick }: ControlFormLogin) => {
         />
 
         <div className={styles["container-buttons"]}>
-          <Button loading={loading} type={"submit"} value={"Registrarse"} />
+          <Button loading={loader} type={"submit"} value={"Registrarse"} />
         </div>
       </form>
       <Alerts

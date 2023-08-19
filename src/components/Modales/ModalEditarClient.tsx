@@ -2,13 +2,13 @@ import { useContext, useState } from "react";
 import { AlertContext } from "../../context/AlertContext";
 import { CustomerFormUpdate, ModalInterface } from "../../types";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { GetErrorsResponse } from "../../utils/GetErrorsResponse";
 import { ModalBase } from ".";
 import style from "../../styles/modales.module.css";
 import { CamposForm } from "../Elements";
 import { Button } from "../Botones";
 import { ActualizarCliente, GetCliente } from "../../services/customer";
-import {ALERT_ERROR, ALERT_MSJ_CUSTOMER_EDITED, ALERT_MSJ_ERROR_408, ALERT_SUCCESS} from '../constants'
+import { ALERT_MSJ_USER_EDITED} from '../../constants'
+import { handleResponseForm } from "../../utils/handleResponseForm";
 
 /**Modal para editar cliente */
 export const ModalEditarClient = ({
@@ -40,38 +40,9 @@ export const ModalEditarClient = ({
     setLoader(true)
     const { data, status } = await ActualizarCliente(form.id, form);
     const { errors } = data;
-
-    //respuesta exitosa
-    if (status == 200) {
-      e?.target.reset();
-      setAlertState({
-       ...ALERT_SUCCESS,
-       ...ALERT_MSJ_CUSTOMER_EDITED
-     
-      });
-      handleClose()
-    }
-
-    //Errores en los campos
-    if (GetErrorsResponse(errors))
-      return setAlertState({
-        ...ALERT_ERROR,
-        mensaje: GetErrorsResponse(errors),
-      });
-
-    //Errores del servidor
-    if (status == 408) {
-      return setAlertState({
-        ...ALERT_ERROR,
-        ...ALERT_MSJ_ERROR_408
-      });
-    } else if (status != 200) {
-      return setAlertState({
-        ...ALERT_ERROR,
-        mensaje: `Error${status} - ${data.message} `,
-      });
-    }
-    setLoader(false)
+    //manejo de respuesta 
+    handleResponseForm(status,handleClose,setLoader,setAlertState,ALERT_MSJ_USER_EDITED,e,errors)
+    
   };
 
   return (

@@ -6,9 +6,10 @@ import style from "../../styles/modales.module.css";
 import { CamposForm } from "../Elements";
 import { Button } from "../Botones";
 import { ConfigsForm, ModalInterface } from "../../types";
-import { GetConfigs, UpdateConfigs } from "../../services/config";
 import { ConfigsContext } from "../../context/configurations";
-import {ALERT_SUCCESS,ALERT_ERROR, ALERT_MSJ_ERROR_408,ALERT_MSJ_CONFIGURATION_SAVED} from '../constants'
+import {ALERT_MSJ_CONFIGURATION_SAVED} from '../../constants'
+import { handleResponseForm } from "../../utils/handleResponseForm";
+import { UpdateConfigs } from "../../services/config";
 
 /**Modal para cambiar configuracion dle usuario */
 export const ModalSettings = ({
@@ -18,7 +19,7 @@ export const ModalSettings = ({
 }: ModalInterface) => {
   //Control alertas
   const { setAlertState } = useContext(AlertContext);
-  const { configs, setConfigs } = useContext(ConfigsContext);
+  const { configs } = useContext(ConfigsContext);
   const [loader, setLoader] = useState(false)
   //Control formulario
   const {
@@ -33,32 +34,9 @@ export const ModalSettings = ({
   const onSubmit: SubmitHandler<ConfigsForm> = async (form, e) => {
     setLoader(true)
     const { data, status } = await UpdateConfigs(form);
-
-    //respuesta exitosa
-    if (status == 200 || status == 201) {
-      const { data } = await GetConfigs();
-      e?.target.reset();
-      setConfigs(data.configs);
-      setAlertState({
-        ...ALERT_SUCCESS,
-        ...ALERT_MSJ_CONFIGURATION_SAVED
-      });
-      handleClose();
-    }
-
-    //Errores del servidor
-    if (status == 408) {
-      return setAlertState({
-        ...ALERT_ERROR,
-        ...ALERT_MSJ_ERROR_408
-      });
-    } else if (status != 200) {
-      return setAlertState({
-        ...ALERT_ERROR,
-        mensaje: `Error${status} - ${data.message} `,
-      });
-    }
-    setLoader(false)
+    const {errors}=data
+   
+    handleResponseForm(status,handleClose,setLoader,setAlertState,ALERT_MSJ_CONFIGURATION_SAVED,e,errors)
   };
 
   return (
