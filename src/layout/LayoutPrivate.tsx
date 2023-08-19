@@ -1,6 +1,7 @@
-import { useContext, lazy } from "react";
+import { useContext, lazy, useEffect  } from "react";
 import Login from "../pages/Login";
 import { useCookies } from "react-cookie";
+import { getTokenCrfs } from "../services/tokenCsrf";
 const Layout = lazy(() => import("./Layout"));
 
 import { AuthContext } from "../context/AuthContext";
@@ -11,6 +12,10 @@ const LayoutPrivate = () => {
 
   cookie["SessionUser"] && setUser(cookie["SessionUser"]);
 
+  useEffect(() => {
+    getTokenCrfs();
+  }, []);
+  
   return <>{user.token ? <Layout /> : <Login />}</>;
 };
 

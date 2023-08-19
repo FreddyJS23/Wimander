@@ -5,12 +5,10 @@ import styles from "../styles/login.module.css";
 import imagePrincipal from "../assets/imagen-login.svg";
 import flechaIzquierda from "../assets/arrow-left.svg";
 import useDocumentTitle from "../utils/useDocumentTitle";
-import { getTokenCrfs } from "../services/tokenCsrf";
+
 
 const Login = () => {
-  useEffect(() => {
-    getTokenCrfs();
-  }, []);
+ 
 
   const [registrar, setRegistrar] = useState(false);
   const [loading, setLoading] = useState(false);
