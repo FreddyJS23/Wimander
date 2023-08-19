@@ -10,7 +10,7 @@ import { Autenticar } from "../../services/auth";
 import { Alerts } from "../Elements";
 import { AlertContext } from "../../context/AlertContext";
 import { useCookies } from "react-cookie";
-import {ALERT_ERROR} from '../constants'
+import {ALERT_ERROR} from '../../constants'
 
 
 export const FormSesion = ({ handleClick }: ControlFormLogin) => {
