@@ -7,7 +7,6 @@ interface Props {
 export const TarjetasDasboard = ({
   titulo,
   contenido,
-  style,
 }: Props["tarjetaDashboard"]) => {
   return (
     <>

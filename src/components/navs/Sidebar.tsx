@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Logout } from "../../services/logout";
 import { ElementsSidebar } from "../Elements";
 import style from "../../styles/sidebar.module.css";
 import iconoDashboard from "../../assets/dashboard.svg";

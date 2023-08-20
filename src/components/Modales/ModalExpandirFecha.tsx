@@ -24,7 +24,7 @@ export const ModalExpandirFecha = ({
   });
 
   //Envió de formulario
-  const onSubmit: SubmitHandler<ExtendsConnectionFom> = async (form, e) => {
+  const onSubmit: SubmitHandler<ExtendsConnectionFom> = async (_form, e) => {
     setLoader(true);
     setTimeout(() => {
       setAlertState({ ...ALERT_SUCCESS, ...ALERT_MSJ_CONNECTION_EDITED });

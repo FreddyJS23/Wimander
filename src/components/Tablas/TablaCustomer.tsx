@@ -7,7 +7,6 @@ import {
   ModalDeleteClient,
   ModalExpandirFecha,
 } from "../Modales";
-import { GetClientes } from "../../services/customer";
 import { ControlModal, Customer } from "../../types";
 import { Alerts } from "../Elements";
 import { AlertContext } from "../../context/AlertContext";

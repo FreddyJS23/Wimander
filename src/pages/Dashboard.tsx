@@ -8,14 +8,13 @@ import {
   AnimacionTarjetasContainer,
 } from "../components/Animaciones";
 import useDocumentTitle from "../utils/useDocumentTitle";
-import { useEffect, useState } from "react";
-import { GetGanancias } from "../services/proceeds";
+import {  useState } from "react";
 import { BotonCrearCliente } from "../components/Botones";
 import { ModalCrearClient } from "../components/Modales";
 
 const Dashboard = () => {
-  //Ganacias
-  const [ganancia, setGanacias] = useState(0);
+  // //Ganacias
+  // const [ganancia, setGanacias] = useState(0);
 
   //Control modal
   const [modalOpen, setModalOpen] = useState(false);

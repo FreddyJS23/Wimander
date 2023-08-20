@@ -42,7 +42,7 @@ export const ModalEditarUser = ({
   });
 
   //Envió de formulario
-  const onSubmit: SubmitHandler<UserUpdateForm> = async (form, e) => {
+  const onSubmit: SubmitHandler<UserUpdateForm> = async (_form, e) => {
     setLoader(true);
     setTimeout(() => {
       setAlertState({ ...ALERT_SUCCESS, ...ALERT_MSJ_USER_EDITED });

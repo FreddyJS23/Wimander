@@ -19,7 +19,7 @@ export const ModalDeleteClient = ({
   const [loader, setLoader] = useState(false);
 
   //Eliminar cliente
-  const onClick = async (cliente?: string | number) => {
+  const onClick = async () => {
     setLoader(true);
     setTimeout(() => {
       setAlertState({ ...ALERT_SUCCESS, ...ALERT_MSJ_CUSTOMER_DELETE });

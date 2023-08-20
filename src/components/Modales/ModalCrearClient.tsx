@@ -28,7 +28,7 @@ export const ModalCrearClient = ({
   } = useForm<CustomerRegister>({ defaultValues: { amount: configs.amount } });
 
   //Envió de formulario
-  const onSubmit: SubmitHandler<CustomerRegister> = async (form, e) => {
+  const onSubmit: SubmitHandler<CustomerRegister> = async (_form, e) => {
     setLoader(true);
     setTimeout(() => {
       setAlertState({ ...ALERT_SUCCESS, ...ALERT_MSJ_CUSTOMER_CREATED });

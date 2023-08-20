@@ -29,7 +29,7 @@ export const FormRegistroUsuario = ({ handleClick }: ControlFormLogin) => {
   const [loader, setLoader] = useState(false);
 
   //Envió de formulario
-  const onSubmit: SubmitHandler<RegisterUserForm> = async (form, e) => {
+  const onSubmit: SubmitHandler<RegisterUserForm> = async (_form, e) => {
     setLoader(true);
 
     //Comprobar si las contraseñas son iguales
@@ -44,6 +44,7 @@ export const FormRegistroUsuario = ({ handleClick }: ControlFormLogin) => {
       setAlertState({ ...ALERT_SUCCESS, ...ALERT_MSJ_USER_CREATED });
       setLoader(false);
       e?.target.reset();
+      handleClick()
     }, 1000);
   };
 

@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { AuthContextInterface, User } from "../types/index";
+import { AuthContextInterface, UserAuth } from "../types/index";
 
 const initialContext: AuthContextInterface = {
   initialStateUser: { id: "", name: "", token: "" },
@@ -19,7 +19,7 @@ AuthContext.displayName = "Context Display Name";
 const AuthProvider = ({ children }: Props) => {
   //operaciones que se quieren tener en un contexto global
   const initialStateUser = { id: "", name: "", token: "" };
-  const [user, setUser] = useState<User>(initialStateUser);
+  const [user, setUser] = useState<UserAuth>(initialStateUser);
 
   //Enviar operaciones al provider, debe ir tipadas dichas operaciones a enviar
   const auth: AuthContextInterface = { user, setUser, initialStateUser };

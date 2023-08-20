@@ -35,7 +35,7 @@ export const ModalEditarClient = ({
   });
 
   //Envió de formulario
-  const onSubmit: SubmitHandler<CustomerFormUpdate> = async (form, e) => {
+  const onSubmit: SubmitHandler<CustomerFormUpdate> = async (_form, e) => {
     setLoader(true);
 
     setTimeout(() => {

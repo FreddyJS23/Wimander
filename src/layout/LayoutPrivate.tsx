@@ -1,4 +1,4 @@
-import { useContext, lazy, useEffect  } from "react";
+import { useContext, lazy } from "react";
 import Login from "../pages/Login";
 import { useCookies } from "react-cookie";
 const Layout = lazy(() => import("./Layout"));

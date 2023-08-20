@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { FormRegistroUsuario, FormSesion } from "../components/Formularios";
 import Logo from "../assets/logo.svg";
 import styles from "../styles/login.module.css";
@@ -12,12 +12,10 @@ const Login = () => {
  
 
   const [registrar, setRegistrar] = useState(false);
-  const [loading, setLoading] = useState(false);
+ 
 
   const handleClick = () => {
-    setLoading(true);
     setTimeout(() => {
-      setLoading(false);
       setRegistrar(!registrar);
     }, 300);
   };

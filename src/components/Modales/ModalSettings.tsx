@@ -29,7 +29,7 @@ export const ModalSettings = ({
   });
 
   //Envió de formulario
-  const onSubmit: SubmitHandler<ConfigsForm> = async (form, e) => {
+  const onSubmit: SubmitHandler<ConfigsForm> = async (_form, e) => {
     setLoader(true);
     setTimeout(() => {
       setAlertState({ ...ALERT_SUCCESS, ...ALERT_MSJ_CONFIGURATION_SAVED });
