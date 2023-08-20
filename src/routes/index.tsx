@@ -16,5 +16,5 @@ export const router = createBrowserRouter(
       <Route index element={<Dashboard />} />
       <Route path="Acerca" element={<Acerca />} />
     </Route>
-  )
+  ),{basename:'/Wimander/'}
 );
