@@ -54,7 +54,7 @@ export const TablaCustomer=()=> {
   const handleClose = () => {
     
     setControlModal({...controlModal,open:false});
-    //Se necesita vaciar el state después de cierto tiempo para no anular la animacion de salida
+    //Se necesita vaciar el state después de cierto tiempo para que el desmonte del componente no anule la nimacion de salida del modal
     setTimeout(() => setControlModal(initialControModal), 500);
   };
 
