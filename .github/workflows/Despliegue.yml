@@ -1,10 +1,10 @@
 # Flujo de trabajo simple para implementar contenido estático en Github Pages
-name: Implementar contenido estático a Pages
+name: Despliegue wimander
 
 on:
   # Se ejecuta en anotaciones dirigidas a la rama predeterminada
   push:
-    branches: ['main']
+    branches: ['Demo']
 
   # Te permite ejecutar este flujo de trabajo manualmente desde la pestaña Acciones
   workflow_dispatch:
