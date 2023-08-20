@@ -30,11 +30,11 @@ const Acerca = () => {
           <AnimacionContactoContainer>
             {" "}
             <AnimacionContactoIcon>
-              <img src={iconoLinkedin} alt="linkedin" />{" "}
+             <a href="https://www.linkedin.com/in/freddy-solarte-b86175180" target="_blank"> <img src={iconoLinkedin} alt="linkedin" /></a>
             </AnimacionContactoIcon>{" "}
             <AnimacionContactoIcon>
               {" "}
-              <img src={iconoGithub} alt="github" />
+             <a href="https://github.com/FreddyJS23" target="_blank" rel="noopener noreferrer"> <img src={iconoGithub} alt="github" /></a>
             </AnimacionContactoIcon>{" "}
           </AnimacionContactoContainer>
         </div>
