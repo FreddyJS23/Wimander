@@ -19,8 +19,8 @@ export const TablaCustomer=()=> {
   //clientes dataTable
   const [clientes, setClientes] = useState<Customer[]>([]);
   //loader para la tabla
-  const [loader, setLoader] = useState(false)
-  //Informacion para enviar al modal
+  const [loaderTable, setLoaderTable] = useState(false)
+  //Control modales
   const [controlModal, setControlModal] =
     useState<ControlModal>(initialControModal);
   //Context para las alertas
@@ -28,11 +28,16 @@ export const TablaCustomer=()=> {
  
   //Obtener información para la table
   useEffect(() => {
-   setLoader(true)
-    GetClientes().then((res) =>
-      res.status == 200 ? setClientes(res.data.customers) : setClientes([])
-    );
-    setLoader(false)
+  
+   const getData=async()=>{
+    setLoaderTable(true)
+    const {data,status}=await GetClientes()
+    status == 200 && setClientes(data.customers) 
+    setLoaderTable(false)
+  }
+  getData()
+  
+ 
   }, []);
 
   //Click en las acciones de las acciones
@@ -87,7 +92,7 @@ export const TablaCustomer=()=> {
         }}
         pageSizeOptions={[8, 10, 15, 20]}
         density="compact"
-        loading={loader} 
+        loading={loaderTable} 
         
       />
 
