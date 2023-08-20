@@ -5,6 +5,7 @@ import styles from "../styles/login.module.css";
 import imagePrincipal from "../assets/imagen-login.svg";
 import flechaIzquierda from "../assets/arrow-left.svg";
 import useDocumentTitle from "../utils/useDocumentTitle";
+import { DialogoDemo } from "../components/Elements/DialogoDemo";
 
 
 const Login = () => {
@@ -23,6 +24,7 @@ const Login = () => {
   //titulo pagina
   useDocumentTitle("Login");
   return (
+    <>
     <div className={styles["container-login"]}>
       <div className={styles["login-izquierdo"]}>
         <div className={styles["encabezado-izquierdo"]}>
@@ -72,6 +74,8 @@ const Login = () => {
         </div>
       </div>
     </div>
+   <DialogoDemo />
+    </>
   );
 };
 
