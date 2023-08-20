@@ -6,9 +6,8 @@ import style from "../../styles/modales.module.css";
 import { CamposForm } from "../Elements";
 import { Button } from "../Botones";
 import { ModalInterface, UserUpdateForm } from "../../types";
-import { ActualizarUser, GetUser } from "../../services/user";
-import {ALERT_MSJ_USER_EDITED} from '../../constants'
-import { handleResponseForm } from "../../utils/handleResponseForm";
+import { GetUser } from "../../services/user";
+import { ALERT_MSJ_USER_EDITED, ALERT_SUCCESS } from "../../constants";
 
 /**Modal para editar usuario */
 export const ModalEditarUser = ({
@@ -45,10 +44,12 @@ export const ModalEditarUser = ({
   //Envió de formulario
   const onSubmit: SubmitHandler<UserUpdateForm> = async (form, e) => {
     setLoader(true);
-    const { data, status } = await ActualizarUser(form.id, form);
-    const { errors } = data;
-
-  handleResponseForm(status,handleClose,setLoader,setAlertState,ALERT_MSJ_USER_EDITED,e,errors)
+    setTimeout(() => {
+      setAlertState({ ...ALERT_SUCCESS, ...ALERT_MSJ_USER_EDITED });
+      setLoader(false);
+      e?.target.reset();
+      handleClose();
+    }, 1000);
   };
 
   return (

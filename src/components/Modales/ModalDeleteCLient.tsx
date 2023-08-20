@@ -3,11 +3,9 @@ import { AlertContext } from "../../context/AlertContext";
 import { ModalBase } from ".";
 import style from "../../styles/modales.module.css";
 import { Button } from "../Botones";
-import { EliminarCliente } from "../../services/customer";
 import { ModalInterface } from "../../types";
 import alertOrangeIcon from "../../assets/alertaOrange.svg";
-import {ALERT_MSJ_USER_DELETE} from '../../constants'
-import { handleResponseForm } from "../../utils/handleResponseForm";
+import { ALERT_MSJ_CUSTOMER_DELETE, ALERT_SUCCESS } from "../../constants";
 
 /**Modal para eliminar un cliente */
 export const ModalDeleteClient = ({
@@ -18,14 +16,16 @@ export const ModalDeleteClient = ({
 }: ModalInterface) => {
   //Control alertas
   const { setAlertState } = useContext(AlertContext);
-  const [loader, setLoader] = useState(false)
+  const [loader, setLoader] = useState(false);
 
   //Eliminar cliente
   const onClick = async (cliente?: string | number) => {
-    setLoader(true)
-    const { status } = await EliminarCliente(cliente);
-
-    handleResponseForm(status,handleClose,setLoader,setAlertState,ALERT_MSJ_USER_DELETE)
+    setLoader(true);
+    setTimeout(() => {
+      setAlertState({ ...ALERT_SUCCESS, ...ALERT_MSJ_CUSTOMER_DELETE });
+      setLoader(false);
+      handleClose();
+    }, 1000);
   };
 
   return (

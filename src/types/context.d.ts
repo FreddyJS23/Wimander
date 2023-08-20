@@ -1,5 +1,5 @@
 import { AlertColor } from "@mui/material"
-import { Configs } from "."
+import { Configs, UserAuth } from "."
 
 /**Context del usuario */
 export interface AuthContextInterface {

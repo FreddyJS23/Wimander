@@ -6,12 +6,10 @@ import { Button } from "../Botones";
 import { AuthContext } from "../../context/AuthContext";
 import { ControlFormLogin, UserForm } from "../../types/index";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { Autenticar } from "../../services/auth";
 import { Alerts } from "../Elements";
 import { AlertContext } from "../../context/AlertContext";
 import { useCookies } from "react-cookie";
-import {ALERT_ERROR} from '../../constants'
-
+import { ALERT_ERROR, CREDITIANLS, USER_SESSION } from "../../constants";
 
 export const FormSesion = ({ handleClick }: ControlFormLogin) => {
   const { setUser } = useContext(AuthContext);
@@ -30,21 +28,22 @@ export const FormSesion = ({ handleClick }: ControlFormLogin) => {
   //Envio de formulario
   const onSubmit: SubmitHandler<UserForm> = async (form) => {
     setLoading(true);
-    const { data, status } = await Autenticar(form);
 
-    if (status == 200) {
-      setCookie("SessionUser", data.user, { path: "/" });
-      setUser(data.user);
-    } else if (status == 408)
+    if (
+      form.user == CREDITIANLS.user &&
+      form.password == CREDITIANLS.password
+    ) {
+      setTimeout(() => {
+        setCookie("SessionUser", USER_SESSION, { path: "/" });
+        setUser(USER_SESSION);
+        setLoading(false);
+      }, 1000);
+    } else {
       setAlertState({
-       ...ALERT_ERROR,
-        mensaje: `${status}: error de conexion`,
+        ...ALERT_ERROR,
+        mensaje: `Credenciales invalidas`,
       });
-    else setAlertState({...ALERT_ERROR, mensaje: data.message });
-
-    //cierre de alerta
-
-    setLoading(false);
+    }
   };
 
   return (

@@ -7,9 +7,7 @@ import { CamposForm } from "../Elements";
 import { Button } from "../Botones";
 import { ConfigsForm, ModalInterface } from "../../types";
 import { ConfigsContext } from "../../context/configurations";
-import {ALERT_MSJ_CONFIGURATION_SAVED} from '../../constants'
-import { handleResponseForm } from "../../utils/handleResponseForm";
-import { UpdateConfigs } from "../../services/config";
+import { ALERT_MSJ_CONFIGURATION_SAVED, ALERT_SUCCESS } from "../../constants";
 
 /**Modal para cambiar configuracion dle usuario */
 export const ModalSettings = ({
@@ -20,7 +18,7 @@ export const ModalSettings = ({
   //Control alertas
   const { setAlertState } = useContext(AlertContext);
   const { configs } = useContext(ConfigsContext);
-  const [loader, setLoader] = useState(false)
+  const [loader, setLoader] = useState(false);
   //Control formulario
   const {
     register,
@@ -32,11 +30,13 @@ export const ModalSettings = ({
 
   //Envió de formulario
   const onSubmit: SubmitHandler<ConfigsForm> = async (form, e) => {
-    setLoader(true)
-    const { data, status } = await UpdateConfigs(form);
-    const {errors}=data
-   
-    handleResponseForm(status,handleClose,setLoader,setAlertState,ALERT_MSJ_CONFIGURATION_SAVED,e,errors)
+    setLoader(true);
+    setTimeout(() => {
+      setAlertState({ ...ALERT_SUCCESS, ...ALERT_MSJ_CONFIGURATION_SAVED });
+      setLoader(false);
+      e?.target.reset();
+      handleClose();
+    }, 1000);
   };
 
   return (
@@ -60,7 +60,12 @@ export const ModalSettings = ({
             styleInput="inputSmall"
           />
         </div>
-        <Button type={"submit"} onSubmit={handleSubmit} value="Guardar" loading={loader} />
+        <Button
+          type={"submit"}
+          onSubmit={handleSubmit}
+          value="Guardar"
+          loading={loader}
+        />
       </form>
     </ModalBase>
   );

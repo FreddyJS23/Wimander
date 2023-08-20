@@ -12,6 +12,7 @@ import { ControlModal, Customer } from "../../types";
 import { Alerts } from "../Elements";
 import { AlertContext } from "../../context/AlertContext";
 import { columCustomer } from "./columns";
+import { cliente } from "../../data/clientes";
 
 export const TablaCustomer=()=> {
   //Estado modal
@@ -31,9 +32,12 @@ export const TablaCustomer=()=> {
   
    const getData=async()=>{
     setLoaderTable(true)
-    const {data,status}=await GetClientes()
-    status == 200 && setClientes(data.customers) 
-    setLoaderTable(false)
+    
+     setTimeout(() => {
+      setClientes(clientes.concat(cliente))
+      setLoaderTable(false)
+    }, 1000);
+   
   }
   getData()
   
@@ -89,6 +93,7 @@ export const TablaCustomer=()=> {
           pagination: {
             paginationModel: { pageSize: 8 },
           },
+
         }}
         pageSizeOptions={[8, 10, 15, 20]}
         density="compact"

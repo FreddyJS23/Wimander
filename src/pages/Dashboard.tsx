@@ -26,10 +26,6 @@ const Dashboard = () => {
   //Cierre modal
   const onClose = () => setModalOpen(false);
 
-  //Consultar ganancias
-  useEffect(() => {
-    GetGanancias().then((res) => setGanacias(res.data.proceeds));
-  }, []);
 
   //Titulo pagina
   useDocumentTitle("Dashboard");
@@ -43,7 +39,7 @@ const Dashboard = () => {
                 <CardContent className={style["contenidoTarjeta"]}>
                   <TarjetasDasboard
                     titulo={"Ganacias totales"}
-                    contenido={`${ganancia}$`}
+                    contenido={`30$`}
                     style={style["tituloTarjeta"]}
                   />
                 </CardContent>

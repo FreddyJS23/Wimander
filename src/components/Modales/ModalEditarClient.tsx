@@ -6,9 +6,8 @@ import { ModalBase } from ".";
 import style from "../../styles/modales.module.css";
 import { CamposForm } from "../Elements";
 import { Button } from "../Botones";
-import { ActualizarCliente, GetCliente } from "../../services/customer";
-import { ALERT_MSJ_USER_EDITED} from '../../constants'
-import { handleResponseForm } from "../../utils/handleResponseForm";
+import { GetCliente } from "../../services/customer";
+import { ALERT_MSJ_CUSTOMER_EDITED, ALERT_SUCCESS } from "../../constants";
 
 /**Modal para editar cliente */
 export const ModalEditarClient = ({
@@ -20,7 +19,7 @@ export const ModalEditarClient = ({
   //Control alertas
   const { setAlertState } = useContext(AlertContext);
   //loader
-  const [loader, setLoader] = useState(false)
+  const [loader, setLoader] = useState(false);
   //Control formulario
   const {
     register,
@@ -37,12 +36,14 @@ export const ModalEditarClient = ({
 
   //Envió de formulario
   const onSubmit: SubmitHandler<CustomerFormUpdate> = async (form, e) => {
-    setLoader(true)
-    const { data, status } = await ActualizarCliente(form.id, form);
-    const { errors } = data;
-    //manejo de respuesta 
-    handleResponseForm(status,handleClose,setLoader,setAlertState,ALERT_MSJ_USER_EDITED,e,errors)
-    
+    setLoader(true);
+
+    setTimeout(() => {
+      setAlertState({ ...ALERT_SUCCESS, ...ALERT_MSJ_CUSTOMER_EDITED });
+      setLoader(false);
+      e?.target.reset();
+      handleClose();
+    }, 1000);
   };
 
   return (
@@ -95,7 +96,7 @@ export const ModalEditarClient = ({
             errors={errors}
           />
         </div>
-        <Button type={"submit"} value="Editar"  loading={loader}/>
+        <Button type={"submit"} value="Editar" loading={loader} />
       </form>
     </ModalBase>
   );

@@ -3,13 +3,12 @@ import { AlertContext } from "../../context/AlertContext";
 import { ConfigsContext } from "../../context/configurations";
 import { CustomerRegister, ModalInterface } from "../../types";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { CrearCliente } from "../../services/customer";
+
 import { ModalBase } from ".";
 import style from "../../styles/modales.module.css";
 import { CamposForm, RadioButton } from "../Elements";
 import { Button } from "../Botones";
-import { ALERT_MSJ_CUSTOMER_CREATED} from "../../constants"
-import { handleResponseForm } from "../../utils/handleResponseForm";
+import { ALERT_MSJ_CUSTOMER_CREATED, ALERT_SUCCESS } from "../../constants";
 
 /**Modal para crear cliente */
 export const ModalCrearClient = ({
@@ -20,7 +19,7 @@ export const ModalCrearClient = ({
   //Control alertas
   const { setAlertState } = useContext(AlertContext);
   const { configs } = useContext(ConfigsContext);
-  const [loader, setLoader] = useState(false)
+  const [loader, setLoader] = useState(false);
   //Control formulario
   const {
     register,
@@ -30,11 +29,13 @@ export const ModalCrearClient = ({
 
   //Envió de formulario
   const onSubmit: SubmitHandler<CustomerRegister> = async (form, e) => {
-    setLoader(true)
-    const { data, status } = await CrearCliente(form);
-    const { errors } = data;
-
-   handleResponseForm(status,handleClose,setLoader,setAlertState,ALERT_MSJ_CUSTOMER_CREATED,e,errors)
+    setLoader(true);
+    setTimeout(() => {
+      setAlertState({ ...ALERT_SUCCESS, ...ALERT_MSJ_CUSTOMER_CREATED });
+      setLoader(false);
+      e?.target.reset();
+      handleClose();
+    }, 1000);
   };
 
   return (

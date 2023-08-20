@@ -5,10 +5,13 @@ import styles from "../../styles/login.module.css";
 import { Button } from "../Botones";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { Alerts } from "../Elements/Alerts";
-import { createUser } from "../../services/user";
 import { AlertContext } from "../../context/AlertContext";
-import {ALERT_ERROR,ALERT_MSJ_USER_CREATED, ALERT_MSJ_PASSWORDS_NOT_MATCH} from '../../constants'
-import { handleResponseForm } from "../../utils/handleResponseForm";
+import {
+  ALERT_ERROR,
+  ALERT_MSJ_USER_CREATED,
+  ALERT_MSJ_PASSWORDS_NOT_MATCH,
+  ALERT_SUCCESS,
+} from "../../constants";
 
 export const FormRegistroUsuario = ({ handleClick }: ControlFormLogin) => {
   //Control de formulario
@@ -28,17 +31,20 @@ export const FormRegistroUsuario = ({ handleClick }: ControlFormLogin) => {
   //Envió de formulario
   const onSubmit: SubmitHandler<RegisterUserForm> = async (form, e) => {
     setLoader(true);
-    const { data, status } = await createUser(form);
-    const { errors } = data;
+
     //Comprobar si las contraseñas son iguales
     if (getValues("password") != getValues("password2")) {
-      setAlertState({
+      setLoader(false);
+      return setAlertState({
         ...ALERT_ERROR,
-        ...ALERT_MSJ_PASSWORDS_NOT_MATCH
+        ...ALERT_MSJ_PASSWORDS_NOT_MATCH,
       });
     }
-    handleResponseForm(status,handleClick,setLoader,setAlertState,ALERT_MSJ_USER_CREATED,e,errors)
-   
+    setTimeout(() => {
+      setAlertState({ ...ALERT_SUCCESS, ...ALERT_MSJ_USER_CREATED });
+      setLoader(false);
+      e?.target.reset();
+    }, 1000);
   };
 
   return (

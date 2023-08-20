@@ -39,12 +39,11 @@ export const Sidebar = ({ responsive }: SidebarInterface) => {
 
   //logout
   const handleLogout = async () => {
-    const { data } = await Logout();
-    if (data.status) {
+     
       removeCookie("SessionUser");
       setUser(initialStateUser);
       navigation("/");
-    }
+    
   };
   return (
     <>

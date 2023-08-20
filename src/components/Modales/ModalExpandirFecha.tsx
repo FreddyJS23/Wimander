@@ -6,9 +6,7 @@ import { ModalBase } from ".";
 import style from "../../styles/modales.module.css";
 import { RadioButton } from "../Elements";
 import { Button } from "../Botones";
-import { extendsConnection } from "../../services/extendsConnection";
-import { ALERT_MSJ_CONNECTION_EDITED} from '../../constants'
-import { handleResponseForm } from "../../utils/handleResponseForm";
+import { ALERT_MSJ_CONNECTION_EDITED, ALERT_SUCCESS } from "../../constants";
 
 /**Modal para expandir la fecha del cliente */
 export const ModalExpandirFecha = ({
@@ -19,7 +17,7 @@ export const ModalExpandirFecha = ({
 }: ModalInterface) => {
   //Control alertas
   const { setAlertState } = useContext(AlertContext);
-const [loader, setLoader] = useState(false)
+  const [loader, setLoader] = useState(false);
   //Control formulario
   const { register, handleSubmit } = useForm<ExtendsConnectionFom>({
     defaultValues: { id: parameter },
@@ -27,10 +25,13 @@ const [loader, setLoader] = useState(false)
 
   //Envió de formulario
   const onSubmit: SubmitHandler<ExtendsConnectionFom> = async (form, e) => {
-    setLoader(true)
-    const { status } = await extendsConnection(form.id, form);
-
-  handleResponseForm(status,handleClose,setLoader,setAlertState,ALERT_MSJ_CONNECTION_EDITED,e)
+    setLoader(true);
+    setTimeout(() => {
+      setAlertState({ ...ALERT_SUCCESS, ...ALERT_MSJ_CONNECTION_EDITED });
+      setLoader(false);
+      e?.target.reset();
+      handleClose();
+    }, 1000);
   };
 
   return (
@@ -54,7 +55,12 @@ const [loader, setLoader] = useState(false)
             value={"30D"}
           />
         </div>
-        <Button type={"submit"} onSubmit={handleSubmit} value="Expandir" loading={loader} />
+        <Button
+          type={"submit"}
+          onSubmit={handleSubmit}
+          value="Expandir"
+          loading={loader}
+        />
       </form>
     </ModalBase>
   );
