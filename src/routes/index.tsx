@@ -12,7 +12,7 @@ const Acerca = lazy(() => import("../pages/Acerca"));
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="./" element={<LayoutPrivate />}>
+    <Route path="/" element={<LayoutPrivate />}>
       <Route index element={<Dashboard />} />
       <Route path="Acerca" element={<Acerca />} />
     </Route>
