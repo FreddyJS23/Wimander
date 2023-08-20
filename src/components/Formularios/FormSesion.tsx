@@ -39,6 +39,7 @@ export const FormSesion = ({ handleClick }: ControlFormLogin) => {
         setLoading(false);
       }, 1000);
     } else {
+      setLoading(false);
       setAlertState({
         ...ALERT_ERROR,
         mensaje: `Credenciales invalidas`,
