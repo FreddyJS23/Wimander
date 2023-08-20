@@ -3,6 +3,7 @@ import { ModalBaseInterface } from "../../types";
 //import { AnimacionModal } from "../Animaciones";
 import style from "../../styles/modales.module.css";
 import cerrarIcon from "../../assets/cerrar.svg";
+import { TIMED_ANIMATION_MODAL } from "../../constants";
 
 /** estrucura principal del modal */
 export const ModalBase = ({
@@ -13,7 +14,7 @@ export const ModalBase = ({
 }: ModalBaseInterface) => {
   return (
     <Modal open={open} closeAfterTransition onClose={handleClose}>
-      <Zoom in={open}>
+      <Zoom in={open} timeout={TIMED_ANIMATION_MODAL}>
         <div className={`${style["container-modal"]} `}>
           <div className={style["container-encabezado"]}>
             <p>{encabezado}</p>
