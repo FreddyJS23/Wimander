@@ -41,7 +41,7 @@ export const Sidebar = ({ responsive }: SidebarInterface) => {
   const handleLogout = async () => {
     const { data } = await Logout();
     if (data.status) {
-      removeCookie("SessionUser");
+      removeCookie("SessionUser",{path:'/'});
       setUser(initialStateUser);
       navigation("/");
     }
