@@ -1,6 +1,6 @@
 .container-tablaCliente{
     width: 98%;
-     height:64vh; 
+     height:70vh; 
     display:flex;
     flex-direction: column;
     gap: 1rem;
