@@ -10,6 +10,7 @@ import { Alerts } from "../Elements";
 import { AlertContext } from "../../context/AlertContext";
 import { useCookies } from "react-cookie";
 import { ALERT_ERROR, CREDITIANLS, USER_SESSION } from "../../constants";
+import { expiracionCookie } from "../../utils/expiracionCookie";
 
 export const FormSesion = ({ handleClick }: ControlFormLogin) => {
   const { setUser } = useContext(AuthContext);
@@ -34,7 +35,7 @@ export const FormSesion = ({ handleClick }: ControlFormLogin) => {
       form.password == CREDITIANLS.password
     ) {
       setTimeout(() => {
-        setCookie("SessionUser", USER_SESSION, { path: "/" });
+        setCookie("SessionUser", USER_SESSION, { path: "/",expires:expiracionCookie() });
         setUser(USER_SESSION);
         setLoading(false);
       }, 1000);
