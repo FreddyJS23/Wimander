@@ -11,6 +11,7 @@ import { Alerts } from "../Elements";
 import { AlertContext } from "../../context/AlertContext";
 import { useCookies } from "react-cookie";
 import {ALERT_ERROR} from '../../constants'
+import { expiracionCookie } from "../../utils/expiracionCookie";
 
 
 export const FormSesion = ({ handleClick }: ControlFormLogin) => {
@@ -33,7 +34,7 @@ export const FormSesion = ({ handleClick }: ControlFormLogin) => {
     const { data, status } = await Autenticar(form);
 
     if (status == 200) {
-      setCookie("SessionUser", data.user, { path: "/" });
+      setCookie("SessionUser", data.user, { path: "/",expires:expiracionCookie() });
       setUser(data.user);
     } else if (status == 408)
       setAlertState({
