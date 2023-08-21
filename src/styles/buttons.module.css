@@ -22,10 +22,13 @@
 }
 
 
-@media screen and (max-width:576px){
+@media screen and (max-width:500px){
   .button{
-    font-size:14px
+    font-size:14px;
+    width: 7.375rem;
+    height: 2rem;
   }
+  
 }
 
 .button:active {
