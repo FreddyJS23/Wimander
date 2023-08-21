@@ -15,7 +15,7 @@ import { ControlModal, SidebarInterface } from "../../types";
 import { ButtonSidebar } from "../Botones/ButtonSidebar";
 import { ModalSettings } from "../Modales/ModalSettings";
 import { useCookies } from "react-cookie";
-import { expiracionCookie } from "../../utils/expiracionCookie";
+
 
 export const Sidebar = ({ responsive }: SidebarInterface) => {
   const { setUser, initialStateUser, user } = useContext(AuthContext);
