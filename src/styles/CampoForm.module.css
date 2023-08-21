@@ -65,7 +65,8 @@
    position: absolute;
 }
 .labelWithDecoracion{
-left: 40px;
+left: 28px;
+font-size:16px
 }
 .inputWithDecoracion{
 border-top-left-radius: 0px;
@@ -73,7 +74,8 @@ border-bottom-left-radius: 0px;
 }
 .input:focus ~ .labelWithDecoracion,
 .input:not(:placeholder-shown) ~ .labelWithDecoracion {
-  margin-left: -0.4rem;
+  transform: translateY(-130%);
+  margin-left: 0.1rem;
 }
 
 
