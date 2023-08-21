@@ -37,7 +37,6 @@
   margin-left: -0.2rem;
   padding: 0.1rem;
   background-color: rgb(255, 255, 255);
-
   color: var(--colorSecundario);
 }
 
@@ -131,7 +130,7 @@ border-bottom-left-radius: 0px;
   .input:not(:placeholder-shown) ~ .labelLogin {
     background: transparent;
     font-weight: 700;
-    transform: translateY(-121%) scale(0.9);
+    transform: translateY(-154%) scale(0.9);
     color: var(--colorPrimario);
   }
   .input:focus ~ .labelError,
@@ -141,7 +140,11 @@ border-bottom-left-radius: 0px;
 }
 
 @media screen and (max-width: 500px) {
-
+  /* .input:focus ~ .labelLogin,
+  .input:not(:placeholder-shown) ~ .labelLogin {
+    transform: translateY(-154%) scale(0.9);
+  }
+  */
   .labelSmall {
    left:30px
   }
