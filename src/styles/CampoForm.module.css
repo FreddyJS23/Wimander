@@ -82,12 +82,26 @@ border-bottom-left-radius: 0px;
 @media screen and (max-width: 500px) {
   .input,.decoracion {
     padding: 0.5rem;
-    font-size: 15px;
+    font-size: 13px;
   }
   .label {
-    font-size: 15px;
+    font-size: 13px;
     bottom: 5px;
+    max-width: 12ch;
   }
+  .input:focus ~ .label,
+  .input:not(:placeholder-shown) ~ .label {
+    /* transform: translateY(-112%) scale(0.8); */
+    margin-left: -6px;
+    
+  }
+  .input:focus ~ .labelWithDecoracion,
+  .input:not(:placeholder-shown) ~ .labelWithDecoracion {
+  transform: translateY(-130%);
+  margin-left: 0.1rem;
+}
+ 
+
 }
 
 .toolTipError div {
