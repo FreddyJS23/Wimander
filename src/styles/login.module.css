@@ -1,11 +1,12 @@
 .container-login {
   max-width: 70%;
-  height: 35.625rem;
+  /* height: 35.625rem; */
   border-radius: 15px;
   background: var(--colorFondo);
   display: flex;
   margin: auto;
-  margin-top: 1rem;
+  margin-top: 3rem;
+  margin-bottom: 5rem;
   box-shadow: 1px 2px 6px 1px rgba(0, 0, 0, 0.25);
   will-change: animation;
 }
@@ -27,15 +28,20 @@
 /* ---------------------------- seccion izquierda --------------------------- */
 .login-izquierdo {
   display: flex;
+  position: relative;
   flex-direction: column;
   align-items: center;
   width: 50%;
+  padding: 2rem 1rem 1rem 1rem;
+  height:90vmin;
+
 }
 
 .encabezado-izquierdo {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap:2rem
 }
 
 .encabezado-izquierdo p {
@@ -57,6 +63,7 @@
   display: flex;
   flex-direction: column;
   align-items: end;
+  gap:1rem;
   /* margin-left: -2rem; */
 }
 
@@ -202,14 +209,17 @@
     box-shadow: none;
     align-items: center;
     animation: none;
-    height: initial;
+    height: 100%;
     background:transparent;
-   
-    margin-top: -2rem;
+    margin-top:2rem;
+    margin-bottom:0;
+    
   }
 /* seccion izquierda */
 .login-izquierdo{
   width: initial;
+  height:initial;
+  
 }  
 .contenidoPrincipal,.footerLogin{
     display: none;
@@ -219,6 +229,7 @@
     background: transparent;
     align-items: center;
     width: 100%;
+    height: 100vh;
   }
   .encabezado-derecho {
     margin-top: 1rem;
@@ -258,7 +269,7 @@
 
 }
 
-@media screen and (max-width:576px){
+@media screen and (max-width:500px){
   .encabezado-izquierdo p {
     font-size: 1.3rem;
  
