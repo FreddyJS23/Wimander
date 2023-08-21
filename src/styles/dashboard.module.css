@@ -9,15 +9,22 @@
 .container-tarjetasDashoboard {
   display: flex;
   gap: 2rem;
-  margin-bottom: 2rem;
+  margin-bottom: .5rem;
   justify-content: flex-start;
   margin-left: 2rem;
 }
 
 
+.contenidoTarjeta{
+  display: flex;
+  flex-direction: column;
+  gap:1rem
+}
 
 .contenidoTarjeta h2 {
   margin: 0;
+  font-weight: 700;
+  font-size: 1.3rem;
 }
 
 @media screen and (max-width:1024px){
