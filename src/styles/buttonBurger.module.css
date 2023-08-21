@@ -1,7 +1,7 @@
 .burger {
     position: relative;
-    width: 40px;
-    height: 28px;
+    width: 32px;
+    height: 26px;
     background: transparent;
     cursor: pointer;
     display: block;
@@ -56,6 +56,6 @@
   
   .burger input:checked ~ span:nth-of-type(3) {
     transform: rotate(-45deg);
-    top: 28px;
+    top: 23px;
     left: 5px;
   }
