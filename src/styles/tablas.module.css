@@ -1,6 +1,6 @@
 .container-tablaCliente{
     width: 98%;
-     height:64vmin; 
+     height:64vh; 
     display:flex;
     flex-direction: column;
     gap: 1rem;
@@ -9,13 +9,18 @@
 @media screen and (max-width:1024px){
     .container-tablaCliente{
         margin: auto;
-        height:69vmin; 
-        gap:.3rem
+        gap:.3rem;
     }
     
 }
-@media screen and (max-width:768px){
+/* @media screen and (max-width:768px){
     .container-tablaCliente{
-        height:30.5rem; 
+        height: 64vh;
     }
-}
+} */
+
+/* @media screen and (max-width:500px){
+    .container-tablaCliente{
+        min-height:40vh; 
+    }
+}  */
