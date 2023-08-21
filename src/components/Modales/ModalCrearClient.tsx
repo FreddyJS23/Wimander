@@ -98,6 +98,7 @@ export const ModalCrearClient = ({
             name="Inicio del plan"
             required={true}
             errors={errors}
+            styleLabel={'label_select'}
           />
 
           <div className={style["container-plan"]}>

@@ -15,13 +15,20 @@
   font-size: 18px;
 }
 
-.label {
+.label,.label_select {
   font-size: 18px;
   position: absolute;
-  transition: 0.2s;
   bottom: 9px;
   left: 14px;
   background: transparent;
+  transition: 0.2s all;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.label_select{
+  left:8px;
+  bottom:12px
 }
 
 .input:focus ~ .label,
