@@ -20,4 +20,4 @@ wimander permite llevar un seguimiento de la fecha de inicio de la conexión y f
 
 ## Demostración
 
-![Mockup!](./assets/mockup.png "Mockup")
+![Mockup!](src/assets/mockup.png "Mockup")
