@@ -34,7 +34,7 @@ html,body {
   background: var(--colorFondo);
   background-repeat: no-repeat;
   min-height: 100vh;
-  overflow-x:hidden;
+  overflow-y:hidden;
 }
 
 /* etiquetas img de iconos */
