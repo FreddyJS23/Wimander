@@ -48,7 +48,7 @@ const Login = () => {
       <div className={styles["login-derecho"]}>
         <div className={styles["encabezado-derecho"]}>
           {!registrar ? (
-            <p>Iniciar seccion</p>
+            <p>Iniciar sesión</p>
           ) : (
             <p>
               {" "}
